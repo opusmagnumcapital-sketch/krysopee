@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krysopée · L'Art de Transmuterl'Or</title>
+
+  <!-- ═══ FAVICON ═══ -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+
+  <!-- ═══ SEO ═══ -->
+  <meta name="description" content="Krysopée — Trading conscient, alchimie appliquée, psychologie des profondeurs. Nemini Teneri.">
+  <meta name="author" content="Jean-Luc Manzaroli">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://krysopee.capital/">
+
+  <!-- ═══ OPEN GRAPH ═══ -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://krysopee.capital/">
+  <meta property="og:title" content="Krysopée · L'Art de Transmuterl'Or">
+  <meta property="og:description" content="Où la rigueur des marchés rencontre la sagesse du chemin. Trading conscient, alchimie appliquée, transmission intergénérationnelle.">
+  <meta property="og:image" content="https://krysopee.capital/og-image.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Krysopée">
+
+  <!-- ═══ TWITTER CARD ═══ -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Krysopée · L'Art de Transmuterl'Or">
+  <meta name="twitter:description" content="Où la rigueur des marchés rencontre la sagesse du chemin.">
+  <meta name="twitter:image" content="https://krysopee.capital/og-image.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --or: #B8960E;
+    --or-light: #D4A91A;
+    --or-pale: #F5E8B0;
+    --noir: #0A0A08;
+    --encre: #111109;
+    --pierre: #1C1C16;
+    --gris: #4A4A3E;
+    --gris-clair: #8A8A7A;
+    --creme: #F2EFE4;
+    --blanc: #FAF8F2;
+    --rouge-alchimique: #8B2020;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--noir);
+    color: var(--creme);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── CURSEUR ─── */
+  body { cursor: crosshair; }
+  a, button { cursor: crosshair; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background: linear-gradient(to bottom, rgba(10,10,8,0.98) 0%, rgba(10,10,8,0) 100%);
+    transition: background 0.4s;
+  }
+
+  nav.scrolled {
+    background: rgba(10,10,8,0.97);
+    border-bottom: 0.5px solid rgba(184,150,14,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    color: var(--or);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gris-clair);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--or); }
+
+  .nav-cta {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--or);
+    border: 0.5px solid var(--or);
+    padding: 0.6rem 1.4rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .nav-cta:hover {
+    background: var(--or);
+    color: var(--noir);
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 60%, rgba(184,150,14,0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(139,32,32,0.05) 0%, transparent 60%),
+                var(--noir);
+  }
+
+  /* Grille fine */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(184,150,14,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,150,14,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+  }
+
+  /* Cercle alchimique SVG */
+  .alchemic-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(600px, 90vw);
+    opacity: 0.06;
+    animation: rotate-slow 120s linear infinite;
+  }
+
+  @keyframes rotate-slow {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 0 2rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fade-up 1s 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: 0.04em;
+    color: var(--creme);
+    margin-bottom: 0.3rem;
+    opacity: 0;
+    animation: fade-up 1s 0.5s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--or);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gris-clair);
+    margin-bottom: 3rem;
+    letter-spacing: 0.06em;
+    opacity: 0;
+    animation: fade-up 1s 0.7s forwards;
+  }
+
+  .hero-devise {
+    font-size: 0.55rem;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: rgba(184,150,14,0.5);
+    margin-bottom: 3.5rem;
+    opacity: 0;
+    animation: fade-up 1s 0.9s forwards;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    opacity: 0;
+    animation: fade-up 1s 1.1s forwards;
+  }
+
+  .btn-primary {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--noir);
+    background: var(--or);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+
+  .btn-primary:hover {
+    background: var(--or-light);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--creme);
+    border: 0.5px solid rgba(242,239,228,0.3);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--or);
+    color: var(--or);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    opacity: 0;
+    animation: fade-up 1s 1.5s forwards;
+    z-index: 2;
+  }
+
+  .hero-scroll span {
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gris-clair);
+  }
+
+  .scroll-line {
+    width: 0.5px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--or), transparent);
+    animation: scroll-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-pulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTIONS COMMUNES ─── */
+  section { padding: 8rem 4rem; max-width: 1400px; margin: 0 auto; }
+
+  .section-rule {
+    width: 60px;
+    height: 0.5px;
+    background: var(--or);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.55rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--creme);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--or); }
+
+  .section-body {
+    font-size: 0.85rem;
+    line-height: 1.9;
+    color: var(--gris-clair);
+    max-width: 640px;
+  }
+
+  /* ─── SÉPARATEUR ─── */
+  .sep {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    border-top: 0.5px solid rgba(184,150,14,0.12);
+  }
+
+  /* ─── MANIFESTE ─── */
+  #manifeste {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: center;
+  }
+
+  .manifeste-quote {
+    position: relative;
+    padding: 3rem 0;
+    border-left: 1px solid var(--or);
+    padding-left: 3rem;
+  }
+
+  .manifeste-quote blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--creme);
+    margin-bottom: 1.5rem;
+  }
+
+  .manifeste-quote cite {
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--or);
+    font-style: normal;
+  }
+
+  /* Les quatre piliers */
+  .piliers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 0.5px solid rgba(184,150,14,0.15);
+  }
+
+  .pilier {
+    padding: 2rem;
+    border-right: 0.5px solid rgba(184,150,14,0.1);
+    border-bottom: 0.5px solid rgba(184,150,14,0.1);
+    transition: background 0.3s;
+  }
+
+  .pilier:nth-child(even) { border-right: none; }
+  .pilier:nth-child(3), .pilier:nth-child(4) { border-bottom: none; }
+
+  .pilier:hover {
+    background: rgba(184,150,14,0.04);
+  }
+
+  .pilier-symbol {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .pilier-name {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 0.5rem;
+  }
+
+  .pilier-desc {
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--gris-clair);
+  }
+
+  /* ─── VISION ─── */
+  #vision {
+    background: var(--pierre);
+    max-width: 100%;
+    padding: 8rem 4rem;
+  }
+
+  .vision-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 8rem;
+    align-items: start;
+  }
+
+  .vision-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    position: relative;
+    padding: 2rem 2rem 2rem 3rem;
+    border-left: 0.5px solid rgba(184,150,14,0.2);
+    transition: border-color 0.3s;
+  }
+
+  .timeline-item:hover {
+    border-left-color: var(--or);
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -4px;
+    top: 2.3rem;
+    width: 7px;
+    height: 7px;
+    background: var(--or);
+    border-radius: 50%;
+  }
+
+  .timeline-phase {
+    font-size: 0.5rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--creme);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--gris-clair);
+  }
+
+  /* ─── APPROCHE TECHNIQUE ─── */
+  #technique {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .tech-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(184,150,14,0.1);
+  }
+
+  .tech-card {
+    background: var(--encre);
+    padding: 1.8rem 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    transition: background 0.3s;
+    border-left: 2px solid transparent;
+    transition: all 0.3s;
+  }
+
+  .tech-card:hover {
+    background: var(--pierre);
+    border-left-color: var(--or);
+  }
+
+  .tech-card-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: rgba(184,150,14,0.2);
+    min-width: 2.5rem;
+    line-height: 1;
+  }
+
+  .tech-card-content {}
+
+  .tech-card-name {
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--creme);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+
+  .tech-card-desc {
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: var(--gris-clair);
+  }
+
+  .tech-indicators {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .indicator-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border: 0.5px solid rgba(184,150,14,0.15);
+    transition: all 0.3s;
+  }
+
+  .indicator-badge:hover {
+    border-color: var(--or);
+    transform: translateX(4px);
+  }
+
+  .indicator-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--or);
+    flex-shrink: 0;
+  }
+
+  .indicator-name {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--creme);
+    flex: 1;
+    font-weight: 400;
+  }
+
+  .indicator-version {
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    color: var(--gris-clair);
+  }
+
+  /* ─── PUBLICATIONS ─── */
+  #publications {
+    max-width: 100%;
+    background: var(--encre);
+    padding: 8rem 4rem;
+  }
+
+  .publications-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .pub-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4rem;
+  }
+
+  .pub-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(184,150,14,0.08);
+  }
+
+  .pub-card {
+    background: var(--encre);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.3s;
+    color: inherit;
+  }
+
+  .pub-card:hover { background: var(--pierre); }
+
+  .pub-substack-link {
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--or);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.3s;
+  }
+
+  .pub-substack-link:hover { gap: 0.7rem; }
+
+  .pub-tag {
+    font-size: 0.5rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 1.2rem;
+    font-weight: 500;
+  }
+
+  .pub-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--creme);
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+
+  .pub-excerpt {
+    font-size: 0.75rem;
+    line-height: 1.7;
+    color: var(--gris-clair);
+    margin-bottom: 2rem;
+  }
+
+  .pub-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.5px solid rgba(184,150,14,0.1);
+    padding-top: 1rem;
+  }
+
+  .pub-date {
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gris);
+  }
+
+  .pub-arrow {
+    font-size: 0.8rem;
+    color: var(--or);
+    transition: transform 0.3s;
+  }
+
+  .pub-card:hover .pub-arrow { transform: translateX(4px); }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(184,150,14,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .contact-devise {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--creme);
+    margin-bottom: 2rem;
+  }
+
+  .contact-devise em { color: var(--or); }
+
+  .contact-sub {
+    font-size: 0.8rem;
+    line-height: 1.8;
+    color: var(--gris-clair);
+    margin-bottom: 3.5rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 480px;
+    margin: 0 auto 3rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    background: transparent;
+    border: 0.5px solid rgba(184,150,14,0.2);
+    color: var(--creme);
+    padding: 1rem 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+    resize: none;
+  }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: var(--gris);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.6rem;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: var(--or);
+  }
+
+  .contact-form textarea { height: 120px; }
+
+  .contact-form button {
+    background: transparent;
+    border: 0.5px solid var(--or);
+    color: var(--or);
+    padding: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: crosshair;
+    transition: all 0.3s;
+    font-weight: 500;
+  }
+
+  .contact-form button:hover {
+    background: var(--or);
+    color: var(--noir);
+  }
+
+  .contact-socials {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .contact-socials a {
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gris-clair);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .contact-socials a:hover { color: var(--or); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    max-width: 100%;
+    padding: 2.5rem 4rem;
+    border-top: 0.5px solid rgba(184,150,14,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    color: var(--or);
+    text-transform: uppercase;
+  }
+
+  .footer-devise {
+    font-size: 0.5rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gris);
+  }
+
+  .footer-copy {
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    color: var(--gris);
+  }
+
+  /* ─── ANIMATIONS SCROLL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.3s; }
+  .reveal-delay-3 { transition-delay: 0.45s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 2rem; }
+    #manifeste, #technique { grid-template-columns: 1fr; gap: 4rem; }
+    .vision-inner { grid-template-columns: 1fr; gap: 4rem; }
+    .pub-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    #publications, #vision { padding: 5rem 2rem; }
+    .pub-header { flex-direction: column; align-items: flex-start; gap: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVIGATION ═══ -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">Krysopée</a>
+  <ul class="nav-links">
+    <li><a href="#manifeste">Manifeste</a></li>
+    <li><a href="#vision">Vision</a></li>
+    <li><a href="#technique">Approche</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Prendre contact</a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero" style="max-width:100%; padding:0; margin:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <!-- Cercle alchimique SVG -->
+  <svg class="alchemic-circle" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="200" cy="200" r="190" stroke="#B8960E" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="160" stroke="#B8960E" stroke-width="0.3"/>
+    <circle cx="200" cy="200" r="130" stroke="#B8960E" stroke-width="0.5"/>
+    <!-- Triangle ascendant -->
+    <polygon points="200,40 340,280 60,280" stroke="#B8960E" stroke-width="0.5" fill="none"/>
+    <!-- Triangle descendant -->
+    <polygon points="200,360 60,120 340,120" stroke="#B8960E" stroke-width="0.3" fill="none"/>
+    <!-- Étoile hexagonale inner -->
+    <polygon points="200,80 226,120 200,160 174,120" stroke="#B8960E" stroke-width="0.3" fill="none"/>
+    <polygon points="200,320 226,280 200,240 174,280" stroke="#B8960E" stroke-width="0.3" fill="none"/>
+    <!-- Croix centrale -->
+    <line x1="200" y1="10" x2="200" y2="390" stroke="#B8960E" stroke-width="0.3"/>
+    <line x1="10" y1="200" x2="390" y2="200" stroke="#B8960E" stroke-width="0.3"/>
+    <!-- Octogone -->
+    <polygon points="200,30 330,88 370,220 312,348 200,388 88,348 30,220 70,88" stroke="#B8960E" stroke-width="0.4" fill="none"/>
+    <!-- Points cardinaux -->
+    <circle cx="200" cy="40" r="3" fill="#B8960E"/>
+    <circle cx="360" cy="200" r="3" fill="#B8960E"/>
+    <circle cx="200" cy="360" r="3" fill="#B8960E"/>
+    <circle cx="40" cy="200" r="3" fill="#B8960E"/>
+    <circle cx="200" cy="200" r="5" fill="#B8960E"/>
+    <circle cx="200" cy="200" r="12" stroke="#B8960E" stroke-width="0.5" fill="none"/>
+  </svg>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Krysopée · L'Art de Transmuterl'Or</p>
+    <h1 class="hero-title">La <em>maîtrise</em><br>comme miroir de soi</h1>
+    <p class="hero-subtitle">Où la rigueur des marchés rencontre la sagesse du chemin</p>
+    <p class="hero-devise">☉ · Nemini Teneri · ☿</p>
+    <div class="hero-cta-group">
+      <a href="#manifeste" class="btn-primary">Notre Manifeste</a>
+      <a href="#contact" class="btn-ghost">Prendre contact</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Descendre</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═══ MANIFESTE ═══ -->
+<section id="manifeste">
+  <div class="reveal">
+    <div class="section-rule"></div>
+    <p class="section-eyebrow">Manifeste</p>
+    <h2 class="section-title">Le marché comme<br><em>voie de transmutation</em></h2>
+    <p class="section-body">
+      Krysopée est né d'une conviction fondatrice : le trading n'est pas seulement une discipline financière. C'est un miroir. Un révélateur. Une pratique qui exige autant de l'homme que de l'analyste.
+    </p>
+    <br>
+    <p class="section-body">
+      Nous unissons la rigueur quantitative, l'intelligence artificielle et la psychologie des profondeurs pour forger une approche qui serve à la fois la performance et la croissance de l'être.
+    </p>
+  </div>
+
+  <div class="reveal reveal-delay-1">
+    <div class="manifeste-quote">
+      <blockquote>
+        "De la rigueur naît la liberté.<br>
+        De la conscience naît la maîtrise.<br>
+        Et du marché — le miroir de soi."
+      </blockquote>
+      <cite>Jean-Luc Manzaroli — Fondateur, Krysopée</cite>
+    </div>
+
+    <br><br>
+
+    <div class="piliers">
+      <div class="pilier">
+        <span class="pilier-symbol">🜍</span>
+        <p class="pilier-name">Soufre</p>
+        <p class="pilier-desc">Volonté, action, feu entrepreneurial. L'initiative qui transforme.</p>
+      </div>
+      <div class="pilier">
+        <span class="pilier-symbol">☿</span>
+        <p class="pilier-name">Mercure</p>
+        <p class="pilier-desc">Intelligence, adaptabilité, fluidité stratégique. L'esprit en mouvement.</p>
+      </div>
+      <div class="pilier">
+        <span class="pilier-symbol">🜔</span>
+        <p class="pilier-name">Sel</p>
+        <p class="pilier-desc">Structure, rigueur, ancrage méthodologique. La forme qui tient.</p>
+      </div>
+      <div class="pilier">
+        <span class="pilier-symbol">☉</span>
+        <p class="pilier-name">Or</p>
+        <p class="pilier-desc">Synthèse, transmutation, élévation consciente. La finalité.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═══ VISION ═══ -->
+<div id="vision" style="background: var(--pierre);">
+  <div class="vision-inner">
+    <div class="reveal">
+      <div class="section-rule"></div>
+      <p class="section-eyebrow">Vision</p>
+      <h2 class="section-title">La <em>fondation</em><br>comme horizon</h2>
+      <p class="section-body">
+        La prospérité générée par Krysopée n'est pas une finalité. Elle est le combustible d'un projet plus grand : une fondation à vocation spirituelle et éducative.
+      </p>
+      <br>
+      <p class="section-body">
+        Ce que nous transmettons à notre lignée n'est pas notre fortune. C'est la qualité de l'homme que nous devenons.
+      </p>
+    </div>
+
+    <div class="vision-timeline reveal reveal-delay-1">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-phase">Phase I — Rubedo Alpha</p>
+        <p class="timeline-title">Maîtrise du scalping</p>
+        <p class="timeline-desc">Développement et optimisation des stratégies de scalping sur indices. Instruments quantitatifs, indicateurs K-Équinoxe, gestion du risque psychologique.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-phase">Phase II — Architecture</p>
+        <p class="timeline-title">Construction de Krysopée</p>
+        <p class="timeline-desc">Orchestration des intelligences artificielles spécialisées. Développement de l'identité de marque. Constitution de l'équipe et des partenariats stratégiques.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-phase">Phase III — Transmission</p>
+        <p class="timeline-title">La Fondation</p>
+        <p class="timeline-desc">Création d'une fondation éducative et spirituelle. Transmission intergénérationnelle. Témoignage vivant qu'une autre façon d'être dans le monde est possible.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══ TECHNIQUE ═══ -->
+<section id="technique">
+  <div class="reveal">
+    <div class="section-rule"></div>
+    <p class="section-eyebrow">Approche Technique</p>
+    <h2 class="section-title">L'<em>intelligence artificielle</em><br>au service de la conscience</h2>
+    <p class="section-body">
+      Krysopée développe un écosystème propriétaire d'outils : indicateurs sur mesure, Expert Advisors, protocoles d'analyse multi-temporelle et systèmes de protection psychologique intégrés.
+    </p>
+
+    <br>
+
+    <div class="tech-cards">
+      <div class="tech-card">
+        <span class="tech-card-num">01</span>
+        <div class="tech-card-content">
+          <p class="tech-card-name">Analyse Multi-Temporelle</p>
+          <p class="tech-card-desc">Architecture HTF/LTF — Monthly à 30 secondes. Niveaux OHLC, Fibonacci de confluence, lectures de structure de marché en temps réel.</p>
+        </div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-card-num">02</span>
+        <div class="tech-card-content">
+          <p class="tech-card-name">Momentum & Divergences</p>
+          <p class="tech-card-desc">RSI histogramme + Stochastique normalisé. Détection automatique de divergences régulières et cachées. Alertes contextuelles pédagogiques.</p>
+        </div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-card-num">03</span>
+        <div class="tech-card-content">
+          <p class="tech-card-name">Profils Adaptatifs</p>
+          <p class="tech-card-desc">Régimes de volatilité ATR (P33/P67). Filtres de session européenne et américaine. Canal Donchian avec alertes de cassure intelligentes.</p>
+        </div>
+      </div>
+      <div class="tech-card">
+        <span class="tech-card-num">04</span>
+        <div class="tech-card-content">
+          <p class="tech-card-name">Circuit Breaker Psychologique</p>
+          <p class="tech-card-desc">Protection progressive en trois niveaux (Vigilance · Le Miroir · Le Pacte). Messages philosophiques personnalisés. Cooldown obligatoire à la limite.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal reveal-delay-1">
+    <p class="section-eyebrow" style="margin-bottom: 1.5rem;">Suite K-Équinoxe</p>
+    <div class="tech-indicators">
+      <div class="indicator-badge">
+        <div class="indicator-dot"></div>
+        <span class="indicator-name">K-EQUINOXE · RSI + STO Composite</span>
+        <span class="indicator-version">v1.2</span>
+      </div>
+      <div class="indicator-badge">
+        <div class="indicator-dot"></div>
+        <span class="indicator-name">K-EQUINOXE · OHLC + Fibo HTF</span>
+        <span class="indicator-version">v2.20</span>
+      </div>
+      <div class="indicator-badge">
+        <div class="indicator-dot"></div>
+        <span class="indicator-name">K-EQUINOXE · OHLC + Fibo LTF</span>
+        <span class="indicator-version">v1.20</span>
+      </div>
+      <div class="indicator-badge">
+        <div class="indicator-dot"></div>
+        <span class="indicator-name">K-GLOBAL + LTR</span>
+        <span class="indicator-version">v3.1</span>
+      </div>
+      <div class="indicator-badge">
+        <div class="indicator-dot"></div>
+        <span class="indicator-name">K-EQUINOXE · Circuit Breaker</span>
+        <span class="indicator-version">v1.0</span>
+      </div>
+    </div>
+
+    <br><br>
+
+    <div style="border: 0.5px solid rgba(184,150,14,0.15); padding: 2rem;">
+      <p class="section-eyebrow" style="margin-bottom: 1rem;">Langages & Environnements</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
+        <span style="font-size:0.55rem; letter-spacing:0.15em; text-transform:uppercase; border:0.5px solid rgba(184,150,14,0.3); padding:0.4rem 0.8rem; color:var(--gris-clair);">MQL5</span>
+        <span style="font-size:0.55rem; letter-spacing:0.15em; text-transform:uppercase; border:0.5px solid rgba(184,150,14,0.3); padding:0.4rem 0.8rem; color:var(--gris-clair);">Pine Script</span>
+        <span style="font-size:0.55rem; letter-spacing:0.15em; text-transform:uppercase; border:0.5px solid rgba(184,150,14,0.3); padding:0.4rem 0.8rem; color:var(--gris-clair);">Python</span>
+        <span style="font-size:0.55rem; letter-spacing:0.15em; text-transform:uppercase; border:0.5px solid rgba(184,150,14,0.3); padding:0.4rem 0.8rem; color:var(--gris-clair);">MetaTrader 5</span>
+        <span style="font-size:0.55rem; letter-spacing:0.15em; text-transform:uppercase; border:0.5px solid rgba(184,150,14,0.3); padding:0.4rem 0.8rem; color:var(--gris-clair);">TradingView</span>
+        <span style="font-size:0.55rem; letter-spacing:0.15em; text-transform:uppercase; border:0.5px solid rgba(184,150,14,0.3); padding:0.4rem 0.8rem; color:var(--gris-clair);">Claude / LLM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═══ PUBLICATIONS ═══ -->
+<div id="publications" style="background: var(--encre);">
+  <div class="publications-inner">
+    <div class="pub-header reveal">
+      <div>
+        <div class="section-rule"></div>
+        <p class="section-eyebrow">Publications</p>
+        <h2 class="section-title">Réflexions sur le<br><em>chemin du Souverain</em></h2>
+      </div>
+      <a href="https://chrysopeia.substack.com" target="_blank" rel="noopener" class="btn-ghost" style="white-space: nowrap;">Toutes les publications →</a>
+    </div>
+
+    <div class="pub-grid">
+      <div class="pub-card reveal">
+        <p class="pub-tag">Manifeste · Alchimie & Marchés</p>
+        <h3 class="pub-title">Ce que l'or sait du plomb</h3>
+        <p class="pub-excerpt">Qu'est-ce qu'un marché, au fond — sinon un miroir qu'on ne regarde jamais en face ? Une question plus ancienne, plus embarrassante, que les marchés posent à ceux qui les fréquentent assez longtemps pour ne plus pouvoir l'esquiver.</p>
+        <div class="pub-meta">
+          <span class="pub-date">28 mars 2026</span>
+          <a href="https://chrysopeia.substack.com/p/ce-que-lor-sait-du-plomb" target="_blank" rel="noopener" class="pub-substack-link">Lire sur Substack <span class="pub-arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="pub-card reveal reveal-delay-1">
+        <p class="pub-tag">Technique & Psychologie</p>
+        <h3 class="pub-title">Soufre, Mercure, Sel — Anatomie d'une décision de marché</h3>
+        <p class="pub-excerpt">Trois principes alchimiques pour disséquer ce qui se passe réellement dans l'instant d'une décision. Le Soufre donne la direction, le Mercure lit le contexte, le Sel fixe le protocole. Une grille opérationnelle, pas une métaphore.</p>
+        <div class="pub-meta">
+          <span class="pub-date">29 mars 2026</span>
+          <a href="https://chrysopeia.substack.com/p/soufre-mercure-sel-anatomie-dune" target="_blank" rel="noopener" class="pub-substack-link">Lire sur Substack <span class="pub-arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="pub-card reveal reveal-delay-2">
+        <p class="pub-tag">Alchimie Appliquée</p>
+        <h3 class="pub-title">Les Quatre Saisons de l'Œuvre</h3>
+        <p class="pub-excerpt">Ce que le marché brûle, dissout, blanchit et transmute. Nigredo, Albedo, Citrinitas, Rubedo — quatre phases que tout trader qui dure traverse, sans toujours pouvoir les nommer.</p>
+        <div class="pub-meta">
+          <span class="pub-date">4 avril 2026</span>
+          <a href="https://chrysopeia.substack.com/p/les-quatre-saisons-de-luvre" target="_blank" rel="noopener" class="pub-substack-link">Lire sur Substack <span class="pub-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══ NEWSLETTER ═══ -->
+<div id="newsletter" style="background: var(--pierre); padding: 7rem 4rem;">
+  <div style="max-width: 700px; margin: 0 auto; text-align: center;" class="reveal">
+    <div class="section-rule" style="margin: 0 auto 1.5rem;"></div>
+    <p class="section-eyebrow" style="margin-bottom: 1.5rem;">La Lettre du Souverain</p>
+    <h2 class="section-title" style="margin-bottom: 1rem;">
+      Recevoir la <em>transmission</em>
+    </h2>
+    <p style="font-size: 0.82rem; line-height: 1.85; color: var(--gris-clair); margin-bottom: 2.5rem; max-width: 520px; margin-left: auto; margin-right: auto;">
+      Une publication Substack irrégulière — au rythme des passages, des saisons et des découvertes. Psychologie du trading, alchimie appliquée, réflexions sur le chemin du Souverain Incarné.
+    </p>
+
+    <!-- Substack embed form -->
+    <div style="max-width: 420px; margin: 0 auto;">
+      <form id="newsletter-form" style="display: flex; flex-direction: column; gap: 0.8rem;">
+        <input
+          type="email"
+          id="newsletter-email"
+          placeholder="Votre adresse email"
+          required
+          style="background: transparent; border: 0.5px solid rgba(184,150,14,0.25); color: var(--creme); padding: 1rem 1.2rem; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; letter-spacing: 0.05em; outline: none; transition: border-color 0.3s; width: 100%;"
+        >
+        <button
+          type="submit"
+          style="background: transparent; border: 0.5px solid var(--or); color: var(--or); padding: 1rem; font-family: 'Montserrat', sans-serif; font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; cursor: crosshair; transition: all 0.3s; font-weight: 500;"
+          onmouseover="this.style.background='var(--or)';this.style.color='var(--noir)'"
+          onmouseout="this.style.background='transparent';this.style.color='var(--or)'"
+        >
+          S'inscrire à la lettre ☉
+        </button>
+      </form>
+      <p id="newsletter-msg" style="display:none; margin-top: 1rem; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--or); text-transform: uppercase;"></p>
+      <p style="margin-top: 1.2rem; font-size: 0.55rem; letter-spacing: 0.1em; color: var(--gris); line-height: 1.6;">
+        Publication hébergée sur Substack · Désabonnement en un clic · Aucun spam
+      </p>
+      <div style="margin-top: 1.5rem;">
+        <a
+          href="https://substack.com/@chrysopeia"
+          target="_blank"
+          rel="noopener"
+          style="font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gris-clair); text-decoration: none; border-bottom: 0.5px solid rgba(184,150,14,0.2); padding-bottom: 0.2rem; transition: color 0.3s;"
+          onmouseover="this.style.color='var(--or)'"
+          onmouseout="this.style.color='var(--gris-clair)'"
+        >
+          Voir toutes les publications sur Substack →
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="contact-bg"></div>
+  <div class="contact-inner reveal">
+    <div class="section-rule" style="margin: 0 auto 1.5rem;"></div>
+    <p class="section-eyebrow" style="margin-bottom: 2rem;">Contact</p>
+
+    <p class="contact-devise">
+      "N'être tenu par personne —<br>
+      sauf par <em>ce qu'on choisit de construire</em>."
+    </p>
+    <p class="contact-sub">
+      Vous partagez une vision alignée, souhaitez échanger sur nos recherches, ou explorer une collaboration ? Nous répondons avec discernement.
+    </p>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <input type="text" placeholder="Votre nom" required>
+      <input type="email" placeholder="Votre adresse email" required>
+      <input type="text" placeholder="Objet — votre intention">
+      <textarea placeholder="Votre message"></textarea>
+      <button type="submit">Transmettre ☉</button>
+    </form>
+
+    <div class="contact-socials">
+      <a href="https://krysopee.capital" style="color:var(--gris-clair);text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='var(--or)'" onmouseout="this.style.color='var(--gris-clair)'">krysopee.capital</a>
+      
+      <a href="#">Newsletter</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <span class="footer-logo">K</span>
+  <span class="footer-devise">☉ · Nemini Teneri · ☿</span>
+  <div style="display:flex; gap:1.5rem; align-items:center;">
+    <a href="https://substack.com/@chrysopeia" target="_blank" rel="noopener" style="font-size:0.5rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gris-clair); text-decoration:none; transition:color 0.3s;" onmouseover="this.style.color='var(--or)'" onmouseout="this.style.color='var(--gris-clair)'">Substack</a>
+    <span class="footer-copy">© 2026 Krysopée — représentée par Jean-Luc Manzaroli</span>
+  </div>
+</footer>
+
+<script>
+  /* Nav scroll */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* Reveal on scroll */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* Contact form */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = 'Message transmis ☉';
+    btn.style.background = 'rgba(184,150,14,0.15)';
+    btn.style.color = 'var(--or)';
+    btn.disabled = true;
+  }
+
+  /* Newsletter form — redirige vers Substack avec l'email pré-rempli */
+  document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('newsletter-email').value.trim();
+    const msg = document.getElementById('newsletter-msg');
+    if (!email) return;
+    /* Ouvre la page Substack d'inscription avec l'email — remplacer l'URL par ton Substack réel */
+    const substackUrl = 'https://chrysopeia.substack.com/?email=' + encodeURIComponent(email);
+    window.open(substackUrl, '_blank', 'noopener');
+    msg.style.display = 'block';
+    msg.textContent = 'Redirection vers Substack — finalise ton inscription ☉';
+    this.querySelector('button').textContent = 'À bientôt, Souverain ☉';
+    this.querySelector('button').disabled = true;
+  });
+</script>
+
+</body>
+</html>
