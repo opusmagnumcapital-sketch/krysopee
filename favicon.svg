@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" fill="#0A0A08"/>
+  <!-- Cercle externe -->
+  <circle cx="16" cy="16" r="14" stroke="#B8960E" stroke-width="0.8" fill="none"/>
+  <!-- Cercle interne -->
+  <circle cx="16" cy="16" r="9" stroke="#B8960E" stroke-width="0.5" fill="none"/>
+  <!-- Croix alchimique -->
+  <line x1="16" y1="3" x2="16" y2="29" stroke="#B8960E" stroke-width="0.7"/>
+  <line x1="3" y1="16" x2="29" y2="16" stroke="#B8960E" stroke-width="0.7"/>
+  <!-- Quatre points cardinaux -->
+  <circle cx="16" cy="4"  r="1.2" fill="#B8960E"/>
+  <circle cx="28" cy="16" r="1.2" fill="#B8960E"/>
+  <circle cx="16" cy="28" r="1.2" fill="#B8960E"/>
+  <circle cx="4"  cy="16" r="1.2" fill="#B8960E"/>
+  <!-- Symbole soleil central — ☉ -->
+  <circle cx="16" cy="16" r="3.5" stroke="#B8960E" stroke-width="0.8" fill="none"/>
+  <circle cx="16" cy="16" r="1.2" fill="#B8960E"/>
+</svg>
