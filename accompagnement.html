@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accompagnement · Krysopée</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="Krysopée — Au-delà de la technique — la transformation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--or:#B8960E;--or-light:#D4A91A;--noir:#0A0A08;--encre:#111109;--pierre:#1C1C16;--gris:#6A6A5A;--gris-clair:#C8C8B8;--creme:#F2EFE4;}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--noir);color:var(--creme);font-family:'Montserrat',sans-serif;font-weight:300;overflow-x:hidden;cursor:crosshair;}
+a,button{cursor:crosshair;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 4rem;background:rgba(10,10,8,0.97);border-bottom:0.5px solid rgba(184,150,14,0.15);}
+.nav-logo{display:flex;align-items:center;text-decoration:none;}
+.nav-logo img{height:44px;width:auto;object-fit:contain;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gris-clair);text-decoration:none;transition:color 0.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--or);}
+.nav-dropdown{position:relative;}
+.nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;background:rgba(10,10,8,0.98);border:0.5px solid rgba(184,150,14,0.15);min-width:220px;padding:0.5rem 0;z-index:200;}
+.nav-dropdown:hover .nav-dropdown-menu{display:block;}
+.nav-dropdown-menu a{display:block;padding:0.7rem 1.2rem;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gris-clair);text-decoration:none;transition:all 0.2s;border-left:2px solid transparent;}
+.nav-dropdown-menu a:hover,.nav-dropdown-menu a.active{color:var(--or);border-left-color:var(--or);padding-left:1.5rem;}
+.nav-cta{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--or);border:0.5px solid var(--or);padding:0.6rem 1.4rem;text-decoration:none;transition:all 0.3s;}
+.nav-cta:hover{background:var(--or);color:var(--noir);}
+.page-hero{padding:9rem 4rem 6rem;max-width:1400px;margin:0 auto;}
+.page-hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;}
+.hero-eyebrow{font-size:0.55rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--or);margin-bottom:1.2rem;}
+.hero-symbol{font-size:3rem;margin-bottom:1rem;display:block;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;line-height:1.05;color:var(--creme);margin-bottom:1rem;}
+.hero-title em{font-style:italic;color:var(--or);}
+.hero-subtitle{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;font-style:italic;color:var(--gris-clair);margin-bottom:2rem;line-height:1.5;}
+.hero-desc{font-size:0.83rem;line-height:1.9;color:var(--gris-clair);margin-bottom:1.5rem;}
+.btn-primary{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--noir);background:var(--or);padding:1rem 2.5rem;text-decoration:none;transition:all 0.3s;font-weight:500;display:inline-block;}
+.btn-primary:hover{background:var(--or-light);}
+.btn-ghost{font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--creme);border:0.5px solid rgba(242,239,228,0.3);padding:1rem 2.5rem;text-decoration:none;transition:all 0.3s;display:inline-block;margin-left:1rem;}
+.btn-ghost:hover{border-color:var(--or);color:var(--or);}
+.hero-card{background:var(--pierre);border:0.5px solid rgba(184,150,14,0.15);padding:3rem;position:relative;}
+.hero-card-quote{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;font-style:italic;line-height:1.55;color:var(--creme);margin-bottom:1.5rem;}
+.hero-card-cite{font-size:0.5rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--or);}
+.sep{max-width:1400px;margin:0 auto;padding:0 4rem;border-top:0.5px solid rgba(184,150,14,0.1);}
+.content-section{max-width:1400px;margin:0 auto;padding:6rem 4rem;}
+.section-rule{width:60px;height:0.5px;background:var(--or);margin-bottom:1.5rem;}
+.section-eyebrow{font-size:0.55rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--or);margin-bottom:1rem;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;line-height:1.15;color:var(--creme);margin-bottom:3rem;}
+.section-title em{font-style:italic;color:var(--or);}
+.three-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(184,150,14,0.08);}
+.col-card{background:var(--encre);padding:2.5rem;border-left:2px solid transparent;transition:all 0.3s;}
+.col-card:hover{background:var(--pierre);border-left-color:var(--or);}
+.col-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:rgba(184,150,14,0.15);margin-bottom:1rem;}
+.col-title{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--creme);margin-bottom:0.8rem;font-weight:500;}
+.col-body{font-size:0.8rem;line-height:1.85;color:var(--gris-clair);}
+.cta-section{background:var(--pierre);padding:6rem 4rem;text-align:center;}
+.cta-inner{max-width:600px;margin:0 auto;}
+.cta-devise{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;font-style:italic;color:var(--creme);margin-bottom:1rem;line-height:1.4;}
+.cta-devise em{color:var(--or);}
+.cta-body{font-size:0.82rem;line-height:1.8;color:var(--gris-clair);margin-bottom:2.5rem;}
+footer{padding:2.5rem 4rem;border-top:0.5px solid rgba(184,150,14,0.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:0.9rem;letter-spacing:0.3em;color:var(--or);text-transform:uppercase;text-decoration:none;}
+.footer-devise{font-size:0.5rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--gris);}
+.footer-links{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;}
+.footer-links a{font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color 0.3s;}
+.footer-links a:hover{color:var(--or);}
+.footer-copy{font-size:0.5rem;letter-spacing:0.1em;color:var(--gris);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.9s ease,transform 0.9s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-delay-1{transition-delay:0.15s;}.reveal-delay-2{transition-delay:0.3s;}
+@media(max-width:900px){nav{padding:1rem 2rem;}.nav-links{display:none;}.page-hero-inner{grid-template-columns:1fr;gap:3rem;}.page-hero,.content-section,.cta-section{padding:5rem 2rem;}.three-cols{grid-template-columns:1fr;}footer{flex-direction:column;text-align:center;padding:2rem;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo-k.png" alt="Krysopée"></a>
+  <ul class="nav-links">
+    <li><a href="index.html#manifeste">Manifeste</a></li>
+    <li class="nav-dropdown">
+      <a href="index.html#activites" class="active">Activités ▾</a>
+      <div class="nav-dropdown-menu">
+        <a href="compte-propre.html" >Trading Compte Propre</a>
+        <a href="prop-firm.html" >Trading Prop Firm</a>
+        <a href="recherche.html" >Recherche & IA</a>
+        <a href="outils.html" >Outils Traders</a>
+        <a href="accompagnement.html" class="active">Accompagnement</a>
+        <a href="club-deal.html" >Club Deal</a>
+      </div>
+    </li>
+    <li><a href="krysopee-core.html" style="color:var(--or);">Krysopée Core ☉</a></li>
+    <li><a href="index.html#publications">Publications</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Prendre contact</a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="reveal">
+      <p class="hero-eyebrow">Transmission · Activité 05</p>
+      <span class="hero-symbol">🌑</span>
+      <h1 class="hero-title">Accompagnement</h1>
+      <p class="hero-subtitle">Au-delà de la technique — la transformation.</p>
+      <p class="hero-desc">L'accompagnement Krysopée s'adresse aux investisseurs et traders qui sentent que leur progression est bloquée — non par la méthode, mais par ce qui se passe entre la méthode et son application. La technique est rarement le problème. C'est presque toujours l'homme derrière l'écran.</p>
+      <p class="hero-desc">Il ne s'agit pas de conseil en investissement. Il s'agit d'un coaching individuel qui explore la psychologie opérationnelle, la gestion du risque comme pratique intérieure et la cohérence entre l'approche de marché et la vision de vie.</p>
+      <a href="index.html#contact" class="btn-primary">Demander un premier entretien</a>
+      <a href="index.html#activites" class="btn-ghost">Toutes les activités</a>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div class="hero-card">
+        <p class="hero-card-quote">"De la rigueur naît la liberté. De la conscience naît la maîtrise. Et du marché — le miroir de soi."</p>
+        <p class="hero-card-cite">Jean-Luc Manzaroli — Fondateur, Krysopée</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sep"></div>
+
+<div class="content-section">
+  <div class="section-rule"></div>
+  <p class="section-eyebrow">Ce que nous proposons</p>
+  <h2 class="section-title reveal">Un chemin vers <em>la maîtrise durable</em></h2>
+  <div class="three-cols">
+    <div class="col-card reveal">
+      <p class="col-num">01</p>
+      <p class="col-title">Psychologie Opérationnelle</p>
+      <p class="col-body">Identification des biais récurrents, des patterns d'autodestruction, des résistances au seuil de la réussite. Travail sur la gestion émotionnelle en session — avant, pendant et après. L'ennemi n'est pas le marché.</p>
+    </div>
+    <div class="col-card reveal reveal-delay-1">
+      <p class="col-num">02</p>
+      <p class="col-title">Méthode & Protocole</p>
+      <p class="col-body">Revue de la méthode de trading, du plan de session, du journal de bord. Construction d'un protocole personnalisé — gestion du risque, sizing, règles d'entrée et de sortie alignées avec la psychologie de l'opérateur.</p>
+    </div>
+    <div class="col-card reveal reveal-delay-2">
+      <p class="col-num">03</p>
+      <p class="col-title">Suivi & Progression</p>
+      <p class="col-body">Sessions individuelles régulières, analyse des trades passés, ajustement progressif. L'objectif n'est pas la performance immédiate — c'est la construction d'un trader qui dure. La régularité prime sur le coup d'éclat.</p>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-inner reveal">
+    <p class="cta-devise">"Nemini Teneri —<br><em>N'être tenu par personne.</em>"</p>
+    <p class="cta-body">Il ne s'agit pas de conseil en investissement. Il s'agit d'un coaching individuel qui explore la psychologie opérationnelle, la gestion du risque comme pratique intérieure et la cohérence entre l'approche de marché et la vision de vie.</p>
+    <a href="index.html#contact" class="btn-primary">Demander un premier entretien</a>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html" class="footer-logo">Krysopée</a>
+  <span class="footer-devise">☉ · Nemini Teneri · ☿</span>
+  <div class="footer-links">
+    <a href="https://chrysopeia.substack.com" target="_blank" rel="noopener">Substack</a>
+    <a href="https://x.com/krysopee" target="_blank" rel="noopener">X</a>
+    <a href="https://www.linkedin.com/in/krysopee/" target="_blank" rel="noopener">LinkedIn</a>
+    <span class="footer-copy">© 2026 Krysopée — représentée par Jean-Luc Manzaroli</span>
+  </div>
+</footer>
+<script>
+const observer=new IntersectionObserver((e)=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');observer.unobserve(el.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
