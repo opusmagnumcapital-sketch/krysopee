@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fondateur · Krysopée</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="Jean-Luc Manzaroli — Fondateur de Krysopée, trader indépendant et architecte de systèmes de trading conscient.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.fondateur-hero {
+  padding: 9rem 4rem 6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8rem;
+  align-items: start;
+}
+.fondateur-titre {
+  font-family: 'Crimson Pro', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.08;
+  color: var(--encre);
+  margin-bottom: 1.5rem;
+}
+.fondateur-titre em { color: var(--or); }
+.fondateur-accroche {
+  font-size: 1.05rem;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.85;
+  color: var(--gris-chaud);
+  margin-bottom: 3rem;
+}
+.portrait-cadre {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: rgba(139,105,20,0.04);
+  border: 0.5px solid var(--bord);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+.portrait-mono {
+  font-family: 'Cinzel', serif;
+  font-size: 4rem;
+  color: var(--or);
+  opacity: 0.1;
+  letter-spacing: 0.1em;
+}
+.portrait-ph {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.44rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gris-chaud);
+  opacity: 0.45;
+}
+.portrait-nom {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--encre);
+  margin-bottom: 0.2rem;
+}
+.portrait-role {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: 0.7;
+}
+.fondateur-blocs { max-width: 1200px; margin: 0 auto; padding: 0 4rem 8rem; }
+.bloc {
+  padding: 3rem 0;
+  border-bottom: 0.5px solid var(--bord-fin);
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 4rem;
+}
+.bloc:last-child { border-bottom: none; }
+.bloc-header { display: flex; flex-direction: column; gap: 0.4rem; padding-top: 0.3rem; }
+.bloc-numero {
+  font-family: 'Crimson Pro', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: rgba(139,105,20,0.1);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.bloc-titre {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: 0.7;
+}
+.bloc-corps { font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--gris-chaud); }
+.bloc-corps p { margin-bottom: 1.2rem; }
+.bloc-corps p:last-child { margin-bottom: 0; }
+.bloc-corps strong { font-weight: 400; color: var(--encre); }
+.bloc-traversee {
+  background: var(--encre);
+  padding: 4rem;
+  margin: 2rem 0;
+}
+.bloc-traversee .bloc-titre { color: var(--or-pale); opacity: 0.5; }
+.bloc-traversee .bloc-corps { color: rgba(245,240,232,0.55); }
+.bloc-traversee .bloc-corps strong { color: rgba(245,240,232,0.82); }
+.resonance {
+  text-align: center;
+  padding: 6rem 4rem;
+  border-top: 0.5px solid var(--bord-fin);
+}
+.resonance-sep {
+  width: 40px;
+  height: 0.5px;
+  background: var(--or);
+  opacity: 0.4;
+  margin: 0 auto 3rem;
+}
+.resonance-citation {
+  font-family: 'Crimson Pro', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--encre);
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+.resonance-citation em { color: var(--or); }
+.resonance-devise {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--or);
+  opacity: 0.45;
+}
+@media (max-width: 900px) {
+  .fondateur-hero { grid-template-columns: 1fr; gap: 3rem; padding: 6rem 1.5rem 3rem; }
+  .fondateur-blocs { padding: 0 1.5rem 5rem; }
+  .bloc { grid-template-columns: 1fr; gap: 1rem; }
+  .resonance { padding: 4rem 1.5rem; }
+  .bloc-traversee { padding: 2.5rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-marque">Krysopée</a>
+  <ul class="nav-links">
+    <li><a href="index.html#activites">Activités</a></li>
+    <li><a href="index.html#fides" class="fides">Fides &amp; Co</a></li>
+    <li><a href="index.html#publications">Chrysopeia</a></li>
+    <li><a href="fondateur.html" class="active">Fondateur</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-contact">Entrer en contact</a>
+</nav>
+
+<div class="fondateur-hero">
+  <div class="entree">
+    <p class="act-label">Fondateur · Krysopée</p>
+    <h1 class="fondateur-titre">L'homme<br><em>avant la méthode.</em></h1>
+    <p class="fondateur-accroche">Il n'existe pas de trajectoire droite entre un atelier de cuisine classique et les marchés financiers mondiaux. Sauf quand l'homme qui la trace n'a jamais attendu la permission de passer à l'étape suivante.</p>
+    <a href="index.html#contact" class="btn-lien">Entrer en contact →</a>
+  </div>
+  <div class="entree d1">
+    <div class="portrait-cadre">
+      <div class="coin tl"></div><div class="coin tr"></div>
+      <div class="coin bl"></div><div class="coin br"></div>
+      <img src="portrait-jlm.png" alt="Jean-Luc Manzaroli — Fondateur de Krysopée" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+    </div>
+    <p class="portrait-nom">Jean-Luc Manzaroli</p>
+    <p class="portrait-role">Fondateur · Trader · Architecte de systèmes</p>
+  </div>
+</div>
+
+<div class="fondateur-blocs">
+  <div class="bloc entree">
+    <div class="bloc-header">
+      <span class="bloc-numero">01</span>
+      <span class="bloc-titre">L'Origine</span>
+    </div>
+    <div class="bloc-corps">
+      <p>Jean-Luc Manzaroli quitte les bancs de l'école à treize ans pour entrer en apprentissage. <strong>CAP cuisine classique.</strong> Le monde des adultes, la rigueur du service, l'exigence du détail — avant même l'adolescence.</p>
+      <p>Ce départ précoce n'est pas une blessure à compenser. C'est le premier enseignement : on apprend en faisant, on progresse en assumant, on construit sans filet. Tout ce qui suit en porte la marque.</p>
+    </div>
+  </div>
+
+  <div class="bloc entree">
+    <div class="bloc-header">
+      <span class="bloc-numero">02</span>
+      <span class="bloc-titre">La Construction</span>
+    </div>
+    <div class="bloc-corps">
+      <p>Des décennies de terrain, dans des univers exigeants et distincts. L'immobilier résidentiel et de rapport sur le Bassin d'Arcachon. La direction d'agence en courtage IARD en région parisienne. La fondation d'un réseau de distribution à domicile — <strong>leader dans le Sud-Ouest.</strong></p>
+      <p>Puis le tournant patrimonial : ingénieur d'affaires dans une compagnie internationale d'audit patrimonial. <strong>Certification AMF</strong>, obtention du <strong>CGPC</strong> — Certified General Practitioner in Financial Planning. Formation approfondie auprès de <strong>Thami Kabbaj.</strong></p>
+      <p>La fondation de <strong>Patrimonialis</strong> — cabinet de conseil en gestion de patrimoine indépendant, parmi les premiers en France à obtenir la <strong>certification ISO 22222</strong> : le standard éthique international le plus exigeant du secteur.</p>
+    </div>
+  </div>
+
+  <div class="bloc-traversee entree">
+    <div style="display:grid;grid-template-columns:200px 1fr;gap:4rem;">
+      <div class="bloc-header">
+        <span class="bloc-numero" style="color:rgba(196,168,79,0.12);">03</span>
+        <span class="bloc-titre">La Traversée</span>
+      </div>
+      <div class="bloc-corps">
+        <p>Une nuit noire. Celle que peu traversent et que moins encore assument publiquement.</p>
+        <p>Jean-Luc Manzaroli n'efface pas cette période. Il la porte comme matière première — parce qu'un homme qui n'a pas traversé ne peut pas transmettre. Parce que la crédibilité la plus rare n'est pas celle des titres, mais celle de celui qui a tout perdu et qui revient — avec la Foi comme boussole, pas la peur comme moteur.</p>
+        <p><strong>De cette traversée naît Krysopée. Non pas malgré elle — à cause d'elle.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bloc entree">
+    <div class="bloc-header">
+      <span class="bloc-numero">04</span>
+      <span class="bloc-titre">L'Homme</span>
+    </div>
+    <div class="bloc-corps">
+      <p>Au-delà des marchés, Jean-Luc Manzaroli est un lecteur, un écrivain, un homme de Foi. Tout au long de son cheminement initiatique, au sein de plusieurs Traditions, il a reçu la reconnaissance de ses pairs.</p>
+      <p>La création de chants sacrés — à l'intersection de la tradition hermétique et des outils contemporains — est l'une de ses expressions les plus personnelles. Le Verbe comme vibration. La beauté comme voie.</p>
+      <p>Ce que Jean-Luc transmet à sa lignée n'est pas une fortune. C'est la qualité de l'homme qu'il devient.</p>
+    </div>
+  </div>
+
+  <div class="resonance entree">
+    <div class="resonance-sep"></div>
+    <p class="resonance-citation">"De la rigueur naît la liberté.<br>De la conscience naît la maîtrise.<br>Et du marché — <em>le miroir de soi.</em>"</p>
+    <span class="resonance-devise">Nemini Teneri &nbsp;·&nbsp; ☉</span>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html" class="foot-nom">Krysopée</a>
+  <span class="foot-devise">☉ · Nemini Teneri · ☿</span>
+  <div class="foot-liens">
+    <a href="https://chrysopeia.substack.com" target="_blank" rel="noopener">Substack</a>
+    <a href="https://x.com/krysopee" target="_blank" rel="noopener">X</a>
+    <a href="https://www.linkedin.com/in/krysopee/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="confidentialite.html">Confidentialité</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <span class="foot-copy">© 2026 Krysopée — Jean-Luc Manzaroli</span>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vu'); obs.unobserve(e.target); } });
+}, { threshold: 0.07 });
+document.querySelectorAll('.entree').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
