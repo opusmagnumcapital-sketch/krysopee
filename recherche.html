@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recherche & Indicateurs IA · Krysopée</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="Développement d'indicateurs propriétaires et recherche algorithmique — suite K-Équinoxe, IA appliquée aux marchés.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav id="nav">
+  <a href="index.html" class="nav-marque">Krysopée</a>
+  <ul class="nav-links">
+    <li><a href="index.html#activites" class="active">Activités</a></li>
+    <li><a href="index.html#fides" class="fides">Fides &amp; Co</a></li>
+    <li><a href="index.html#publications">Chrysopeia</a></li>
+    <li><a href="fondateur.html">Fondateur</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-contact">Entrer en contact</a>
+</nav>
+<div class="page-hero">
+  <div class="entree">
+    <p class="act-label">Activité 02 · Innovation · ☿</p>
+    <h1 class="page-hero-titre">Recherche<br><em>&amp; Indicateurs IA</em></h1>
+    <p class="page-hero-sous">Développement d'indicateurs propriétaires alignés avec l'approche alchimique Krysopée — suite K-Équinoxe.</p>
+    <a href="index.html#contact" class="btn-or" style="margin-right:1rem;">Prendre contact</a>
+    <a href="index.html#activites" class="btn-lien">Toutes les activités →</a>
+  </div>
+  <div class="entree d1">
+    <div class="page-hero-card">
+      <p class="page-hero-card-texte">L'intelligence artificielle ne remplace pas le jugement — elle l'affûte, quand elle est bien servie.</p>
+      <p class="page-hero-card-sig">Krysopée · Nemini Teneri</p>
+    </div>
+  </div>
+</div>
+<div class="content-section">
+  <div class="three-cols entree">
+    <div class="col-card">
+      <p class="col-num">I</p>
+      <p class="col-titre">Suite K-Équinoxe</p>
+      <p class="col-corps">Ensemble d'indicateurs propriétaires développés en interne, alignés avec le cadre alchimique Krysopée. Détection de phases de marché, points d'équilibre structurels et zones de transmutation.</p>
+    </div>
+    <div class="col-card">
+      <p class="col-num">II</p>
+      <p class="col-titre">Intelligence artificielle</p>
+      <p class="col-corps">IA appliquée à l'analyse technique et à la reconnaissance de configurations de marché. Un outil au service d'une méthode — jamais un substitut au jugement humain et à la lecture contextuelle.</p>
+    </div>
+    <div class="col-card">
+      <p class="col-num">III</p>
+      <p class="col-titre">Recherche continue</p>
+      <p class="col-corps">Un processus de recherche permanent, nourri par la pratique quotidienne du trading compte propre. Ce qui fonctionne en live, pas en backtest théorique déconnecté de la réalité des marchés.</p>
+    </div>
+  </div>
+</div>
+<footer>
+  <a href="index.html" class="foot-nom">Krysopée</a>
+  <span class="foot-devise">☉ · Nemini Teneri · ☿</span>
+  <div class="foot-liens">
+    <a href="https://chrysopeia.substack.com" target="_blank" rel="noopener">Substack</a>
+    <a href="https://x.com/krysopee" target="_blank" rel="noopener">X</a>
+    <a href="https://www.linkedin.com/in/krysopee/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="confidentialite.html">Confidentialité</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <span class="foot-copy">© 2026 Krysopée — Jean-Luc Manzaroli</span>
+  </div>
+</footer>
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vu'); obs.unobserve(e.target); } });
+}, { threshold: 0.07 });
+document.querySelectorAll('.entree').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
