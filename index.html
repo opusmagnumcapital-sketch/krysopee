@@ -1,685 +1,586 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Krysopée · Finance Quantitative & Psychologie du Trading</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<meta name="description" content="Krysopée — Finance quantitative, psychologie du trading, recherche IA, accompagnement et Club Deal. Nemini Teneri.">
-<meta name="author" content="Jean-Luc Manzaroli">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://krysopee.capital/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://krysopee.capital/">
-<meta property="og:title" content="Krysopée · Finance Quantitative & Psychologie du Trading">
-<meta property="og:description" content="Finance quantitative, psychologie du trading, recherche IA, accompagnement et Club Deal.">
-<meta property="og:locale" content="fr_FR">
-<meta property="og:site_name" content="Krysopée">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<style>
-/* POPUP AVERTISSEMENT */
-.overlay {
-  position: fixed; inset: 0;
-  background: rgba(10,8,6,0.9);
-  z-index: 1000;
-  display: flex; align-items: center; justify-content: center;
-  padding: 2rem;
-  opacity: 1;
-  transition: opacity 0.6s ease;
-}
-.overlay.ferme { opacity: 0; pointer-events: none; }
-.modale {
-  background: var(--encre);
-  border: 0.5px solid rgba(139,105,20,0.25);
-  max-width: 580px; width: 100%;
-  /* Mobile : la modale ne dépasse pas la hauteur de l'écran */
-  max-height: 92vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-/* Corps scrollable sur petits écrans */
-.modale-corps {
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  flex: 1 1 auto;
-}
-/* Pied fixé en bas — bouton toujours visible */
-.modale-pied {
-  flex-shrink: 0;
-}
-.modale-entete {
-  padding: 2.5rem 3rem 2rem;
-  border-bottom: 0.5px solid rgba(139,105,20,0.12);
-}
-.modale-sigil {
-  font-family: 'Cinzel', serif;
-  font-size: 1.2rem; color: var(--or-pale);
-  opacity: 0.3; letter-spacing: 0.25em; display: block; margin-bottom: 0.8rem;
-}
-.modale-surtitre {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.44rem; letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--or-pale); opacity: 0.45; display: block; margin-bottom: 0.6rem;
-}
-.modale-titre {
-  font-family: 'Crimson Pro', serif;
-  font-size: 1.45rem; font-weight: 300; font-style: italic;
-  color: var(--parchemin); line-height: 1.25;
-}
-.modale-corps { padding: 2rem 3rem; display: flex; flex-direction: column; gap: 1.2rem; }
-.modale-article {
-  display: flex; gap: 1.2rem; align-items: flex-start;
-  padding-bottom: 1.2rem;
-  border-bottom: 0.5px solid rgba(139,105,20,0.08);
-}
-.modale-article:last-child { border-bottom: none; padding-bottom: 0; }
-.modale-article-sym { font-size: 0.9rem; color: var(--or-pale); opacity: 0.35; flex-shrink: 0; margin-top: 0.15rem; width: 1rem; }
-.modale-article-texte { font-size: 0.88rem; font-weight: 300; line-height: 1.75; color: rgba(245,240,232,0.55); }
-.modale-article-texte em { font-style: italic; color: rgba(245,240,232,0.8); }
-.modale-article-texte strong { font-weight: 400; color: rgba(245,240,232,0.78); }
-.modale-pied {
-  padding: 1.8rem 3rem 2.5rem;
-  border-top: 0.5px solid rgba(139,105,20,0.12);
-  display: flex; flex-direction: column; align-items: center; gap: 1rem;
-}
-.modale-btn {
-  background: transparent;
-  border: 0.5px solid rgba(196,168,79,0.35);
-  color: var(--or-pale);
-  padding: 0.9rem 0; width: 100%;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.55rem; letter-spacing: 0.4em; text-transform: uppercase;
-  cursor: pointer; transition: all 0.3s;
-}
-.modale-btn:hover { background: rgba(196,168,79,0.08); border-color: rgba(196,168,79,0.6); }
-.modale-note {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.38rem; letter-spacing: 0.15em; text-transform: uppercase;
-  color: rgba(196,168,79,0.2); text-align: center; line-height: 1.9;
-}
-/* HERO */
-#seuil { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; border-bottom: 0.5px solid var(--bord); }
-.seuil-gauche {
-  padding: 8rem 5rem 8rem 4rem;
-  border-right: 0.5px solid var(--bord);
-  display: flex; flex-direction: column; justify-content: space-between;
-}
-.seuil-sigil {
-  font-family: 'Cinzel', serif; font-size: 4.5rem;
-  color: var(--or); opacity: 0.1; line-height: 1;
-  letter-spacing: 0.1em; margin-bottom: 4rem; user-select: none;
-}
-.seuil-titre {
-  font-family: 'Crimson Pro', serif;
-  font-size: clamp(2.4rem, 4.5vw, 4.2rem);
-  font-weight: 300; font-style: italic;
-  line-height: 1.12; color: var(--encre); margin-bottom: 2.5rem;
-}
-.seuil-sous {
-  font-size: 1rem; font-weight: 300; line-height: 1.85;
-  color: var(--gris-chaud); max-width: 400px; margin-bottom: 4rem;
-}
-.seuil-devise {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.5rem; letter-spacing: 0.35em; text-transform: uppercase;
-  color: var(--or); opacity: 0.7;
-}
-.seuil-droite { display: flex; flex-direction: column; }
-.visuel-principal {
-  flex: 1; position: relative;
-  border-bottom: 0.5px solid var(--bord);
-  display: flex; flex-direction: column;
-  justify-content: center; align-items: center; gap: 1rem;
-  background: rgba(139,105,20,0.025); min-height: 60%;
-}
-.visuel-cadre-coins { position: absolute; inset: 16px; }
-.visuel-label {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.44rem; letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--or); opacity: 0.3;
-}
-.visuel-sym {
-  font-family: 'Cinzel', serif; font-size: 3rem;
-  color: var(--or); opacity: 0.07; letter-spacing: 0.15em;
-}
-.seuil-bas {
-  padding: 3.5rem 4rem;
-  display: flex; flex-direction: column; gap: 0.6rem;
-}
-.seuil-bas-label {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.44rem; letter-spacing: 0.25em; text-transform: uppercase;
-  color: var(--or); opacity: 0.5;
-}
-.seuil-bas-texte {
-  font-family: 'Crimson Pro', serif;
-  font-size: 1.1rem; font-weight: 300; font-style: italic;
-  color: var(--encre); line-height: 1.5;
-}
-/* AXIOME */
-#axiome { padding: 8rem 4rem; text-align: center; background: var(--encre); }
-.axiome-texte {
-  font-family: 'Crimson Pro', serif;
-  font-size: clamp(1.6rem, 3vw, 2.8rem);
-  font-weight: 300; font-style: italic; line-height: 1.4;
-  color: var(--parchemin); max-width: 780px; margin: 0 auto 2rem;
-}
-.axiome-texte em { color: var(--or-pale); }
-.axiome-sig {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.48rem; letter-spacing: 0.35em; text-transform: uppercase;
-  color: rgba(196,168,79,0.4);
-}
-/* ACTIVITES */
-#activites { max-width: 1200px; margin: 0 auto; padding: 8rem 4rem; }
-.act-header {
-  display: grid; grid-template-columns: 280px 1fr; gap: 6rem;
-  margin-bottom: 5rem; align-items: end;
-  padding-bottom: 3rem; border-bottom: 0.5px solid var(--bord);
-}
-.act-intro {
-  font-size: 1rem; font-weight: 300; font-style: italic;
-  line-height: 1.9; color: var(--gris-chaud); align-self: end;
-}
-.act-ligne {
-  display: grid; grid-template-columns: 280px 1fr 120px;
-  gap: 3rem; align-items: baseline;
-  padding: 2.2rem 0; border-bottom: 0.5px solid var(--bord-fin);
-  text-decoration: none; color: inherit;
-  transition: background 0.3s; cursor: pointer;
-}
-.act-ligne:hover { background: rgba(139,105,20,0.025); }
-.act-ligne:hover .act-fleche { opacity: 1; transform: translateX(4px); }
-.act-numero {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.5rem; letter-spacing: 0.2em; color: var(--or); opacity: 0.4;
-}
-.act-nom {
-  font-family: 'Crimson Pro', serif;
-  font-size: 1.35rem; font-weight: 400; color: var(--encre);
-}
-.act-nom em { font-style: italic; color: var(--gris-chaud); font-size: 1rem; margin-left: 0.8rem; }
-.act-fleche {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.55rem; letter-spacing: 0.1em;
-  color: var(--or); text-align: right; opacity: 0; transition: all 0.3s;
-}
-/* FIDES */
-#fides { background: var(--brun); color: var(--parchemin); padding: 8rem 4rem; }
-.fides-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 10rem; align-items: center;
-}
-.fides-label {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.5rem; letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--or-pale); opacity: 0.5; margin-bottom: 1.2rem;
-}
-.fides-h2 {
-  font-family: 'Crimson Pro', serif;
-  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
-  font-weight: 300; font-style: italic;
-  color: var(--parchemin); line-height: 1.15; margin-bottom: 2.5rem;
-}
-.fides-corps {
-  font-size: 1rem; font-weight: 300; line-height: 1.9;
-  color: rgba(245,240,232,0.5); margin-bottom: 1.2rem;
-}
-.fides-corps em { font-style: italic; color: rgba(245,240,232,0.78); }
-.fides-cta {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.5rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--or-pale); text-decoration: none;
-  border-bottom: 0.5px solid rgba(196,168,79,0.35);
-  padding-bottom: 2px; display: inline-block;
-  margin-top: 2rem; transition: opacity 0.3s;
-}
-.fides-cta:hover { opacity: 0.6; }
-.live-ligne {
-  display: flex; align-items: center; gap: 0.7rem;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.44rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(196,168,79,0.3); margin-bottom: 2.5rem;
-}
-.dot-vert { width: 5px; height: 5px; border-radius: 50%; background: #52B788; animation: bat 2s ease-in-out infinite; }
-@keyframes bat { 0%,100%{opacity:1;} 50%{opacity:0.25;} }
-.fides-citation { border-left: 1px solid rgba(196,168,79,0.2); padding: 2.5rem 0 2.5rem 3rem; }
-.fides-citation-texte {
-  font-family: 'Crimson Pro', serif;
-  font-size: 1.4rem; font-weight: 300; font-style: italic;
-  line-height: 1.55; color: rgba(245,240,232,0.3); margin-bottom: 1.5rem;
-}
-.fides-citation-texte em { color: rgba(196,168,79,0.45); }
-.fides-citation-sig {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.44rem; letter-spacing: 0.25em; text-transform: uppercase;
-  color: rgba(196,168,79,0.22);
-}
-/* PUBLICATIONS */
-#publications { padding: 8rem 4rem; border-top: 0.5px solid var(--bord); }
-.pub-inner { max-width: 1200px; margin: 0 auto; }
-.pub-entete {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 8rem;
-  padding-bottom: 5rem; border-bottom: 0.5px solid var(--bord); align-items: end;
-}
-.pub-entete-intro { font-size: 1rem; font-weight: 300; font-style: italic; line-height: 1.9; color: var(--gris-chaud); }
-.pub-deux-blocs {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-  border-left: 0.5px solid var(--bord); border-right: 0.5px solid var(--bord); border-bottom: 0.5px solid var(--bord);
-}
-.pub-bloc-substack {
-  padding: 4rem; border-right: 0.5px solid var(--bord);
-  display: flex; flex-direction: column;
-}
-.pub-bloc-label {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.44rem; letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--or); opacity: 0.6; margin-bottom: 1.5rem;
-  display: flex; align-items: center; gap: 0.8rem;
-}
-.pub-bloc-label::before { content: ''; display: inline-block; width: 20px; height: 0.5px; background: var(--or); opacity: 0.5; }
-.pub-bloc-titre {
-  font-family: 'Crimson Pro', serif;
-  font-size: 1.5rem; font-weight: 300; font-style: italic;
-  color: var(--encre); line-height: 1.25; margin-bottom: 1.2rem;
-}
-.pub-bloc-corps {
-  font-size: 0.9rem; font-weight: 300; line-height: 1.85;
-  color: var(--gris-chaud); flex: 1; margin-bottom: 2.5rem;
-}
-.pub-themes { display: flex; flex-direction: column; gap: 0; border-top: 0.5px solid var(--bord-fin); margin-bottom: 2.5rem; }
-.pub-theme { display: flex; align-items: baseline; gap: 1.2rem; padding: 0.8rem 0; border-bottom: 0.5px solid var(--bord-fin); }
-.pub-theme-sym { font-size: 0.85rem; color: var(--or); opacity: 0.45; flex-shrink: 0; width: 1.1rem; }
-.pub-theme-texte { font-size: 0.82rem; font-weight: 300; font-style: italic; color: var(--gris-chaud); }
-.pub-cta-substack {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.5rem; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--encre); text-decoration: none;
-  border-bottom: 0.5px solid var(--encre); padding-bottom: 2px;
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  transition: all 0.3s; align-self: flex-start;
-}
-.pub-cta-substack:hover { color: var(--or); border-bottom-color: var(--or); }
-.pub-bloc-lettre { padding: 4rem; background: var(--encre); display: flex; flex-direction: column; }
-.pub-bloc-lettre .pub-bloc-label { color: var(--or-pale); opacity: 0.5; }
-.pub-bloc-lettre .pub-bloc-label::before { background: var(--or-pale); }
-.pub-lettre-titre {
-  font-family: 'Crimson Pro', serif;
-  font-size: 1.5rem; font-weight: 300; font-style: italic;
-  color: var(--parchemin); line-height: 1.25; margin-bottom: 0.5rem;
-}
-.pub-lettre-sous {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.42rem; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--or-pale); opacity: 0.45; margin-bottom: 1.8rem;
-}
-.pub-lettre-corps { font-size: 0.9rem; font-weight: 300; line-height: 1.9; color: rgba(245,240,232,0.5); flex: 1; margin-bottom: 3rem; }
-.pub-lettre-corps em { font-style: italic; color: rgba(245,240,232,0.78); }
-.pub-form { display: flex; flex-direction: column; gap: 0; border: 0.5px solid rgba(196,168,79,0.2); margin-bottom: 1.5rem; }
-.pub-form input {
-  background: transparent; border: none;
-  border-bottom: 0.5px solid rgba(196,168,79,0.12);
-  color: var(--parchemin); padding: 1.1rem 1.4rem;
-  font-family: 'Crimson Pro', serif; font-size: 1rem; font-style: italic;
-  outline: none; width: 100%; transition: background 0.3s;
-}
-.pub-form input::placeholder { color: rgba(245,240,232,0.2); }
-.pub-form input:focus { background: rgba(196,168,79,0.05); }
-.pub-form button {
-  background: transparent; border: none;
-  border-top: 0.5px solid rgba(196,168,79,0.15);
-  color: var(--or-pale); padding: 1.1rem;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.48rem; letter-spacing: 0.28em; text-transform: uppercase;
-  cursor: pointer; width: 100%; transition: all 0.3s;
-}
-.pub-form button:hover { background: rgba(196,168,79,0.08); }
-.pub-lettre-note { font-family: 'Space Mono', monospace; font-size: 0.42rem; letter-spacing: 0.15em; color: rgba(196,168,79,0.25); text-align: center; }
-/* CONTACT */
-#contact { padding: 8rem 4rem; border-top: 0.5px solid var(--bord); }
-.contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10rem; align-items: start; }
-.contact-h2 {
-  font-family: 'Crimson Pro', serif;
-  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
-  font-weight: 300; font-style: italic; color: var(--encre); line-height: 1.3; margin-bottom: 1.5rem;
-}
-.contact-h2 em { color: var(--or); }
-.contact-corps { font-size: 0.95rem; font-weight: 300; line-height: 1.9; color: var(--gris-chaud); margin-bottom: 3rem; }
-.contact-socials { display: flex; flex-direction: column; gap: 0; border-top: 0.5px solid var(--bord-fin); }
-.contact-social {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 0.9rem 0; border-bottom: 0.5px solid var(--bord-fin);
-  text-decoration: none; color: inherit; transition: background 0.3s;
-}
-.contact-social-nom {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.48rem; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--gris-chaud); transition: color 0.3s;
-}
-.contact-social:hover .contact-social-nom { color: var(--or); }
-.contact-social-fleche { font-family: 'Space Mono', monospace; font-size: 0.44rem; color: var(--or); opacity: 0; transition: opacity 0.3s; }
-.contact-social:hover .contact-social-fleche { opacity: 1; }
-.contact-form-titre {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.44rem; letter-spacing: 0.3em; text-transform: uppercase;
-  color: var(--or); opacity: 0.6; margin-bottom: 2rem;
-  display: flex; align-items: center; gap: 0.8rem;
-}
-.contact-form-titre::before { content: ''; display: inline-block; width: 20px; height: 0.5px; background: var(--or); opacity: 0.5; }
-.contact-form { display: flex; flex-direction: column; gap: 0; border: 0.5px solid var(--bord); }
-.contact-form input,
-.contact-form textarea,
-.contact-form select {
-  background: transparent; border: none;
-  border-bottom: 0.5px solid var(--bord-fin);
-  color: var(--encre); padding: 1.1rem 1.4rem;
-  font-family: 'Crimson Pro', serif; font-size: 1rem; font-style: italic;
-  outline: none; width: 100%; resize: none; transition: background 0.3s;
-}
-.contact-form input::placeholder,
-.contact-form textarea::placeholder { color: rgba(138,128,112,0.45); }
-.contact-form input:focus,
-.contact-form textarea:focus,
-.contact-form select:focus { background: rgba(139,105,20,0.03); }
-.contact-form select { -webkit-appearance: none; cursor: pointer; color: rgba(138,128,112,0.6); }
-.contact-form select option { background: var(--parchemin); color: var(--encre); }
-.contact-form textarea { height: 110px; border-bottom: none; }
-.contact-envoyer {
-  background: transparent; border: none;
-  border-top: 0.5px solid var(--bord-fin);
-  color: var(--or); padding: 1.1rem;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.5rem; letter-spacing: 0.28em; text-transform: uppercase;
-  cursor: pointer; width: 100%; transition: all 0.3s; text-align: center;
-}
-.contact-envoyer:hover { background: var(--encre); color: var(--or-pale); }
-.fides-option-note {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.4rem; letter-spacing: 0.12em;
-  color: var(--or); opacity: 0.4; margin-top: 0.8rem;
-  display: flex; align-items: center; gap: 0.5rem;
-}
-.fides-option-note::before { content: '☉'; font-size: 0.5rem; }
-.contact-rgpd {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.4rem; letter-spacing: 0.1em; color: var(--gris-chaud); opacity: 0.45; line-height: 1.7; margin-top: 1.2rem;
-}
-/* Responsive index */
-@media (max-width: 900px) {
-  /* Popup mobile : padding réduit, corps scrollable, bouton toujours visible */
-  .overlay { padding: 1rem; align-items: flex-end; }
-  .modale { max-height: 88vh; border-radius: 4px 4px 0 0; }
-  .modale-entete { padding: 1.5rem 1.5rem 1rem; }
-  .modale-corps { padding: 1rem 1.5rem; gap: 0.9rem; }
-  .modale-pied { padding: 1.2rem 1.5rem 1.8rem; }
-  .modale-titre { font-size: 1.15rem; }
-  #seuil { grid-template-columns: 1fr; min-height: auto; }
-  .seuil-gauche { padding: 5rem 1.5rem; border-right: none; border-bottom: 0.5px solid var(--bord); }
-  .visuel-principal { min-height: 280px; }
-  .seuil-bas { padding: 2.5rem 1.5rem; }
-  #axiome, #activites, #fides, #publications, #contact { padding-left: 1.5rem; padding-right: 1.5rem; }
-  .fides-inner { grid-template-columns: 1fr; gap: 4rem; }
-  .act-header { grid-template-columns: 1fr; gap: 1.5rem; }
-  .act-ligne { grid-template-columns: 60px 1fr; }
-  .act-fleche { display: none; }
-  .pub-entete, .pub-deux-blocs { grid-template-columns: 1fr; }
-  .pub-bloc-substack { border-right: none; border-bottom: 0.5px solid var(--bord); }
-  .contact-inner { grid-template-columns: 1fr; gap: 4rem; }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Les Quatre Phases · Krysopée</title>
+  <meta name="description" content="Nigredo, Albedo, Citrinitas, Rubedo — les quatre phases de l'alchimie des marchés selon Krysopée." />
+  <meta name="author" content="Jean-Luc Manzaroli" />
+  <link rel="canonical" href="https://krysopee.capital/phases.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --or: #b8962e;
+      --or-pale: rgba(184,150,46,0.15);
+      --or-border: rgba(184,150,46,0.28);
+      --fond: #0b0b0b;
+      --texte: #e8e0d0;
+      --texte-sec: #8a8070;
+      --separateur: rgba(255,255,255,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--fond);
+      color: var(--texte);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      background: rgba(11,11,11,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 0.5px solid var(--separateur);
+    }
+
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      font-size: 0.85rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--or);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--texte-sec);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-back:hover { color: var(--or); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 0.5px;
+      height: 80px;
+      background: linear-gradient(to bottom, var(--or), transparent);
+    }
+
+    .hero-symbols {
+      font-size: 1.5rem;
+      letter-spacing: 1.2rem;
+      color: var(--or);
+      margin-bottom: 2.5rem;
+      opacity: 0.7;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--texte-sec);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Lora', serif;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      line-height: 1.3;
+      max-width: 640px;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-rule {
+      width: 1px;
+      height: 40px;
+      background: var(--or-border);
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero-intro {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--texte-sec);
+      max-width: 520px;
+      line-height: 1.9;
+    }
+
+    /* ── PHASES ── */
+    .phases {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 8rem 3rem;
+    }
+
+    .phase {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-bottom: 8rem;
+      padding-bottom: 8rem;
+      border-bottom: 0.5px solid var(--separateur);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .phase.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .phase:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .phase.pair .phase-visuel { order: 2; }
+    .phase.pair { grid-template-columns: 1fr 260px; }
+    .phase.pair .phase-texte  { order: 1; }
+
+    /* visuel */
+    .phase-visuel {
+      position: relative;
+    }
+
+    .phase-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phase-img-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 0.5px solid var(--or-border);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .phase-img-wrap img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.88) saturate(0.95);
+      transition: filter 0.4s ease, transform 0.6s ease;
+    }
+
+    .phase-img-wrap:hover img {
+      filter: brightness(1) saturate(1);
+      transform: scale(1.02);
+    }
+
+    .phase-badge {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      text-align: center;
+      padding: 0.6rem 0;
+      background: rgba(11,11,11,0.82);
+      border-top: 0.5px solid var(--or-border);
+      font-size: 0.62rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--or);
+      z-index: 3;
+    }
+
+    /* texte */
+    .phase-texte {}
+
+    .phase-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .phase-num {
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--texte-sec);
+    }
+
+    .phase-sep-inline {
+      width: 20px;
+      height: 0.5px;
+      background: var(--or-border);
+      flex-shrink: 0;
+    }
+
+    .phase-symbole {
+      font-size: 1.1rem;
+      color: var(--or);
+      opacity: 0.8;
+    }
+
+    .phase-titre {
+      font-family: 'Lora', serif;
+      font-weight: 400;
+      font-size: 2.2rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.3rem;
+      line-height: 1;
+    }
+
+    .phase-latin {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 0.82rem;
+      color: var(--texte-sec);
+      letter-spacing: 0.06em;
+      margin-bottom: 1.5rem;
+    }
+
+    .phase-filet {
+      width: 28px;
+      height: 0.5px;
+      background: var(--or);
+      margin-bottom: 1.5rem;
+    }
+
+    .phase-desc {
+      font-size: 0.9rem;
+      line-height: 1.95;
+      color: var(--texte-sec);
+      margin-bottom: 1.75rem;
+    }
+
+    .phase-marche {
+      border-left: 1.5px solid var(--or-border);
+      padding-left: 1.1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .phase-marche-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 0.4rem;
+      opacity: 0.85;
+    }
+
+    .phase-marche-texte {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--texte-sec);
+      line-height: 1.75;
+    }
+
+    .phase-mots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .mot {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border: 0.5px solid var(--or-border);
+      color: var(--or);
+      font-weight: 400;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .mot:hover {
+      background: var(--or-pale);
+    }
+
+    /* connecteur entre phases */
+    .connecteur {
+      text-align: center;
+      color: var(--or-border);
+      font-size: 0.9rem;
+      letter-spacing: 0.4rem;
+      margin: -4rem 0 4rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 4rem 2rem 3rem;
+      border-top: 0.5px solid var(--separateur);
+    }
+
+    .footer-sceau {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 0.85rem;
+      color: var(--texte-sec);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.62rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--or);
+      opacity: 0.7;
+    }
+
+    footer nav {
+      position: static;
+      background: none;
+      backdrop-filter: none;
+      border: none;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1.5rem 0 0;
+    }
+
+    footer nav a {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--texte-sec);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer nav a:hover { color: var(--or); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      nav { padding: 1rem 1.5rem; }
+
+      .phases { padding: 5rem 1.5rem; }
+
+      .phase {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        margin-bottom: 5rem;
+        padding-bottom: 5rem;
+      }
+
+      .phase.pair .phase-visuel,
+      .phase.pair .phase-texte { order: unset; }
+
+      .phase-img-wrap { max-width: 260px; margin: 0 auto; }
+
+      .phase-titre { font-size: 1.8rem; }
+
+      .connecteur { margin: -2rem 0 2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .phase { opacity: 1; transform: none; transition: none; }
+      .phase-img-wrap img { transition: none; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- POPUP AVERTISSEMENT -->
-<div class="overlay" id="overlay">
-  <div class="modale">
-    <div class="modale-entete">
-      <span class="modale-sigil">☉</span>
-      <span class="modale-surtitre">Avertissement · Avant d'entrer</span>
-      <p class="modale-titre">Ce site s'adresse à des personnes averties. Lisez ce qui suit.</p>
-    </div>
-    <div class="modale-corps">
-      <div class="modale-article">
-        <span class="modale-article-sym">🜍</span>
-        <p class="modale-article-texte"><em>Krysopée n'est pas un conseiller en investissement financier.</em> Les contenus publiés sur ce site — analyses, réflexions, résultats — sont partagés à titre informatif et pédagogique uniquement. Ils ne constituent en aucun cas un conseil, une recommandation ou une incitation à investir.</p>
-      </div>
-      <div class="modale-article">
-        <span class="modale-article-sym">🜔</span>
-        <p class="modale-article-texte"><strong>Le trading sur les marchés financiers comporte un risque élevé de perte en capital.</strong> Les performances passées ne préjugent pas des performances futures. Tout investissement peut entraîner des pertes supérieures aux sommes engagées.</p>
-      </div>
-      <div class="modale-article">
-        <span class="modale-article-sym">☿</span>
-        <p class="modale-article-texte">En entrant sur ce site, vous confirmez avoir pris connaissance de ces avertissements et <em>agir sous votre seule et entière responsabilité.</em></p>
-      </div>
-    </div>
-    <div class="modale-pied">
-      <button class="modale-btn" onclick="fermerPopup()">Entrer</button>
-      <p class="modale-note">
-        Krysopée · Nemini Teneri<br>
-        Ce site ne s'adresse pas aux ressortissants de juridictions<br>où l'accès à de tels contenus serait restreint ou interdit.
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- NAVIGATION -->
-<nav id="nav">
-  <a href="index.html" class="nav-marque">Krysopée</a>
-  <ul class="nav-links">
-    <li><a href="#activites">Activités</a></li>
-    <li><a href="phases-alchimiques.html">Les Phases</a></li>
-    <li><a href="#fides" class="fides">Fides &amp; Co</a></li>
-    <li><a href="#publications">Chrysopeia</a></li>
-    <li><a href="fondateur.html">Fondateur</a></li>
-  </ul>
-  <a href="#contact" class="nav-contact">Entrer en contact</a>
+<!-- Navigation -->
+<nav>
+  <a href="index.html" class="nav-logo">Krysopée</a>
+  <a href="index.html" class="nav-back">← Retour</a>
 </nav>
 
-<!-- SEUIL / HERO -->
-<section id="seuil">
-  <div class="seuil-gauche">
-    <div class="seuil-sigil">☉</div>
-    <div>
-      <h1 class="seuil-titre entree">Il n'existe pas de marché<br>sans l'homme<br>qui le traverse.</h1>
-      <p class="seuil-sous entree d1">Finance quantitative et psychologie des profondeurs.<br>Deux disciplines. Une seule exigence.</p>
-    </div>
-    <span class="seuil-devise entree d2">Nemini Teneri &nbsp;·&nbsp; ☉ &nbsp;·&nbsp; ☿</span>
-  </div>
-  <div class="seuil-droite">
-    <div class="visuel-principal entree">
-      <img src="logo-bandeau.png" alt="Krysopée — Finance quantitative et psychologie du trading" style="width:75%;height:auto;opacity:0.92;">
-    </div>
-    <a href="phases-alchimiques.html" class="seuil-bas entree d1" style="text-decoration:none;display:flex;flex-direction:column;gap:0.6rem;transition:background 0.3s;" onmouseover="this.style.background='rgba(139,105,20,0.04)'" onmouseout="this.style.background='transparent'">
-      <span class="seuil-bas-label">L'approche Krysopée</span>
-      <p class="seuil-bas-texte">Alchimie des marchés — au sens propre. Soufre, Mercure, Sel, Or : quatre principes qui structurent la lecture du marché, la décision, et la transmission.</p>
-      <span style="font-family:'Space Mono',monospace;font-size:0.44rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--or);opacity:0.6;margin-top:0.4rem;">Les quatre phases →</span>
-    </a>
-  </div>
+<!-- Hero -->
+<section class="hero">
+  <p class="hero-symbols">☉ · ☿ · 🜍 · 🜔</p>
+  <p class="hero-eyebrow">L'approche Krysopée · Cadre philosophique</p>
+  <h1>L'Œuvre au Noir, au Blanc,<br>au Jaune, au Rouge</h1>
+  <div class="hero-rule"></div>
+  <p class="hero-intro">Dans la tradition alchimique, la transmutation de la matière suit un ordre immuable. Les marchés obéissent à la même loi. Connaître la phase, c'est savoir où l'on est — et ce que l'on doit faire, ou ne pas faire.</p>
 </section>
 
-<!-- AXIOME -->
-<section id="axiome">
-  <p class="axiome-texte entree">"De la rigueur naît la liberté.<br>De la conscience naît la maîtrise.<br>Et du marché — <em>le miroir de soi.</em>"</p>
-  <p class="axiome-sig">Krysopée &nbsp;·&nbsp; Nemini Teneri</p>
-</section>
+<!-- Phases -->
+<main class="phases">
 
-<!-- ACTIVITES -->
-<section id="activites">
-  <div class="act-header entree">
-    <div>
-      <p class="act-label">Ce que nous faisons</p>
-      <h2 class="act-h2">Quatre activités,<br><em>une seule vision</em></h2>
-    </div>
-    <p class="act-intro">De la recherche quantitative à la transmission — chaque activité prolonge la même conviction : que la performance durable naît de la cohérence entre la méthode et l'homme qui l'exerce.</p>
-  </div>
-  <a href="compte-propre.html" class="act-ligne entree">
-    <span class="act-numero">01</span>
-    <span class="act-nom">Trading Compte Propre <em>· Cœur de métier</em></span>
-    <span class="act-fleche">Découvrir →</span>
-  </a>
-  <a href="recherche.html" class="act-ligne entree d1">
-    <span class="act-numero">02</span>
-    <span class="act-nom">Recherche &amp; Indicateurs IA <em>· Suite K-Équinoxe</em></span>
-    <span class="act-fleche">Découvrir →</span>
-  </a>
-  <a href="club-deal.html" class="act-ligne entree d2">
-    <span class="act-numero">03</span>
-    <span class="act-nom">Club Deal <em>· Cercle de partenaires</em></span>
-    <span class="act-fleche">Découvrir →</span>
-  </a>
-  <a href="accompagnement.html" class="act-ligne entree d3">
-    <span class="act-numero">04</span>
-    <span class="act-nom">Accompagnement <em>· Transmission &amp; psychologie opérationnelle</em></span>
-    <span class="act-fleche">Découvrir →</span>
-  </a>
-</section>
-
-<!-- FIDES & CO -->
-<section id="fides">
-  <div class="fides-inner">
-    <div class="entree">
-      <p class="fides-label">Fides &amp; Co · Compte live</p>
-      <h2 class="fides-h2">La transparence<br>comme principe</h2>
-      <div class="live-ligne"><div class="dot-vert"></div>Compte live · Myfxbook vérifié</div>
-      <p class="fides-corps">Fides &amp; Co est le compte de trading live de référence de Krysopée. Rendu public par conviction : <em>la maîtrise consciente se prouve dans la durée, pas dans les promesses.</em></p>
-      <p class="fides-corps">Indices majeurs, or, devises majeures. Des marchés choisis pour leur lisibilité structurelle — et pour leur compatibilité avec ce que Krysopée croit juste.</p>
-      <p class="fides-corps">Le document de présentation complet est disponible sur demande.</p>
-      <a href="#contact" class="fides-cta" onclick="preselectFides()">Demander le document de présentation →</a>
-    </div>
-    <div class="fides-citation entree d1">
-      <p class="fides-citation-texte">"La transparence ne se décrète pas — elle se construit, trade après trade, dans la durée et sous <em>le regard des faits.</em>"</p>
-      <p class="fides-citation-sig">Krysopée · Nemini Teneri</p>
-    </div>
-  </div>
-</section>
-
-<!-- PUBLICATIONS -->
-<section id="publications">
-  <div class="pub-inner">
-    <div class="pub-entete entree">
-      <div>
-        <p class="act-label">Publications &amp; Transmission</p>
-        <h2 class="act-h2">Deux voies,<br><em>une même encre</em></h2>
-      </div>
-      <p class="pub-entete-intro">Krysopée publie. Sur les marchés, sur la psychologie qui les traverse, sur la discipline qui permet de les habiter. Deux espaces distincts — l'un ouvert, l'autre plus intime.</p>
-    </div>
-    <div class="pub-deux-blocs">
-      <div class="pub-bloc-substack entree">
-        <p class="pub-bloc-label">Chrysopeia · Substack · Accès libre</p>
-        <p class="pub-bloc-titre">Essais sur l'alchimie<br>des marchés</p>
-        <p class="pub-bloc-corps">Des textes longs, publiés librement. Alchimie des marchés, psychologie comportementale, récits de traversée. Un espace de réflexion ouvert — pour ceux qui cherchent autre chose qu'un signal.</p>
-        <div class="pub-themes">
-          <div class="pub-theme"><span class="pub-theme-sym">🜍</span><span class="pub-theme-texte">Alchimie des marchés &amp; cadre philosophique</span></div>
-          <div class="pub-theme"><span class="pub-theme-sym">☿</span><span class="pub-theme-texte">Psychologie comportementale &amp; décision</span></div>
-          <div class="pub-theme"><span class="pub-theme-sym">🜔</span><span class="pub-theme-texte">Rigueur méthodologique &amp; gestion du risque</span></div>
-          <div class="pub-theme"><span class="pub-theme-sym">☉</span><span class="pub-theme-texte">Transmutation — récits &amp; élévation</span></div>
-        </div>
-        <a href="https://chrysopeia.substack.com" class="pub-cta-substack" target="_blank" rel="noopener">Lire les publications →</a>
-      </div>
-      <div class="pub-bloc-lettre entree d1">
-        <p class="pub-bloc-label">La Lettre · Correspondance privée</p>
-        <p class="pub-lettre-titre">De Nigredo à Rubedo</p>
-        <p class="pub-lettre-sous">Dissolution · Purification · Éveil · Transmutation</p>
-        <p class="pub-lettre-corps">Une correspondance privée, envoyée au rythme de l'Œuvre — <em>quand il y a quelque chose à dire, pas quand le calendrier l'impose.</em> Plus personnelle que les publications ouvertes. Sur ce qui se travaille en profondeur, dans la durée, loin du bruit.</p>
-        <div class="pub-form">
-          <input type="email" id="lettre-email" placeholder="Votre adresse email">
-          <button id="lettre-btn" type="button">Recevoir la Lettre ☉</button>
-        </div>
-        <p class="pub-lettre-note">Sans publicité · Sans cadence imposée · Désabonnement libre</p>
+  <!-- I · Nigredo -->
+  <article class="phase" id="nigredo">
+    <div class="phase-visuel">
+      <div class="phase-img-wrap">
+        <img src="nigredo-corbeau.png" alt="Nigredo — le corbeau alchimique" width="500" height="500" loading="lazy" />
+        <div class="phase-badge">Nigredo · Œuvre au Noir</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-inner">
-    <div class="entree">
-      <p class="act-label">Contact</p>
-      <h2 class="contact-h2">"N'être tenu par personne —<br>sauf par <em>ce qu'on choisit<br>de construire.</em>"</h2>
-      <p class="contact-corps">Vous partagez une vision alignée, souhaitez explorer une collaboration, rejoindre le Club Deal, ou recevoir le document de présentation de Fides &amp; Co. Nous répondons avec discernement.</p>
-      <div class="contact-socials">
-        <a href="https://krysopee.capital" class="contact-social" target="_blank" rel="noopener">
-          <span class="contact-social-nom">krysopee.capital</span><span class="contact-social-fleche">→</span>
-        </a>
-        <a href="https://x.com/krysopee" class="contact-social" target="_blank" rel="noopener">
-          <span class="contact-social-nom">X · @krysopee</span><span class="contact-social-fleche">→</span>
-        </a>
-        <a href="https://www.linkedin.com/in/krysopee/" class="contact-social" target="_blank" rel="noopener">
-          <span class="contact-social-nom">LinkedIn</span><span class="contact-social-fleche">→</span>
-        </a>
-        <a href="https://chrysopeia.substack.com" class="contact-social" target="_blank" rel="noopener">
-          <span class="contact-social-nom">Substack · Chrysopeia</span><span class="contact-social-fleche">→</span>
-        </a>
+    <div class="phase-texte">
+      <div class="phase-meta">
+        <span class="phase-num">Phase I</span>
+        <span class="phase-sep-inline"></span>
+        <span class="phase-symbole">🜍</span>
+      </div>
+      <h2 class="phase-titre">Nigredo</h2>
+      <p class="phase-latin">La putréfaction — dissolution de la forme</p>
+      <div class="phase-filet"></div>
+      <p class="phase-desc">Le Nigredo est le commencement obscur. La matière première se décompose, les certitudes s'effondrent, la structure visible disparaît. C'est la phase du chaos nécessaire — non pas l'absence d'ordre, mais le retour à l'état brut avant toute transmutation possible. L'alchimiste qui refuse le Nigredo refuse la vérité de ce qui est.</p>
+      <div class="phase-marche">
+        <p class="phase-marche-label">Sur les marchés</p>
+        <p class="phase-marche-texte">"La tendance se retourne. Les supports cèdent. Le consensus vacille. Ce n'est pas le moment d'agir — c'est le moment de lire."</p>
+      </div>
+      <div class="phase-mots">
+        <span class="mot">Dissolution</span>
+        <span class="mot">Retournement</span>
+        <span class="mot">Patience</span>
+        <span class="mot">Observation</span>
       </div>
     </div>
-    <div class="entree d1">
-      <p class="contact-form-titre">Entrer en correspondance</p>
-      <div class="contact-form">
-        <input type="text" name="nom" placeholder="Votre nom" required>
-        <input type="email" name="email" placeholder="Votre adresse email" required>
-        <select name="objet" id="contact-objet">
-          <option value="" disabled selected>· Votre intention ·</option>
-          <option value="fides">☉ Recevoir la présentation de Fides &amp; Co</option>
-          <option value="club-deal">Rejoindre le Club Deal</option>
-          <option value="mentoring">Demande d'accompagnement</option>
-          <option value="collaboration">Proposition de collaboration</option>
-          <option value="autre">Autre</option>
-        </select>
-        <textarea name="message" placeholder="Votre message"></textarea>
-        <button class="contact-envoyer" type="submit">Transmettre ☉</button>
-      </div>
-      <p class="fides-option-note">La présentation Fides &amp; Co est transmise après un premier échange.</p>
-      <p class="contact-rgpd">Vos données sont utilisées uniquement pour répondre à votre message. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression.</p>
-    </div>
-  </div>
-</section>
+  </article>
 
-<!-- FOOTER -->
+  <div class="connecteur" aria-hidden="true">· · ·</div>
+
+  <!-- II · Albedo -->
+  <article class="phase pair" id="albedo">
+    <div class="phase-visuel">
+      <div class="phase-img-wrap">
+        <img src="albedo-cygne.png" alt="Albedo — le cygne alchimique" width="500" height="500" loading="lazy" />
+        <div class="phase-badge">Albedo · Œuvre au Blanc</div>
+      </div>
+    </div>
+    <div class="phase-texte">
+      <div class="phase-meta">
+        <span class="phase-num">Phase II</span>
+        <span class="phase-sep-inline"></span>
+        <span class="phase-symbole">☽</span>
+      </div>
+      <h2 class="phase-titre">Albedo</h2>
+      <p class="phase-latin">La purification — émergence de la lumière</p>
+      <div class="phase-filet"></div>
+      <p class="phase-desc">Après la dissolution, la matière se purifie. Les scories tombent. Ce qui reste est essentiel. L'Albedo est la phase de la clarté retrouvée — une structure neuve se dessine, moins chargée, plus lisible. Le bruit s'atténue, le signal émerge. Le cygne naît de l'eau trouble.</p>
+      <div class="phase-marche">
+        <p class="phase-marche-label">Sur les marchés</p>
+        <p class="phase-marche-texte">"La volatilité se comprime. Le range se resserre. La structure reprend forme. L'attention se porte sur les niveaux clés — et sur ce qu'ils révèlent."</p>
+      </div>
+      <div class="phase-mots">
+        <span class="mot">Purification</span>
+        <span class="mot">Consolidation</span>
+        <span class="mot">Clarté</span>
+        <span class="mot">Structure</span>
+      </div>
+    </div>
+  </article>
+
+  <div class="connecteur" aria-hidden="true">· · ·</div>
+
+  <!-- III · Citrinitas -->
+  <article class="phase" id="citrinitas">
+    <div class="phase-visuel">
+      <div class="phase-img-wrap">
+        <img src="citrinitas-aigle.png" alt="Citrinitas — l'aigle alchimique" width="500" height="500" loading="lazy" />
+        <div class="phase-badge">Citrinitas · Œuvre au Jaune</div>
+      </div>
+    </div>
+    <div class="phase-texte">
+      <div class="phase-meta">
+        <span class="phase-num">Phase III</span>
+        <span class="phase-sep-inline"></span>
+        <span class="phase-symbole">☉</span>
+      </div>
+      <h2 class="phase-titre">Citrinitas</h2>
+      <p class="phase-latin">L'illumination — éveil de la conscience</p>
+      <div class="phase-filet"></div>
+      <p class="phase-desc">La Citrinitas marque l'éveil solaire. La direction se précise, l'énergie s'accumule, la conviction se forme sur des bases solides. Ce n'est pas encore l'or — mais c'est sa promesse visible. L'aigle prend de la hauteur et distingue ce que le sol ne permet pas de voir. La décision commence ici.</p>
+      <div class="phase-marche">
+        <p class="phase-marche-label">Sur les marchés</p>
+        <p class="phase-marche-texte">"Le momentum s'installe. Les points d'entrée se dessinent. L'Oracle confirme l'alignement des temporalités. La posture devient offensive — avec précision."</p>
+      </div>
+      <div class="phase-mots">
+        <span class="mot">Momentum</span>
+        <span class="mot">Alignement</span>
+        <span class="mot">Décision</span>
+        <span class="mot">Conviction</span>
+      </div>
+    </div>
+  </article>
+
+  <div class="connecteur" aria-hidden="true">· · ·</div>
+
+  <!-- IV · Rubedo -->
+  <article class="phase pair" id="rubedo">
+    <div class="phase-visuel">
+      <div class="phase-img-wrap">
+        <img src="rubedo-pelican.png" alt="Rubedo — le pélican alchimique" width="500" height="500" loading="lazy" />
+        <div class="phase-badge">Rubedo · Œuvre au Rouge</div>
+      </div>
+    </div>
+    <div class="phase-texte">
+      <div class="phase-meta">
+        <span class="phase-num">Phase IV</span>
+        <span class="phase-sep-inline"></span>
+        <span class="phase-symbole">🜔</span>
+      </div>
+      <h2 class="phase-titre">Rubedo</h2>
+      <p class="phase-latin">La transmutation — achèvement de l'Œuvre</p>
+      <div class="phase-filet"></div>
+      <p class="phase-desc">Le Rubedo est l'accomplissement. La matière atteint sa forme la plus haute — non pas figée, mais vivante et capable de se transmettre. Le pélican nourrit ses petits de sa propre substance : l'alchimiste accompli ne garde pas l'or pour lui. La performance devient transmission, la maîtrise devient don.</p>
+      <div class="phase-marche">
+        <p class="phase-marche-label">Sur les marchés</p>
+        <p class="phase-marche-texte">"La tendance déploie sa pleine force. La position est tenue avec discipline. Le trade n'est plus une question — il est une réponse à ce que le marché a déjà dit."</p>
+      </div>
+      <div class="phase-mots">
+        <span class="mot">Transmutation</span>
+        <span class="mot">Maîtrise</span>
+        <span class="mot">Plein déploiement</span>
+        <span class="mot">Transmission</span>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<!-- Footer -->
 <footer>
-  <a href="index.html" class="foot-nom">Krysopée</a>
-  <span class="foot-devise">☉ · Nemini Teneri · ☿</span>
-  <div class="foot-liens">
-    <a href="https://chrysopeia.substack.com" target="_blank" rel="noopener">Substack</a>
-    <a href="https://x.com/krysopee" target="_blank" rel="noopener">X</a>
-    <a href="https://www.linkedin.com/in/krysopee/" target="_blank" rel="noopener">LinkedIn</a>
+  <p class="footer-sceau">Nemini Teneri · ☉ · ☿</p>
+  <p class="footer-tagline">Krysopée — Faire de l'or autrement</p>
+  <nav aria-label="Liens secondaires">
+    <a href="index.html">Accueil</a>
+    <a href="fondateur.html">Fondateur</a>
+    <a href="https://chrysopeia.substack.com">Chrysopeia</a>
     <a href="confidentialite.html">Confidentialité</a>
     <a href="mentions-legales.html">Mentions légales</a>
-    <span class="foot-copy">© 2026 Krysopée — Jean-Luc Manzaroli</span>
-  </div>
+  </nav>
 </footer>
 
 <script>
-function fermerPopup() {
-  document.getElementById('overlay').classList.add('ferme');
-  sessionStorage.setItem('disclaimer_accepted', 'true');
-}
-
-// Si le visiteur a déjà accepté pendant cette session, masquer immédiatement
-if (sessionStorage.getItem('disclaimer_accepted') === 'true') {
-  document.getElementById('overlay').classList.add('ferme');
-}
-function preselectFides() {
-  setTimeout(() => { document.getElementById('contact-objet').value = 'fides'; }, 500);
-}
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vu'); obs.unobserve(e.target); } });
-}, { threshold: 0.07 });
-document.querySelectorAll('.entree').forEach(el => obs.observe(el));
-
-document.getElementById('lettre-btn').addEventListener('click', function () {
-  const email = document.getElementById('lettre-email').value.trim();
-  if (email) {
-    window.open('https://chrysopeia.substack.com/?email=' + encodeURIComponent(email), '_blank', 'noopener');
-    this.textContent = 'À bientôt ☉';
-    this.style.opacity = '0.4';
-    this.disabled = true;
-  }
-});
+  const phases = document.querySelectorAll('.phase');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  phases.forEach(p => observer.observe(p));
 </script>
+
 </body>
 </html>
