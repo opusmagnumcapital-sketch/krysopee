@@ -800,6 +800,104 @@
   </div>
 </section>
 
+<!-- PASSAGE VERS L'AUTRE PORTE -->
+<section class="passage-porte entree">
+  <p class="passage-eyebrow">☿ · L'Œuvre est double</p>
+  <p class="passage-texte">Vous avez exploré L'Œuvre Visible.<br>L'autre chemin vous attend.</p>
+  <div class="passage-vignette" onclick="window.location.href='accompagnement.html'">
+    <img src="porte-interieure.png" alt="L'Œuvre Intérieure — psychologie et transmission" />
+    <div class="passage-legende">
+      <p class="passage-titre">L'Œuvre Intérieure</p>
+      <p class="passage-sous">La psychologie · La transmission · Le chemin</p>
+      <span class="passage-btn">Entrer ☿</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .passage-porte {
+    text-align: center;
+    padding: 6rem 2rem;
+    border-top: 0.5px solid rgba(184,150,46,0.12);
+  }
+  .passage-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(184,150,46,0.5);
+    margin-bottom: 1rem;
+  }
+  .passage-texte {
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: rgba(245,240,232,0.45);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+  .passage-vignette {
+    position: relative;
+    display: inline-block;
+    width: 280px;
+    cursor: pointer;
+    border: 0.5px solid rgba(184,150,46,0.2);
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+  .passage-vignette:hover { border-color: rgba(184,150,46,0.55); }
+  .passage-vignette img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.65);
+    transition: filter 0.4s, transform 0.5s;
+  }
+  .passage-vignette:hover img {
+    filter: brightness(0.88);
+    transform: scale(1.02);
+  }
+  .passage-legende {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1.5rem 1rem 1.1rem;
+    background: linear-gradient(to top, rgba(8,8,8,0.95) 60%, transparent);
+  }
+  .passage-titre {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: #f0ead8;
+    margin-bottom: 0.25rem;
+  }
+  .passage-sous {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.54rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(184,150,46,0.6);
+    margin-bottom: 0.85rem;
+    line-height: 1.6;
+  }
+  .passage-btn {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.56rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(184,150,46,0.85);
+    border: 0.5px solid rgba(184,150,46,0.35);
+    padding: 5px 16px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .passage-vignette:hover .passage-btn {
+    background: rgba(184,150,46,0.08);
+    border-color: rgba(184,150,46,0.6);
+    color: #b8962e;
+  }
+</style>
+
 <!-- FOOTER -->
 <footer>
   <a href="index.html" class="foot-nom">Krysopée</a>
