@@ -435,36 +435,197 @@
 <body>
 
 <!-- POPUP AVERTISSEMENT -->
-<div class="overlay" id="overlay">
-  <div class="modale">
-    <div class="modale-entete">
-      <span class="modale-sigil">☉</span>
-      <span class="modale-surtitre">Avertissement · Avant d'entrer</span>
-      <p class="modale-titre">Ce site s'adresse à des personnes averties. Lisez ce qui suit.</p>
-    </div>
-    <div class="modale-corps">
-      <div class="modale-article">
-        <span class="modale-article-sym">🜍</span>
-        <p class="modale-article-texte"><em>Krysopée n'est pas un conseiller en investissement financier.</em> Les contenus publiés sur ce site — analyses, réflexions, résultats — sont partagés à titre informatif et pédagogique uniquement. Ils ne constituent en aucun cas un conseil, une recommandation ou une incitation à investir.</p>
+<style>
+  .seuil-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #080808;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    transition: opacity 0.6s ease;
+  }
+  .seuil-overlay.ferme {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .seuil-marque {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: rgba(184,150,46,0.5);
+    margin-bottom: 3rem;
+  }
+
+  .seuil-portes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    width: 100%;
+    max-width: 860px;
+    margin-bottom: 2.5rem;
+  }
+
+  .seuil-porte {
+    position: relative;
+    cursor: pointer;
+    border: 0.5px solid rgba(184,150,46,0.2);
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+    background: #0d0d0d;
+  }
+
+  .seuil-porte:hover {
+    border-color: rgba(184,150,46,0.55);
+  }
+
+  .seuil-porte img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.75);
+    transition: filter 0.4s ease, transform 0.5s ease;
+  }
+
+  .seuil-porte:hover img {
+    filter: brightness(0.92);
+    transform: scale(1.02);
+  }
+
+  .seuil-porte-legende {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 1.5rem 1.25rem 1.25rem;
+    background: linear-gradient(to top, rgba(8,8,8,0.95) 60%, transparent);
+    text-align: center;
+  }
+
+  .seuil-porte-titre {
+    font-family: 'Lora', Georgia, serif;
+    font-weight: 400;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    color: #f0ead8;
+    margin-bottom: 0.3rem;
+  }
+
+  .seuil-porte-sous {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(184,150,46,0.65);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .seuil-porte-btn {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(184,150,46,0.85);
+    border: 0.5px solid rgba(184,150,46,0.35);
+    padding: 6px 18px;
+    background: transparent;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    text-decoration: none;
+  }
+
+  .seuil-porte:hover .seuil-porte-btn {
+    background: rgba(184,150,46,0.08);
+    border-color: rgba(184,150,46,0.65);
+    color: #b8962e;
+  }
+
+  .seuil-legal {
+    max-width: 580px;
+    text-align: center;
+  }
+
+  .seuil-legal-texte {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.54rem;
+    line-height: 1.9;
+    letter-spacing: 0.04em;
+    color: rgba(245,240,232,0.22);
+  }
+
+  .seuil-legal-texte em {
+    font-style: italic;
+    color: rgba(245,240,232,0.32);
+  }
+
+  @media (max-width: 600px) {
+    .seuil-portes {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      max-width: 340px;
+    }
+    .seuil-porte img { aspect-ratio: 4/3; }
+    .seuil-marque { margin-bottom: 2rem; }
+  }
+</style>
+
+<div class="seuil-overlay" id="seuil-overlay">
+  <p class="seuil-marque">Krysopée · Choisissez votre chemin</p>
+
+  <div class="seuil-portes">
+
+    <div class="seuil-porte" onclick="entrer('index.html#activites')">
+      <img src="porte-visible.png" alt="L'Œuvre Visible — méthode et marchés" />
+      <div class="seuil-porte-legende">
+        <p class="seuil-porte-titre">L'Œuvre Visible</p>
+        <p class="seuil-porte-sous">La méthode · Les marchés · La performance</p>
+        <span class="seuil-porte-btn">Entrer ☉</span>
       </div>
-      <div class="modale-article">
-        <span class="modale-article-sym">🜔</span>
-        <p class="modale-article-texte"><strong>Le trading sur les marchés financiers comporte un risque élevé de perte en capital.</strong> Les performances passées ne préjugent pas des performances futures. Tout investissement peut entraîner des pertes supérieures aux sommes engagées.</p>
-      </div>
-      <div class="modale-article">
-        <span class="modale-article-sym">☿</span>
-        <p class="modale-article-texte">En entrant sur ce site, vous confirmez avoir pris connaissance de ces avertissements et <em>agir sous votre seule et entière responsabilité.</em></p>
+    </div>
+
+    <div class="seuil-porte" onclick="entrer('accompagnement.html')">
+      <img src="porte-interieure.png" alt="L'Œuvre Intérieure — psychologie et transmission" />
+      <div class="seuil-porte-legende">
+        <p class="seuil-porte-titre">L'Œuvre Intérieure</p>
+        <p class="seuil-porte-sous">La psychologie · La transmission · Le chemin</p>
+        <span class="seuil-porte-btn">Entrer ☿</span>
       </div>
     </div>
-    <div class="modale-pied">
-      <button class="modale-btn" onclick="fermerPopup()">Entrer</button>
-      <p class="modale-note">
-        Krysopée · Nemini Teneri<br>
-        Ce site ne s'adresse pas aux ressortissants de juridictions<br>où l'accès à de tels contenus serait restreint ou interdit.
-      </p>
-    </div>
+
+  </div>
+
+  <div class="seuil-legal">
+    <p class="seuil-legal-texte">
+      <em>Krysopée n'est pas un conseiller en investissement financier.</em> Les contenus publiés sont partagés à titre informatif et pédagogique uniquement — ils ne constituent en aucun cas un conseil ou une incitation à investir. <em>Le trading comporte un risque élevé de perte en capital.</em> En entrant, vous confirmez agir sous votre seule et entière responsabilité. Ce site ne s'adresse pas aux ressortissants de juridictions où l'accès à de tels contenus serait restreint.
+    </p>
   </div>
 </div>
+
+<script>
+  function entrer(dest) {
+    const overlay = document.getElementById('seuil-overlay');
+    overlay.classList.add('ferme');
+    setTimeout(() => {
+      overlay.style.display = 'none';
+      sessionStorage.setItem('seuil-franchi', '1');
+      if (dest !== window.location.pathname.split('/').pop() + window.location.hash) {
+        window.location.href = dest;
+      }
+    }, 600);
+  }
+
+  // Ne pas réafficher si déjà franchi dans la session
+  if (sessionStorage.getItem('seuil-franchi')) {
+    const overlay = document.getElementById('seuil-overlay');
+    overlay.style.display = 'none';
+  }
+</script>
 
 <!-- NAVIGATION -->
 <nav id="nav">
