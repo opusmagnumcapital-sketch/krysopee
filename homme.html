@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Homme · Krysopée</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --k-black:#080604; --k-bg:#0E0C08; --k-bg-2:#161209; --k-bg-3:#1E180E;
+  --k-gold:#C8B47A; --k-gold-2:#A8945A; --k-ivory:#F0E6C8; --k-ivory-2:#D4C8A0;
+  --k-muted:#8A7A5A; --k-dim:#4A4030;
+  --k-border:rgba(200,180,122,0.12); --k-border-2:rgba(200,180,122,0.06);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--k-bg);color:var(--k-ivory);font-family:'Poppins',sans-serif;font-weight:300;font-size:15px;line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+
+nav{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.4rem 4rem;background:rgba(8,6,4,0.95);backdrop-filter:blur(16px);border-bottom:0.5px solid var(--k-border-2);}
+.nav-marque{font-family:'Lora',serif;font-size:1rem;color:var(--k-gold);letter-spacing:0.06em;}
+.nav-back{font-size:0.58rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--k-muted);transition:color 0.3s;}
+.nav-back:hover{color:var(--k-gold);}
+.nav-contact{font-size:0.58rem;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--k-gold);border:0.5px solid var(--k-border);padding:0.5rem 1.3rem;}
+
+/* Hero portrait */
+.hero{padding:8rem 4rem 5rem;max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;}
+.hero-overline{font-size:0.58rem;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--k-gold);opacity:0.6;display:block;margin-bottom:1rem;}
+.hero-titre{font-family:'Lora',serif;font-size:clamp(2.4rem,5vw,3.8rem);font-weight:400;line-height:1.08;color:var(--k-ivory);margin-bottom:1.5rem;}
+.hero-titre em{color:var(--k-gold);font-style:italic;}
+.hero-accroche{font-size:1rem;font-weight:300;font-style:italic;color:var(--k-muted);line-height:1.85;margin-bottom:2.5rem;}
+.btn-lien{font-size:0.58rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--k-muted);border-bottom:0.5px solid var(--k-border);padding-bottom:2px;display:inline-block;transition:all 0.3s;}
+.btn-lien:hover{color:var(--k-gold);}
+
+/* Portrait */
+.portrait-wrap{position:relative;}
+.portrait-cadre{width:100%;aspect-ratio:3/4;background:rgba(200,180,122,0.03);border:0.5px solid var(--k-border);border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;}
+.portrait-placeholder{text-align:center;}
+.portrait-mono{font-family:'Lora',serif;font-size:5rem;color:var(--k-gold);opacity:0.06;display:block;margin-bottom:0.5rem;}
+.portrait-initiales{font-size:0.5rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--k-muted);opacity:0.4;}
+.portrait-nom{font-family:'Lora',serif;font-size:1rem;font-weight:400;color:var(--k-ivory-2);margin-top:1.2rem;margin-bottom:0.3rem;}
+.portrait-role{font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--k-gold);opacity:0.55;}
+
+/* Sep */
+.sep{display:flex;align-items:center;gap:1.5rem;max-width:1200px;margin:0 auto;padding:0 4rem;}
+.sep-line{flex:1;height:0.5px;background:var(--k-border-2);}
+.sep-sym{font-size:0.85rem;color:var(--k-gold);opacity:0.2;}
+
+/* Blocs biographie */
+.blocs{max-width:1200px;margin:0 auto;padding:5rem 4rem;}
+.bloc{display:grid;grid-template-columns:180px 1fr;gap:4rem;padding:3rem 0;border-bottom:0.5px solid var(--k-border-2);}
+.bloc:last-child{border-bottom:none;}
+.bloc-header{display:flex;flex-direction:column;gap:0.5rem;padding-top:4px;}
+.bloc-num{font-family:'Lora',serif;font-size:2.8rem;font-weight:400;color:var(--k-gold);opacity:0.06;line-height:1;margin-bottom:0.3rem;}
+.bloc-titre{font-size:0.52rem;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--k-gold);opacity:0.6;}
+.bloc-corps{font-size:0.9rem;font-weight:300;line-height:1.9;color:var(--k-muted);}
+.bloc-corps p{margin-bottom:1.2rem;}
+.bloc-corps p:last-child{margin-bottom:0;}
+.bloc-corps strong{font-weight:400;color:var(--k-ivory-2);}
+
+/* Traversée */
+.traversee{background:var(--k-bg-3);border-top:0.5px solid var(--k-border-2);border-bottom:0.5px solid var(--k-border-2);padding:4rem;}
+.traversee-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:180px 1fr;gap:4rem;}
+.traversee-corps{font-size:0.9rem;font-weight:300;line-height:1.9;color:var(--k-muted);}
+.traversee-corps p{margin-bottom:1.2rem;}
+.traversee-corps p:last-child{margin-bottom:0;}
+.traversee-corps strong{font-weight:400;color:var(--k-ivory-2);}
+
+/* Nemini Teneri */
+.nemini-wrap{background:var(--k-black);border-top:0.5px solid var(--k-border-2);}
+.nemini-inner{max-width:1200px;margin:0 auto;padding:6rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;}
+.nemini-overline{font-size:0.58rem;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--k-gold);opacity:0.5;display:block;margin-bottom:1rem;}
+.nemini-titre{font-family:'Lora',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;font-style:italic;color:var(--k-gold);opacity:0.7;line-height:1.15;margin-bottom:1.5rem;}
+.nemini-corps{font-size:0.88rem;font-weight:300;color:var(--k-muted);line-height:1.9;margin-bottom:1.2rem;}
+.nemini-corps em{font-style:italic;color:var(--k-ivory-2);}
+.nemini-blocs{display:flex;flex-direction:column;gap:1px;background:var(--k-border-2);border:0.5px solid var(--k-border-2);}
+.nemini-bloc{background:var(--k-bg);padding:2rem;border-left:2px solid transparent;transition:all 0.4s;}
+.nemini-bloc:hover{background:var(--k-bg-2);border-left-color:var(--k-gold);}
+.nemini-bloc-sym{font-size:0.9rem;color:var(--k-gold);opacity:0.25;display:block;margin-bottom:0.75rem;}
+.nemini-bloc-titre{font-size:0.58rem;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--k-ivory-2);margin-bottom:0.4rem;}
+.nemini-bloc-corps{font-size:0.8rem;font-weight:300;color:var(--k-muted);line-height:1.8;}
+
+/* Citation finale */
+.resonance{text-align:center;padding:7rem 4rem;border-top:0.5px solid var(--k-border-2);}
+.resonance-sym{font-size:1rem;color:var(--k-gold);opacity:0.25;letter-spacing:0.5em;display:block;margin-bottom:2.5rem;}
+.resonance-texte{font-family:'Lora',serif;font-style:italic;font-size:clamp(1.4rem,2.8vw,2.2rem);font-weight:400;line-height:1.45;color:var(--k-ivory);opacity:0.5;max-width:640px;margin:0 auto 1.5rem;}
+.resonance-texte em{color:var(--k-gold);opacity:1;}
+.resonance-devise{font-size:0.5rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--k-dim);}
+
+footer{background:var(--k-black);border-top:0.5px solid var(--k-border-2);padding:2.2rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.2rem;}
+.foot-nom{font-family:'Lora',serif;font-size:0.85rem;color:var(--k-gold);opacity:0.5;}
+.foot-devise{font-size:0.48rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--k-dim);}
+.foot-liens{display:flex;gap:1.8rem;}
+.foot-liens a{font-size:0.48rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--k-dim);transition:color 0.3s;}
+.foot-liens a:hover{color:var(--k-muted);}
+
+.entree{opacity:0;transform:translateY(16px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.entree.vu{opacity:1;transform:none;}
+.entree.d1{transition-delay:0.12s;} .entree.d2{transition-delay:0.24s;} .entree.d3{transition-delay:0.38s;}
+@media(prefers-reduced-motion:reduce){.entree{opacity:1;transform:none;transition:none;}}
+@media(max-width:900px){
+  nav{padding:1.1rem 1.5rem;}
+  .hero{grid-template-columns:1fr;gap:3rem;padding:6rem 1.5rem 3rem;}
+  .blocs{padding:3rem 1.5rem;}
+  .bloc{grid-template-columns:1fr;gap:1rem;}
+  .traversee{padding:3rem 1.5rem;}
+  .traversee-inner{grid-template-columns:1fr;gap:1rem;}
+  .nemini-inner{grid-template-columns:1fr;gap:3rem;padding:4rem 1.5rem;}
+  .resonance{padding:4rem 1.5rem;}
+  .sep{padding:0 1.5rem;}
+  footer{padding:2rem 1.5rem;flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-marque" href="index.html">Krysopée</a>
+  <a class="nav-back" href="index.html">← Retour</a>
+  <a class="nav-contact" href="#">Entrer en contact</a>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="entree">
+    <span class="hero-overline">III · L'Homme</span>
+    <h1 class="hero-titre">L'homme<br><em>avant la méthode.</em></h1>
+    <p class="hero-accroche">Il n'existe pas de trajectoire droite entre un atelier de cuisine classique et les marchés financiers mondiaux. Sauf quand l'homme qui la trace n'a jamais attendu la permission de passer à l'étape suivante.</p>
+    <a class="btn-lien" href="#">Entrer en contact →</a>
+  </div>
+  <div class="entree d1">
+    <div class="portrait-cadre">
+      <div class="portrait-placeholder">
+        <span class="portrait-mono">JLM</span>
+        <span class="portrait-initiales">Portrait · Jean-Luc Manzaroli</span>
+      </div>
+    </div>
+    <p class="portrait-nom">Jean-Luc Manzaroli</p>
+    <p class="portrait-role">Fondateur · Trader · Architecte de systèmes</p>
+  </div>
+</div>
+
+<div class="sep"><div class="sep-line"></div><div class="sep-sym">☿</div><div class="sep-line"></div></div>
+
+<!-- Biographie -->
+<div class="blocs">
+  <div class="bloc entree">
+    <div class="bloc-header">
+      <div class="bloc-num">01</div>
+      <div class="bloc-titre">L'Origine</div>
+    </div>
+    <div class="bloc-corps">
+      <p>Jean-Luc Manzaroli quitte les bancs de l'école à treize ans pour entrer en apprentissage. <strong>CAP cuisine classique.</strong> Le monde des adultes, la rigueur du service, l'exigence du détail — avant même l'adolescence.</p>
+      <p>Ce départ précoce n'est pas une blessure à compenser. C'est le premier enseignement : on apprend en faisant, on progresse en assumant, on construit sans filet. Tout ce qui suit en porte la marque.</p>
+    </div>
+  </div>
+
+  <div class="bloc entree">
+    <div class="bloc-header">
+      <div class="bloc-num">02</div>
+      <div class="bloc-titre">La Construction</div>
+    </div>
+    <div class="bloc-corps">
+      <p>Des décennies de terrain, dans des univers exigeants et distincts. L'immobilier résidentiel et de rapport sur le Bassin d'Arcachon. La direction d'agence en courtage IARD en région parisienne. La fondation d'un réseau de distribution à domicile — <strong>leader dans le Sud-Ouest.</strong></p>
+      <p>Puis le tournant patrimonial : ingénieur d'affaires dans une compagnie internationale d'audit patrimonial. <strong>Certification AMF</strong>, obtention du <strong>CGPC</strong> — Certified General Practitioner in Financial Planning. Formation approfondie auprès de <strong>Thami Kabbaj.</strong></p>
+      <p>La fondation de <strong>Patrimonialis</strong> — cabinet de conseil en gestion de patrimoine indépendant, parmi les premiers en France à obtenir la <strong>certification ISO 22222</strong> : le standard éthique international le plus exigeant du secteur.</p>
+    </div>
+  </div>
+</div>
+
+<!-- La Traversée -->
+<div class="traversee entree">
+  <div class="traversee-inner">
+    <div class="bloc-header">
+      <div class="bloc-num" style="color:rgba(200,180,122,0.06);">03</div>
+      <div class="bloc-titre" style="color:var(--k-gold);opacity:0.5;">La Traversée</div>
+    </div>
+    <div class="traversee-corps">
+      <p>Une nuit noire. Celle que peu traversent et que moins encore assument publiquement.</p>
+      <p>Jean-Luc Manzaroli n'efface pas cette période. Il la porte comme matière première — parce qu'un homme qui n'a pas traversé ne peut pas transmettre. Parce que la crédibilité la plus rare n'est pas celle des titres, mais celle de celui qui a tout perdu et qui revient — avec la Foi comme boussole, pas la peur comme moteur.</p>
+      <p><strong>De cette traversée naît Krysopée. Non pas malgré elle — à cause d'elle.</strong></p>
+    </div>
+  </div>
+</div>
+
+<div class="blocs" style="padding-top:0;">
+  <div class="bloc entree">
+    <div class="bloc-header">
+      <div class="bloc-num">04</div>
+      <div class="bloc-titre">L'Homme</div>
+    </div>
+    <div class="bloc-corps">
+      <p>Au-delà des marchés, Jean-Luc Manzaroli est un lecteur, un écrivain, un homme de Foi. Tout au long de son cheminement initiatique, au sein de plusieurs Traditions, il a reçu la reconnaissance de ses pairs.</p>
+      <p>La création de chants sacrés — à l'intersection de la tradition hermétique et des outils contemporains — est l'une de ses expressions les plus personnelles. Le Verbe comme vibration. La beauté comme voie.</p>
+      <p>Ce que Jean-Luc transmet à sa lignée n'est pas une fortune. C'est <strong>la qualité de l'homme qu'il devient.</strong></p>
+    </div>
+  </div>
+</div>
+
+<div class="sep"><div class="sep-line"></div><div class="sep-sym">·</div><div class="sep-line"></div></div>
+
+<!-- Nemini Teneri -->
+<div class="nemini-wrap">
+  <div class="nemini-inner">
+    <div class="entree">
+      <span class="nemini-overline">La Vision · Nemini Teneri</span>
+      <h2 class="nemini-titre">N'être tenu<br>par personne.</h2>
+      <p class="nemini-corps">Nemini Teneri — <em>en latin : n'être tenu envers personne.</em> Pas une posture d'arrogance. Une déclaration de liberté intérieure.</p>
+      <p class="nemini-corps">Être tenu par ses engagements choisis — et uniquement par eux. Ni par la peur du marché, ni par le regard des autres, ni par les injonctions d'un monde qui confond la conformité avec la prudence.</p>
+      <p class="nemini-corps">C'est depuis cette liberté que Krysopée opère, publie, transmet — et accompagne ceux qui cherchent la même chose.</p>
+    </div>
+    <div class="nemini-blocs entree d1">
+      <div class="nemini-bloc">
+        <span class="nemini-bloc-sym">☉</span>
+        <div class="nemini-bloc-titre">La liberté</div>
+        <p class="nemini-bloc-corps">Construire en dehors des structures qui contraignent. Opérer selon ses propres règles, choisies par conviction.</p>
+      </div>
+      <div class="nemini-bloc">
+        <span class="nemini-bloc-sym">☿</span>
+        <div class="nemini-bloc-titre">La responsabilité</div>
+        <p class="nemini-bloc-corps">La liberté sans responsabilité n'est qu'une fuite. Nemini Teneri exige d'assumer pleinement ce qu'on choisit de construire.</p>
+      </div>
+      <div class="nemini-bloc">
+        <span class="nemini-bloc-sym">🜔</span>
+        <div class="nemini-bloc-titre">La transmission</div>
+        <p class="nemini-bloc-corps">Ce qui se construit dans la liberté et la responsabilité mérite d'être transmis. Pas légué — transmis, vivant.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Citation finale -->
+<section class="resonance entree">
+  <span class="resonance-sym">☉ ☿</span>
+  <p class="resonance-texte">"De la rigueur naît la liberté.<br>De la conscience naît la maîtrise.<br>Et du marché — <em>le miroir de soi.</em>"</p>
+  <span class="resonance-devise">Nemini Teneri · ☉</span>
+</section>
+
+<footer>
+  <a class="foot-nom" href="index.html">Krysopée</a>
+  <span class="foot-devise">☉ · Nemini Teneri · ☿</span>
+  <nav class="foot-liens">
+    <a href="#">Substack</a><a href="#">X</a><a href="#">LinkedIn</a>
+  </nav>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vu');obs.unobserve(e.target);}});},{threshold:0.07});
+document.querySelectorAll('.entree').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
