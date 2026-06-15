@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Cénacle · Krysopée</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="Le Cénacle — espace de rencontre entre Krysopée et ses membres. Accès réservé aux abonnés d'Aurum Nostrum sur candidature.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.cen-hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;border-bottom:0.5px solid var(--bord);}
+.cen-hero-g{padding:10rem 5rem 8rem 4rem;border-right:0.5px solid var(--bord);display:flex;flex-direction:column;justify-content:space-between;}
+.cen-hero-d{display:flex;flex-direction:column;justify-content:center;padding:6rem 4rem;background:rgba(200,180,122,0.02);gap:3rem;}
+.cen-eyebrow{font-family:'Space Mono',monospace;font-size:0.45rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--or);opacity:0.5;margin-bottom:2rem;}
+.cen-h1{font-family:'Lora',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(2.4rem,4vw,3.8rem);line-height:1.1;color:var(--text);margin-bottom:2.5rem;}
+.cen-sous{font-family:'Crimson Pro',serif;font-size:1.05rem;font-weight:300;line-height:1.9;color:var(--text-sec);max-width:420px;margin-bottom:4rem;}
+.cen-devise{font-family:'Space Mono',monospace;font-size:0.42rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--or);opacity:0.6;}
+.cen-sigil{font-family:'Cinzel',serif;font-size:5rem;color:var(--or);opacity:0.05;letter-spacing:0.2em;}
+.cen-bloc{border-left:1px solid rgba(200,180,122,0.15);padding:2rem 0 2rem 2.5rem;}
+.cen-bloc-label{font-family:'Space Mono',monospace;font-size:0.38rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--or);opacity:0.4;margin-bottom:0.8rem;}
+.cen-bloc-texte{font-family:'Lora',Georgia,serif;font-style:italic;font-size:1rem;line-height:1.7;color:rgba(240,230,200,0.22);}
+.cen-bloc-texte em{color:rgba(200,180,122,0.4);}
+.cen-axiome{padding:7rem 4rem;text-align:center;background:var(--k-bg-2);border-bottom:0.5px solid var(--bord);}
+.cen-axiome-t{font-family:'Lora',Georgia,serif;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.85rem);line-height:1.55;color:rgba(240,230,200,0.3);max-width:700px;margin:0 auto 1.5rem;}
+.cen-axiome-t em{color:rgba(200,180,122,0.46);}
+.cen-axiome-sig{font-family:'Space Mono',monospace;font-size:0.38rem;letter-spacing:0.32em;text-transform:uppercase;color:rgba(200,180,122,0.2);}
+.cen-label{font-family:'Space Mono',monospace;font-size:0.42rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--or);opacity:0.45;margin-bottom:1rem;}
+.cen-h2{font-family:'Lora',Georgia,serif;font-weight:400;font-size:1.55rem;line-height:1.2;color:var(--text);}
+.cen-h2 em{font-style:italic;color:var(--or);}
+.cen-corps{font-family:'Crimson Pro',serif;font-size:1.02rem;font-weight:300;line-height:1.95;color:var(--text-sec);margin-bottom:1.3rem;}
+.cen-corps em{font-style:italic;color:rgba(240,230,200,0.75);}
+.cen-section{padding:8rem 4rem;border-bottom:0.5px solid var(--bord);}
+.cen-2col{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:7rem;align-items:start;}
+.cen-ce-que{display:flex;flex-direction:column;gap:0;border-top:0.5px solid var(--bord-fin);margin-top:2rem;}
+.cen-item{display:flex;gap:1.5rem;align-items:baseline;padding:1rem 0;border-bottom:0.5px solid var(--bord-fin);}
+.cen-item-sym{font-size:0.85rem;color:var(--or);opacity:0.4;flex-shrink:0;width:1.2rem;}
+.cen-item-t{font-family:'Crimson Pro',serif;font-size:0.95rem;font-weight:300;font-style:italic;color:var(--text-sec);line-height:1.7;}
+.cen-item-t em{color:rgba(240,230,200,0.7);font-style:normal;}
+.cen-pas{border-top:0.5px solid var(--bord-fin);margin-top:1.5rem;padding-top:1.5rem;}
+.cen-pas-label{font-family:'Space Mono',monospace;font-size:0.38rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(200,180,122,0.25);margin-bottom:0.8rem;}
+.cen-pas-t{font-family:'Crimson Pro',serif;font-size:0.88rem;font-style:italic;color:rgba(240,230,200,0.2);line-height:1.8;}
+.cen-acces{padding:8rem 4rem;border-bottom:0.5px solid var(--bord);background:var(--k-bg-2);}
+.cen-acces-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:start;}
+.cen-acces-etapes{display:flex;flex-direction:column;gap:0;}
+.cen-etape{display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;padding:1.5rem 0;border-bottom:0.5px solid var(--bord-fin);}
+.cen-etape:last-child{border-bottom:none;}
+.cen-etape-num{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--or);opacity:0.25;line-height:1.2;}
+.cen-etape-corps{}
+.cen-etape-titre{font-family:'Lora',Georgia,serif;font-size:1rem;color:var(--text);margin-bottom:0.3rem;}
+.cen-etape-desc{font-family:'Crimson Pro',serif;font-size:0.88rem;font-weight:300;font-style:italic;color:var(--text-sec);line-height:1.7;}
+.cen-fides{border:0.5px solid rgba(200,180,122,0.15);padding:2.5rem;}
+.cen-fides-label{font-family:'Space Mono',monospace;font-size:0.38rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--or);opacity:0.35;margin-bottom:1rem;}
+.cen-fides-titre{font-family:'Lora',Georgia,serif;font-style:italic;font-size:1.2rem;color:var(--text);margin-bottom:1rem;line-height:1.3;}
+.cen-fides-texte{font-family:'Crimson Pro',serif;font-size:0.92rem;font-weight:300;line-height:1.85;color:var(--text-sec);margin-bottom:1rem;}
+.cen-fides-texte em{font-style:italic;color:rgba(240,230,200,0.65);}
+.cen-fides-note{font-family:'Space Mono',monospace;font-size:0.35rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(200,180,122,0.25);line-height:1.8;}
+.cen-cta-section{padding:7rem 4rem;border-bottom:0.5px solid var(--bord);}
+.cen-cta-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:4rem;flex-wrap:wrap;}
+.cen-cta-texte{font-family:'Lora',Georgia,serif;font-style:italic;font-size:1.4rem;line-height:1.4;color:rgba(240,230,200,0.55);max-width:560px;}
+.cen-cta-texte em{color:var(--or);}
+.btn-cenacle{font-family:'Space Mono',monospace;font-size:0.42rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--or);text-decoration:none;border:0.5px solid rgba(200,180,122,0.35);padding:0.9rem 2rem;transition:all 0.3s;white-space:nowrap;}
+.btn-cenacle:hover{background:rgba(200,180,122,0.06);border-color:rgba(200,180,122,0.6);}
+.cen-legal{font-family:'Space Mono',monospace;font-size:0.35rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,180,122,0.18);line-height:1.9;margin-top:3rem;max-width:700px;}
+.entree{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.entree.vu{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}
+@media(max-width:900px){
+  .cen-hero{grid-template-columns:1fr;min-height:auto;}
+  .cen-hero-g{padding:7rem 1.5rem 4rem;border-right:none;border-bottom:0.5px solid var(--bord);}
+  .cen-hero-d{padding:3rem 1.5rem;}
+  .cen-2col{grid-template-columns:1fr;gap:2rem;}
+  .cen-acces-inner{grid-template-columns:1fr;gap:3rem;}
+  .cen-section,.cen-acces,.cen-cta-section{padding-left:1.5rem;padding-right:1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-marque">Krysopée</a>
+  <ul class="nav-links">
+    <li><a href="index.html#activites" class="active">Activités</a></li>
+    <li><a href="phases-alchimiques.html">Les Phases</a></li>
+    <li><a href="index.html#fides" class="fides">Fides &amp; Co</a></li>
+    <li><a href="index.html#publications">Chrysopeia</a></li>
+    <li><a href="fondateur.html">Fondateur</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-contact">Entrer en contact</a>
+</nav>
+
+<!-- HERO -->
+<section class="cen-hero">
+  <div class="cen-hero-g">
+    <div class="cen-sigil">◯</div>
+    <div>
+      <p class="cen-eyebrow">Le Cénacle · Cercle de membres</p>
+      <h1 class="cen-h1">Un espace.<br>Des membres.<br>Une œuvre partagée.</h1>
+      <p class="cen-sous">Le Cénacle est le point de rencontre entre Krysopée et ceux qui ont choisi d'aller plus loin qu'une lecture — ceux qui s'engagent dans la durée, par alignement de valeurs avant toute autre considération.</p>
+      <span class="cen-devise">Nemini Teneri · ☉ · ☿</span>
+    </div>
+  </div>
+  <div class="cen-hero-d">
+    <div class="cen-bloc">
+      <p class="cen-bloc-label">L'entrée</p>
+      <p class="cen-bloc-texte">"Le Cénacle n'est pas un produit à acheter. <em>C'est une relation à mériter</em> — par la lecture, par l'engagement, par la candidature."</p>
+    </div>
+    <div class="cen-bloc">
+      <p class="cen-bloc-label">La condition première</p>
+      <p class="cen-bloc-texte">Être abonné actif à <em>Aurum Nostrum</em>, la correspondance privée de Krysopée. <em>Ceux qui lisent, qui traversent, qui reviennent</em> — ce sont eux que le Cénacle accueille.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AXIOME -->
+<section class="cen-axiome">
+  <p class="cen-axiome-t">"Il existe un espace entre la lecture publique et la transmission intime.<br>Un lieu où ceux qui ont choisi de s'engager se retrouvent —<br><em>pas pour consommer, mais pour appartenir.</em>"</p>
+  <p class="cen-axiome-sig">Krysopée · Le Cénacle</p>
+</section>
+
+<!-- CE QUE C'EST -->
+<section class="cen-section">
+  <div class="cen-2col">
+    <div class="entree">
+      <p class="cen-label">Ce que c'est</p>
+      <h2 class="cen-h2">Un cercle,<br><em>au sens propre</em></h2>
+    </div>
+    <div class="entree d1">
+      <p class="cen-corps">Le Cénacle réunit ceux qui ont traversé la porte d'Aurum Nostrum et décidé d'aller plus loin. Ce n'est pas un groupe de signaux, ni une communauté de trading, ni un forum. C'est un <em>espace de rencontre vivant</em> — entre des personnes qui partagent une même exigence : la cohérence entre la méthode et l'homme qui l'exerce.</p>
+      <div class="cen-ce-que">
+        <div class="cen-item">
+          <span class="cen-item-sym">☉</span>
+          <span class="cen-item-t">Accès aux événementiels Krysopée — rencontres, séminaires, sessions de travail. <em>Certains gratuits, d'autres payants.</em> Tous réservés aux membres.</span>
+        </div>
+        <div class="cen-item">
+          <span class="cen-item-sym">☿</span>
+          <span class="cen-item-t">Une communauté de pairs engagés dans la même exigence — <em>pas une audience, une présence.</em></span>
+        </div>
+        <div class="cen-item">
+          <span class="cen-item-sym">🜍</span>
+          <span class="cen-item-t">Accès prioritaire aux formules d'accompagnement III et Premium+ — <em>réservées en priorité aux membres du Cénacle.</em></span>
+        </div>
+        <div class="cen-item">
+          <span class="cen-item-sym">🜔</span>
+          <span class="cen-item-t">En temps voulu, et une fois la structure réglementaire constituée, la possibilité de rejoindre <em>Fides &amp; Co</em> dans le cadre d'un véhicule d'investissement encadré.</span>
+        </div>
+      </div>
+      <div class="cen-pas">
+        <p class="cen-pas-label">Ce que le Cénacle n'est pas</p>
+        <p class="cen-pas-t">Ce n'est pas un forum. Ce n'est pas un groupe de signaux. Ce n'est pas une promesse de performance. Ce n'est pas un accès à la Suite K-Équinoxe. Krysopée se réserve le droit de refuser ou de ne pas renouveler l'accès sans avoir à s'en justifier.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMENT REJOINDRE -->
+<section class="cen-acces">
+  <div class="cen-acces-inner">
+    <div class="entree">
+      <p class="cen-label">Rejoindre le Cénacle</p>
+      <h2 class="cen-h2">Trois étapes,<br><em>un seul critère</em></h2>
+      <p class="cen-corps" style="margin-top:1.5rem;">L'alignement des valeurs prime sur tout autre considération. Le Cénacle grandit lentement, par conviction — pas par volume.</p>
+      <div class="cen-acces-etapes" style="margin-top:2rem;">
+        <div class="cen-etape">
+          <span class="cen-etape-num">I</span>
+          <div class="cen-etape-corps">
+            <p class="cen-etape-titre">S'abonner à Aurum Nostrum</p>
+            <p class="cen-etape-desc">La correspondance privée de Krysopée. Condition première et non négociable. Ceux qui ne lisent pas ne candidatent pas.</p>
+          </div>
+        </div>
+        <div class="cen-etape">
+          <span class="cen-etape-num">II</span>
+          <div class="cen-etape-corps">
+            <p class="cen-etape-titre">Soumettre une candidature</p>
+            <p class="cen-etape-desc">Via le formulaire de contact — intention "Rejoindre le Cénacle". Partager son parcours, sa pratique, ce qui l'amène ici.</p>
+          </div>
+        </div>
+        <div class="cen-etape">
+          <span class="cen-etape-num">III</span>
+          <div class="cen-etape-corps">
+            <p class="cen-etape-titre">Réponse avec discernement</p>
+            <p class="cen-etape-desc">Krysopée répond à chaque candidature. L'acceptation n'est pas automatique. Un premier échange peut être proposé avant décision.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="entree d1">
+      <div class="cen-fides">
+        <p class="cen-fides-label">Fides &amp; Co · Perspective</p>
+        <h3 class="cen-fides-titre">La porte vers Fides &amp; Co</h3>
+        <p class="cen-fides-texte">Le Cénacle est l'antichambre naturelle de Fides &amp; Co. <em>Une fois l'amorçage terminé et la structure réglementaire constituée</em>, les membres du Cénacle auront la priorité pour rejoindre le compte live de référence dans un cadre collectif encadré.</p>
+        <p class="cen-fides-texte"><em>Ce n'est pas une promesse d'investissement. C'est une direction.</em></p>
+        <p class="cen-fides-note">Fides &amp; Co · Lancement à venir<br>Structure réglementaire en cours de constitution<br>Aucune sollicitation d'investissement à ce stade</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cen-cta-section">
+  <div class="cen-cta-inner">
+    <p class="cen-cta-texte">"Rejoindre le Cénacle, c'est entrer dans <em>une œuvre en cours.</em> Pas comme spectateur."</p>
+    <a href="index.html#contact" class="btn-cenacle">Soumettre une candidature ☉</a>
+  </div>
+  <p class="cen-legal" style="max-width:1100px;margin:3rem auto 0;">Krysopée n'est pas un conseiller en investissement financier. Le Cénacle ne constitue pas une offre d'investissement, un appel public à l'épargne ou une proposition de gestion financière. Toute perspective concernant Fides &amp; Co est conditionnelle à la constitution d'une structure réglementaire adaptée. Nemini Teneri.</p>
+</section>
+
+<footer>
+  <a href="index.html" class="foot-nom">Krysopée</a>
+  <span class="foot-devise">☉ · Nemini Teneri · ☿</span>
+  <div class="foot-liens">
+    <a href="https://chrysopeia.substack.com" target="_blank" rel="noopener">Substack</a>
+    <a href="https://x.com/krysopee" target="_blank" rel="noopener">X</a>
+    <a href="https://www.linkedin.com/in/krysopee/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="confidentialite.html">Confidentialité</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <span class="foot-copy">© 2026 Krysopée — Jean-Luc Manzaroli</span>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vu'); obs.unobserve(e.target); } });
+}, { threshold: 0.07 });
+document.querySelectorAll('.entree').forEach(el => obs.observe(el));
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.style.background = window.scrollY > 40 ? 'rgba(14,12,8,0.97)' : 'transparent';
+});
+</script>
+</body>
+</html>
