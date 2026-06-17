@@ -1,5 +1,5 @@
 /* ════════════════════════════════════════════════════════
-   Krysopée · style.css · Système de design v2.0
+   Krysopée · style.css · Système de design v2.1 AMÉLIORÉ
    Juin 2026 · Nemini Teneri
    ════════════════════════════════════════════════════════ */
 
@@ -38,7 +38,7 @@ body {
   color: var(--text);
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.75;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -87,19 +87,19 @@ h3, .t-h3 {
 .t-surtitre, .act-label {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--or);
 }
 
-/* Corps — Poppins 300 */
+/* Corps — Poppins 300 — LISIBILITÉ AUGMENTÉE */
 p, .t-corps {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   line-height: 1.9;
-  color: var(--text-sec);
+  color: rgba(138,128,112,0.75);
 }
 
 /* Citation — Lora italic or */
@@ -153,10 +153,10 @@ nav {
 .nav-links a {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-sec);
+  color: rgba(138,128,112,0.65);
   text-decoration: none;
   transition: color 0.25s;
 }
@@ -167,10 +167,10 @@ nav {
 .nav-contact {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-sec);
+  color: rgba(138,128,112,0.65);
   text-decoration: none;
   border: 0.5px solid var(--bord-pale);
   padding: 0.45rem 1.1rem;
@@ -185,7 +185,7 @@ nav {
 .btn-or {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--k-black);
@@ -202,7 +202,7 @@ nav {
 .btn-or-inv {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--or);
@@ -222,10 +222,10 @@ nav {
 .btn-lien {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-sec);
+  color: rgba(138,128,112,0.65);
   text-decoration: none;
   border-bottom: 0.5px solid var(--bord-pale);
   padding-bottom: 2px;
@@ -242,10 +242,10 @@ nav {
 .sym {
   color: var(--or);
   opacity: 0.7;
-  font-size: 1em;
+  font-size: 1.8em;
 }
 .sym-sm {
-  font-size: 0.8em;
+  font-size: 1.2em;
   color: var(--or);
   opacity: 0.55;
 }
@@ -256,7 +256,7 @@ nav {
   color: var(--or);
   opacity: 0.3;
   letter-spacing: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   padding: 1rem 0;
 }
 
@@ -267,7 +267,7 @@ nav {
   gap: 0.5rem;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--or);
@@ -312,7 +312,7 @@ nav {
   background: var(--bord-pale);
 }
 .sep-section span {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: var(--or);
   opacity: 0.4;
 }
@@ -340,9 +340,9 @@ nav {
 .page-hero-sous {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: 0.88rem;
+  font-size: 1.1rem;
   line-height: 1.9;
-  color: var(--text-sec);
+  color: rgba(138,128,112,0.75);
   margin-bottom: 2.5rem;
 }
 .page-hero-card {
@@ -354,19 +354,19 @@ nav {
 .page-hero-card-texte {
   font-family: 'Lora', Georgia, serif;
   font-style: italic;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   line-height: 1.7;
-  color: rgba(240,230,200,0.7);
+  color: rgba(240,230,200,0.85);
   margin-bottom: 1.2rem;
 }
 .page-hero-card-sig {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--or-2);
-  opacity: 0.55;
+  opacity: 0.65;
 }
 
 /* ── Sections contenu ───────────────────────────────────── */
@@ -403,7 +403,7 @@ nav {
 .col-titre {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text);
@@ -412,9 +412,9 @@ nav {
 .col-corps {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   line-height: 1.85;
-  color: var(--text-sec);
+  color: rgba(138,128,112,0.75);
 }
 
 /* ── Carte activité ─────────────────────────────────────── */
@@ -434,7 +434,7 @@ nav {
 .carte-num {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 0.58rem;
+  font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--or);
@@ -444,22 +444,22 @@ nav {
 .carte-titre {
   font-family: 'Lora', Georgia, serif;
   font-weight: 400;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--text);
   margin-bottom: 0.3rem;
 }
 .carte-sous {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: 0.78rem;
-  color: var(--text-sec);
+  font-size: 0.85rem;
+  color: rgba(138,128,112,0.75);
   margin-bottom: 1.2rem;
   font-style: italic;
 }
 .carte-lien {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 0.58rem;
+  font-size: 0.7rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--or);
@@ -511,9 +511,9 @@ footer {
 .foot-devise {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   letter-spacing: 0.28em;
-  color: var(--text-sec);
+  color: rgba(138,128,112,0.55);
   opacity: 0.4;
 }
 .foot-liens {
@@ -525,10 +525,10 @@ footer {
 .foot-liens a {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--text-sec);
+  color: rgba(138,128,112,0.55);
   text-decoration: none;
   opacity: 0.45;
   transition: opacity 0.25s;
@@ -537,9 +537,9 @@ footer {
 .foot-copy {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: 0.52rem;
+  font-size: 0.62rem;
   letter-spacing: 0.08em;
-  color: var(--text-sec);
+  color: rgba(138,128,112,0.45);
   opacity: 0.3;
 }
 
@@ -552,17 +552,17 @@ footer {
 .passage-eyebrow {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(200,180,122,0.45);
+  color: rgba(200,180,122,0.55);
   margin-bottom: 1rem;
 }
 .passage-texte {
   font-family: 'Lora', Georgia, serif;
   font-style: italic;
-  font-size: 1rem;
-  color: rgba(240,230,200,0.4);
+  font-size: 1.1rem;
+  color: rgba(240,230,200,0.55);
   line-height: 1.8;
   margin-bottom: 2.5rem;
 }
@@ -597,17 +597,17 @@ footer {
 .passage-titre {
   font-family: 'Lora', Georgia, serif;
   font-weight: 400;
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--k-ivory);
   margin-bottom: 0.25rem;
 }
 .passage-sous {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
-  font-size: 0.54rem;
+  font-size: 0.65rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(200,180,122,0.55);
+  color: rgba(200,180,122,0.65);
   margin-bottom: 0.85rem;
   line-height: 1.6;
 }
@@ -615,7 +615,7 @@ footer {
   display: inline-block;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  font-size: 0.56rem;
+  font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(200,180,122,0.8);
