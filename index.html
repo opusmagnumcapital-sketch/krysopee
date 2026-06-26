@@ -1069,8 +1069,16 @@ if (form) {
 
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vu'); obs.unobserve(e.target); } });
-}, { threshold: 0.07 });
-document.querySelectorAll('.entree').forEach(el => obs.observe(el));
+}, { threshold: 0.07, rootMargin: '0px 0px -10px 0px' });
+document.querySelectorAll('.entree').forEach(el => {
+  // Si l'élément est déjà dans le viewport au chargement, l'activer immédiatement
+  const rect = el.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    el.classList.add('vu');
+  } else {
+    obs.observe(el);
+  }
+});
 
 document.getElementById('lettre-btn').addEventListener('click', function () {
   const email = document.getElementById('lettre-email').value.trim();
