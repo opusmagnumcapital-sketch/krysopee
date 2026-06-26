@@ -31,6 +31,9 @@
   --encre:     var(--k-ivory);
   --gris-chaud: #8A8070;
   --or-pale:   #C4A84F;
+  --brun:      #12100A;
+  --parchemin: #F0E6C8;
+  --bord:      var(--k-border);
 }
 
 /* ── Reset ──────────────────────────────────────────────── */
