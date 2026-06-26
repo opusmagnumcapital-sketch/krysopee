@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Recherche & Indicateurs IA · Krysopée</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<meta name="description" content="Développement d'indicateurs propriétaires et recherche algorithmique — suite K-Équinoxe, IA appliquée aux marchés.">
+<meta name="description" content="Suite K-Équinoxe — indicateurs propriétaires développés en interne, IA appliquée aux marchés, recherche continue en conditions réelles.">
 <link rel="canonical" href="https://krysopee.capital/recherche.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://krysopee.capital/recherche.html">
-<meta property="og:title" content="Recherche &amp; Indicateurs IA · Krysopée">
-<meta property="og:description" content="Développement d'indicateurs propriétaires et recherche algorithmique — suite K-Équinoxe, IA appliquée aux marchés.">
+<meta property="og:title" content="Recherche & Indicateurs IA · Krysopée">
+<meta property="og:description" content="Suite K-Équinoxe — indicateurs propriétaires développés en interne, IA appliquée aux marchés, recherche continue en conditions réelles.">
 <meta property="og:image" content="https://krysopee.capital/logo-bandeau.png">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Krysopée">
@@ -21,12 +21,125 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Lora:ital,wght@0,400;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="parcours.js"></script>
+<style>
+/* ── Suite K-Équinoxe ── */
+.suite-intro {
+  max-width: 1200px; margin: 0 auto; padding: 5rem 4rem 0;
+  border-top: 0.5px solid var(--bord);
+}
+.suite-intro-texte {
+  max-width: 680px;
+  font-family: 'Crimson Pro', serif; font-weight: 300; font-style: italic;
+  font-size: 1.15rem; line-height: 1.8; color: var(--gris-chaud);
+  margin-bottom: 5rem;
+}
+.suite-indicateurs {
+  max-width: 1200px; margin: 0 auto; padding: 0 4rem;
+  display: flex; flex-direction: column; gap: 0;
+}
+.indicateur {
+  display: grid; grid-template-columns: 80px 1fr 1fr;
+  gap: 4rem; align-items: start;
+  padding: 4rem 0;
+  border-bottom: 0.5px solid var(--bord);
+}
+.indicateur:last-child { border-bottom: none; }
+.ind-numero {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.12em;
+  color: var(--or); opacity: 0.35;
+  padding-top: 0.3rem;
+}
+.ind-gauche {}
+.ind-label {
+  font-family: 'Poppins', sans-serif; font-weight: 300;
+  font-size: 0.44rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--or); opacity: 0.5; margin-bottom: 1rem; display: block;
+}
+.ind-nom {
+  font-family: 'Crimson Pro', serif; font-size: 1.5rem;
+  font-weight: 400; font-style: italic;
+  color: var(--encre); line-height: 1.2; margin-bottom: 1rem;
+}
+.ind-accroche {
+  font-family: 'Poppins', sans-serif; font-weight: 300;
+  font-size: 0.82rem; line-height: 1.75;
+  color: var(--gris-chaud);
+}
+.ind-droite {}
+.ind-corps {
+  font-size: 0.95rem; font-weight: 300; line-height: 1.9;
+  color: var(--gris-chaud); margin-bottom: 1.5rem;
+}
+.ind-specs {
+  display: flex; flex-direction: column; gap: 0.6rem;
+  border-left: 1px solid rgba(196,168,79,0.15);
+  padding-left: 1.5rem; margin-top: 1.5rem;
+}
+.ind-spec {
+  font-family: 'Poppins', sans-serif; font-weight: 300;
+  font-size: 0.72rem; line-height: 1.6;
+  color: rgba(200,180,122,0.45);
+}
+.ind-spec strong {
+  font-weight: 400; color: rgba(200,180,122,0.7);
+}
+/* Encart philosophie */
+.suite-philosophie {
+  background: var(--brun); padding: 6rem 4rem;
+  margin-top: 2rem;
+}
+.suite-philo-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: center;
+}
+.suite-philo-titre {
+  font-family: 'Crimson Pro', serif; font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 300; font-style: italic;
+  color: var(--parchemin); line-height: 1.2; margin-bottom: 2rem;
+}
+.suite-philo-corps {
+  font-size: 0.95rem; font-weight: 300; line-height: 1.9;
+  color: rgba(245,240,232,0.5); margin-bottom: 1.2rem;
+}
+.suite-philo-corps em { font-style: italic; color: rgba(245,240,232,0.78); }
+.suite-philo-phases {
+  display: flex; flex-direction: column; gap: 1.2rem;
+}
+.suite-phase {
+  display: flex; align-items: start; gap: 1.2rem;
+  padding: 1rem 1.2rem;
+  border: 0.5px solid rgba(196,168,79,0.1);
+  background: rgba(196,168,79,0.03);
+}
+.suite-phase-sym {
+  font-size: 1rem; color: var(--or-pale); opacity: 0.6;
+  flex-shrink: 0; margin-top: 0.1rem;
+}
+.suite-phase-texte {
+  font-family: 'Poppins', sans-serif; font-weight: 300;
+  font-size: 0.78rem; line-height: 1.7; color: rgba(245,240,232,0.45);
+}
+.suite-phase-texte strong {
+  font-weight: 400; color: rgba(245,240,232,0.75);
+  display: block; margin-bottom: 0.2rem;
+}
+/* Responsive */
+@media (max-width: 900px) {
+  .suite-intro { padding: 4rem 1.5rem 0; }
+  .suite-indicateurs { padding: 0 1.5rem; }
+  .indicateur { grid-template-columns: 1fr; gap: 1.5rem; padding: 3rem 0; }
+  .ind-numero { padding-top: 0; }
+  .suite-philosophie { padding: 4rem 1.5rem; }
+  .suite-philo-inner { grid-template-columns: 1fr; gap: 4rem; }
+}
+</style>
 </head>
 <body>
 <nav id="nav">
-  <a href="index.html" class="nav-marque">Krysopée</a>
+  <a href="index.html" class="nav-marque"><img src="logo-k.webp" onerror="this.src='logo-k.png'" alt="Krysopée" style="height:36px;width:auto;vertical-align:middle;opacity:0.92;" /></a>
   <ul class="nav-links">
-    <li><a href="index.html#activites" class="active">Activités</a></li>
+    <li><a href="methode.html">La Méthode</a></li>
     <li><a href="index.html#fides" class="fides">Fides &amp; Co</a></li>
     <li><a href="index.html#publications">Publications</a></li>
     <li><a href="fondateur.html">Le Fondateur</a></li>
@@ -34,50 +147,133 @@
   <a href="index.html#contact" class="nav-contact">Entrer en contact</a>
 </nav>
 <div id="parcours-bandeau" class="parcours-bandeau" style="display:none;"></div>
+
+<!-- HERO -->
 <div class="page-hero">
-  <div class="entree">
+  <div>
     <p class="act-label">Activité 02 · Innovation · ☿</p>
-    <h1 class="page-hero-titre">Recherche<br><em>&amp; Indicateurs IA</em></h1>
-    <p class="page-hero-sous" data-ton="defaut">Développement d'indicateurs propriétaires alignés avec l'approche alchimique Krysopée — suite K-Équinoxe.</p>
-    <p class="page-hero-sous" data-ton="visible" style="display:none;">Développement d'indicateurs propriétaires — suite K-Équinoxe. Détection de phases de marché, IA appliquée à la reconnaissance de configurations, recherche continue en conditions réelles.</p>
-    <p class="page-hero-sous" data-ton="interieure" style="display:none;">Développement d'indicateurs propriétaires alignés avec l'approche alchimique Krysopée — suite K-Équinoxe. L'outil traduit en signaux ce que la méthode lit du marché et de l'homme qui le traverse.</p>
+    <h1 class="page-hero-titre">Suite<br><em>K-Équinoxe</em></h1>
+    <p class="page-hero-sous" data-ton="defaut">Trois indicateurs propriétaires développés en interne — nourris par la pratique quotidienne du trading live, alignés avec le cadre alchimique Krysopée.</p>
+    <p class="page-hero-sous" data-ton="visible" style="display:none;">Trois indicateurs propriétaires testés en conditions réelles sur les grands indices, l'or et les devises majeures. Ce qui fonctionne en live — pas en backtest théorique.</p>
+    <p class="page-hero-sous" data-ton="interieure" style="display:none;">Trois indicateurs propriétaires, alignés avec les quatre phases alchimiques. L'outil traduit en signaux ce que la méthode lit du marché — et de l'homme qui le traverse.</p>
     <a href="index.html#contact" class="btn-or" style="margin-right:1rem;">Prendre contact</a>
     <a href="index.html#activites" class="btn-lien">Toutes les activités →</a>
   </div>
-  <div class="entree d1">
+  <div>
     <div class="page-hero-card">
       <p class="page-hero-card-texte">L'intelligence artificielle ne remplace pas le jugement — elle l'affûte, quand elle est bien servie.</p>
       <p class="page-hero-card-sig">Krysopée · Nemini Teneri</p>
     </div>
   </div>
 </div>
-<div class="content-section">
-  <div class="three-cols entree">
-    <div class="col-card">
-      <p class="col-num">I</p>
-      <p class="col-titre">Suite K-Équinoxe</p>
-      <p class="col-corps" data-ton="defaut">Ensemble d'indicateurs propriétaires développés en interne, alignés avec le cadre alchimique Krysopée. Détection de phases de marché, points d'équilibre structurels et zones de transmutation.</p>
-      <p class="col-corps" data-ton="visible" style="display:none;">Ensemble d'indicateurs propriétaires développés en interne. Détection de phases de marché, points d'équilibre structurels — testés et utilisés en conditions de trading réelles, pas en backtest théorique.</p>
-      <p class="col-corps" data-ton="interieure" style="display:none;">Ensemble d'indicateurs propriétaires développés en interne, alignés avec le cadre alchimique Krysopée. Détection de phases de marché, points d'équilibre structurels et zones de transmutation — l'outil au service du cadre, jamais l'inverse.</p>
+
+<!-- INTRO SUITE -->
+<div class="suite-intro">
+  <p class="suite-intro-texte">La Suite K-Équinoxe n'est pas un produit. C'est l'outillage interne de Krysopée — construit trade après trade, affiné par les conditions réelles du marché. Chaque indicateur répond à une question précise. Aucun ne prétend répondre à toutes.</p>
+</div>
+
+<!-- LES TROIS INDICATEURS -->
+<div class="suite-indicateurs">
+
+  <!-- K-EQUINOXE-DASHBOARD -->
+  <div class="indicateur">
+    <p class="ind-numero">01</p>
+    <div class="ind-gauche">
+      <span class="ind-label">Tableau de bord · Vision globale</span>
+      <p class="ind-nom">K-Équinoxe<br>Dashboard</p>
+      <p class="ind-accroche">L'état du marché en un coup d'œil — sur tous les timeframes simultanément.</p>
     </div>
-    <div class="col-card">
-      <p class="col-num">II</p>
-      <p class="col-titre">Intelligence artificielle</p>
-      <p class="col-corps">IA appliquée à l'analyse technique et à la reconnaissance de configurations de marché. Un outil au service d'une méthode — jamais un substitut au jugement humain et à la lecture contextuelle.</p>
-    </div>
-    <div class="col-card">
-      <p class="col-num">III</p>
-      <p class="col-titre">Recherche continue</p>
-      <p class="col-corps">Un processus de recherche permanent, nourri par la pratique quotidienne du trading compte propre. Ce qui fonctionne en live, pas en backtest théorique déconnecté de la réalité des marchés.</p>
+    <div class="ind-droite">
+      <p class="ind-corps">Le Dashboard est la tour de contrôle de la Suite. Il agrège en temps réel la lecture de plusieurs unités de temps — du court terme à la structure hebdomadaire — et synthétise l'état de chaque marché en une grille lisible d'un seul regard.</p>
+      <p class="ind-corps">Conçu pour éviter le biais de la chandelle unique : ce qui semble un signal sur M5 peut être un simple bruit dans la structure H4. Le Dashboard pose le contexte avant toute décision.</p>
+      <div class="ind-specs">
+        <p class="ind-spec"><strong>Fonction principale</strong> Lecture multi-timeframes synchronisée</p>
+        <p class="ind-spec"><strong>Usage</strong> Qualification du contexte de marché avant entrée en position</p>
+        <p class="ind-spec"><strong>Marchés</strong> DAX · CAC 40 · S&amp;P 500 · Or · Devises majeures</p>
+      </div>
     </div>
   </div>
-  <div class="cta-section entree" style="margin-top:4rem;">
-    <div class="cta-inner">
-      <p class="cta-texte">"La recherche se prouve dans la durée —<br>trade après trade, sous le <em>regard des faits.</em>"</p>
-      <a href="index.html#fides" class="btn-or-inv" onclick="choisirParcours('visible')">Voir la performance live Fides &amp; Co ☉</a>
+
+  <!-- K-EQUINOXE-BJHA-RSI-DASH -->
+  <div class="indicateur">
+    <p class="ind-numero">02</p>
+    <div class="ind-gauche">
+      <span class="ind-label">Momentum · Biais directionnel</span>
+      <p class="ind-nom">K-Équinoxe<br>BJHA-RSI</p>
+      <p class="ind-accroche">Le biais directionnel du marché, lu à travers la dynamique Heikin Ashi et le momentum RSI.</p>
+    </div>
+    <div class="ind-droite">
+      <p class="ind-corps">Cet indicateur combine deux lectures complémentaires : la dynamique des bougies Heikin Ashi — qui lisse le bruit et révèle la tendance sous-jacente — et le RSI comme mesure du momentum. Leur croisement produit un biais directionnel qualifié, ni mécanique ni subjectif.</p>
+      <p class="ind-corps">Une colonne verticale de boutons interactifs permet de basculer entre les unités de temps en un clic, sans quitter le graphique. Le timer intégré indique le temps restant sur la bougie en cours — information critique pour le timing d'entrée.</p>
+      <div class="ind-specs">
+        <p class="ind-spec"><strong>Fonction principale</strong> Biais directionnel Heikin Ashi + RSI</p>
+        <p class="ind-spec"><strong>Usage</strong> Confirmation de tendance et timing d'entrée</p>
+        <p class="ind-spec"><strong>Interface</strong> 9 timeframes interactifs · Timer intégré · Ligne d'ouverture</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- K-EQUINOXE-GLOBAL -->
+  <div class="indicateur">
+    <p class="ind-numero">03</p>
+    <div class="ind-gauche">
+      <span class="ind-label">Structure · Zones clés</span>
+      <p class="ind-nom">K-Équinoxe<br>Global</p>
+      <p class="ind-accroche">La cartographie structurelle du marché — niveaux, zones d'équilibre, points de bascule.</p>
+    </div>
+    <div class="ind-droite">
+      <p class="ind-corps">K-Équinoxe Global opère à l'échelle macro : il identifie les zones structurelles significatives du marché — points d'équilibre, niveaux de confluence, zones de transmutation potentielle — et les rend visibles sur le graphique sans encombrer la lecture.</p>
+      <p class="ind-corps">Il ne prédit pas. Il cartographie ce que le marché a déjà écrit dans sa structure — pour que le trader sache où il se trouve avant de décider où il va.</p>
+      <div class="ind-specs">
+        <p class="ind-spec"><strong>Fonction principale</strong> Cartographie des zones structurelles clés</p>
+        <p class="ind-spec"><strong>Usage</strong> Définition des niveaux de référence et des zones de décision</p>
+        <p class="ind-spec"><strong>Architecture</strong> 17 buffers · Rendu optimisé MQL5</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PHILOSOPHIE ALCHIMIQUE -->
+<div class="suite-philosophie">
+  <div class="suite-philo-inner">
+    <div>
+      <p class="suite-philo-titre">L'outil traduit<br>ce que la méthode lit.</p>
+      <p class="suite-philo-corps">Les trois indicateurs ne fonctionnent pas en isolation. Ils forment un système de lecture cohérent, aligné avec les quatre phases alchimiques qui structurent la méthode Krysopée.</p>
+      <p class="suite-philo-corps"><em>Le Dashboard pose le contexte.</em> Le BJHA-RSI qualifie le momentum. Le Global ancre la structure. Ensemble, ils répondent à la question que tout trader doit se poser avant d'agir : où suis-je, et dans quel état est le marché ?</p>
+      <p class="suite-philo-corps">Usage interne exclusif — ces outils ne sont pas commercialisés. Ils sont au service de la méthode, jamais son substitut.</p>
+    </div>
+    <div class="suite-philo-phases">
+      <div class="suite-phase">
+        <span class="suite-phase-sym">☽</span>
+        <p class="suite-phase-texte"><strong>Nigredo · Dissolution</strong> Incertitude structurelle, absence de tendance lisible. Le Dashboard signale le chaos — ne pas forcer.</p>
+      </div>
+      <div class="suite-phase">
+        <span class="suite-phase-sym">☉</span>
+        <p class="suite-phase-texte"><strong>Albedo · Purification</strong> Structure naissante, signal confirmé. Le BJHA-RSI valide le biais — le timing devient possible.</p>
+      </div>
+      <div class="suite-phase">
+        <span class="suite-phase-sym">△</span>
+        <p class="suite-phase-texte"><strong>Citrinitas · Illumination</strong> Tendance établie, momentum confirmé. Le Global ancre les niveaux — la gestion du risque est souveraine.</p>
+      </div>
+      <div class="suite-phase">
+        <span class="suite-phase-sym">🜍</span>
+        <p class="suite-phase-texte"><strong>Rubedo · Transmutation</strong> Retournement ou clôture de cycle. Les trois indicateurs convergent — le trader intègre et recommence.</p>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- CTA -->
+<div class="content-section">
+  <div class="cta-section" style="margin-top:0;">
+    <div class="cta-inner">
+      <p class="cta-texte">\"La recherche se prouve dans la durée —<br>trade après trade, sous le <em>regard des faits.</em>\"</p>
+      <a href="index.html#fides" class="btn-or-inv">Voir la performance live Fides &amp; Co ☉</a>
+    </div>
+  </div>
+</div>
+
 <footer>
   <a href="index.html" class="foot-nom">Krysopée</a>
   <span class="foot-devise">☉ · Nemini Teneri · ☿</span>
@@ -91,11 +287,5 @@
     <span class="foot-copy">© 2026 Krysopée — Jean-Luc Manzaroli</span>
   </div>
 </footer>
-<script>
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vu'); obs.unobserve(e.target); } });
-}, { threshold: 0.07 });
-document.querySelectorAll('.entree').forEach(el => obs.observe(el));
-</script>
 </body>
 </html>
