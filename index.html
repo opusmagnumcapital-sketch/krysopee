@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Krysopée · Finance Quantitative & Psychologie du Trading</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<meta name="description" content="Krysopée — Finance quantitative et psychologie des marchés, recherche &amp; indicateurs IA. Nemini Teneri.">
+<meta name="description" content="Krysopée — Trading compte propre, recherche quantitative et hermétisme des marchés. Suite K-Équinoxe. Nemini Teneri.">
 <meta name="author" content="Jean-Luc Manzaroli">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://krysopee.capital/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://krysopee.capital/">
 <meta property="og:title" content="Krysopée · Finance Quantitative & Psychologie du Trading">
-<meta property="og:description" content="Finance quantitative, psychologie du trading et recherche IA.">
+<meta property="og:description" content="Trading compte propre sur indices et or, recherche quantitative, hermétisme des marchés. Fondateur : Jean-Luc Manzaroli.">
 <meta property="og:image" content="https://krysopee.capital/logo-bandeau.png">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Krysopée">
@@ -20,7 +20,7 @@
 <meta name="twitter:image" content="https://krysopee.capital/logo-bandeau.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Lora:ital,wght@0,400;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="parcours.js"></script>
 <style>
@@ -459,208 +459,53 @@
   .contact-inner { grid-template-columns: 1fr; gap: 4rem; }
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://krysopee.capital/#fondateur",
+      "name": "Jean-Luc Manzaroli",
+      "jobTitle": "Fondateur & CEO",
+      "worksFor": { "@id": "https://krysopee.capital/#organisation" },
+      "url": "https://krysopee.capital/fondateur.html",
+      "sameAs": [
+        "https://www.linkedin.com/in/krysopee/",
+        "https://x.com/krysopee"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://krysopee.capital/#organisation",
+      "name": "Krysopée Alternative Management",
+      "alternateName": "Krysopée",
+      "url": "https://krysopee.capital",
+      "logo": "https://krysopee.capital/logo-bandeau.png",
+      "description": "Structure de trading discrétionnaire compte propre sur indices majeurs et or. Finance quantitative et hermétisme des marchés.",
+      "foundingDate": "2024",
+      "founder": { "@id": "https://krysopee.capital/#fondateur" },
+      "sameAs": [
+        "https://www.linkedin.com/in/krysopee/",
+        "https://x.com/krysopee",
+        "https://krysopeearcana.substack.com"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://krysopee.capital/#website",
+      "url": "https://krysopee.capital",
+      "name": "Krysopée",
+      "publisher": { "@id": "https://krysopee.capital/#organisation" },
+      "inLanguage": "fr-FR"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <!-- POPUP AVERTISSEMENT -->
-<style>
-  .seuil-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    background: #080808;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    opacity: 1;
-    transition: opacity 0.6s ease;
-  }
-  .seuil-overlay.ferme {
-    opacity: 0;
-    pointer-events: none;
-    display: none;
-  }
-
-  .seuil-marque {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-size: 0.62rem;
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
-    color: rgba(184,150,46,0.5);
-    margin-bottom: 3rem;
-  }
-
-  .seuil-portes {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    width: 100%;
-    max-width: 860px;
-    margin-bottom: 2.5rem;
-  }
-
-  .seuil-porte {
-    position: relative;
-    cursor: pointer;
-    border: 0.5px solid rgba(184,150,46,0.2);
-    overflow: hidden;
-    transition: border-color 0.3s ease;
-    background: #0d0d0d;
-  }
-
-  .seuil-porte:hover {
-    border-color: rgba(184,150,46,0.55);
-  }
-
-  .seuil-porte img {
-    width: 100%;
-    aspect-ratio: 3/4;
-    object-fit: cover;
-    display: block;
-    filter: brightness(0.75);
-    transition: filter 0.4s ease, transform 0.5s ease;
-  }
-
-  .seuil-porte:hover img {
-    filter: brightness(0.92);
-    transform: scale(1.02);
-  }
-
-  .seuil-porte-legende {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 1.5rem 1.25rem 1.25rem;
-    background: linear-gradient(to top, rgba(8,8,8,0.95) 60%, transparent);
-    text-align: center;
-  }
-
-  .seuil-porte-titre {
-    font-family: 'Lora', Georgia, serif;
-    font-weight: 400;
-    font-size: 1.15rem;
-    letter-spacing: 0.02em;
-    color: #f0ead8;
-    margin-bottom: 0.3rem;
-  }
-
-  .seuil-porte-sous {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-size: 0.58rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(184,150,46,0.65);
-    margin-bottom: 1rem;
-    line-height: 1.6;
-  }
-
-  .seuil-porte-btn {
-    display: inline-block;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-size: 0.58rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(184,150,46,0.85);
-    border: 0.5px solid rgba(184,150,46,0.35);
-    padding: 6px 18px;
-    background: transparent;
-    cursor: pointer;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-    text-decoration: none;
-  }
-
-  .seuil-porte:hover .seuil-porte-btn {
-    background: rgba(184,150,46,0.08);
-    border-color: rgba(184,150,46,0.65);
-    color: #b8962e;
-  }
-
-  .seuil-legal {
-    max-width: 580px;
-    text-align: center;
-  }
-
-  .seuil-legal-texte {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    font-size: 0.72rem;
-    line-height: 1.9;
-    letter-spacing: 0.02em;
-    color: rgba(245,240,232,0.38);
-  }
-
-  .seuil-legal-texte em {
-    font-style: italic;
-    color: rgba(200,180,122,0.55);
-  }
-
-  @media (max-width: 600px) {
-    .seuil-portes {
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-      max-width: 340px;
-    }
-    .seuil-porte img { aspect-ratio: 4/3; }
-    .seuil-marque { margin-bottom: 2rem; }
-  }
-</style>
-
-<div class="seuil-overlay" id="seuil-overlay">
-  <p class="seuil-marque">Krysopée · Choisissez votre chemin</p>
-
-  <div class="seuil-portes">
-
-    <div class="seuil-porte" onclick="entrer('index.html#activites','visible')">
-      <picture><source srcset="porte-visible.webp" type="image/webp"><img src="porte-visible.jpg" alt="L'Œuvre Visible — méthode et marchés" loading="lazy"></picture>
-      <div class="seuil-porte-legende">
-        <p class="seuil-porte-titre">L'Œuvre Visible</p>
-        <p class="seuil-porte-sous">La méthode · Les marchés · La performance</p>
-        <span class="seuil-porte-btn">Entrer ☉</span>
-      </div>
-    </div>
-
-    <div class="seuil-porte" onclick="entrer('fondateur.html','interieure')">
-      <picture><source srcset="porte-interieure.webp" type="image/webp"><img src="porte-interieure.jpg" alt="L'Œuvre Intérieure — psychologie et transmission" loading="lazy"></picture>
-      <div class="seuil-porte-legende">
-        <p class="seuil-porte-titre">L'Œuvre Intérieure</p>
-        <p class="seuil-porte-sous">La psychologie · La transmission · Le chemin</p>
-        <span class="seuil-porte-btn">Entrer ☿</span>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="seuil-legal">
-    <p class="seuil-legal-texte">
-      <em>Krysopée n'est pas un conseiller en investissement financier.</em> Les contenus publiés sont partagés à titre informatif et pédagogique uniquement — ils ne constituent en aucun cas un conseil ou une incitation à investir. <em>Le trading comporte un risque élevé de perte en capital.</em> En entrant, vous confirmez agir sous votre seule et entière responsabilité. Ce site ne s'adresse pas aux ressortissants de juridictions où l'accès à de tels contenus serait restreint.
-    </p>
-  </div>
-</div>
-
-<script>
-  function entrer(dest, parcours) {
-    const overlay = document.getElementById('seuil-overlay');
-    overlay.classList.add('ferme');
-    if (parcours) choisirParcours(parcours);
-    setTimeout(() => {
-      overlay.style.display = 'none';
-      sessionStorage.setItem('seuil-franchi', '1');
-      if (dest !== window.location.pathname.split('/').pop() + window.location.hash) {
-        window.location.href = dest;
-      }
-    }, 600);
-  }
-
-  // Ne pas réafficher si déjà franchi dans la session
-  if (sessionStorage.getItem('seuil-franchi')) {
-    const overlay = document.getElementById('seuil-overlay');
-    overlay.style.display = 'none';
-  }
-</script>
 
 <!-- NAVIGATION -->
 <nav id="nav">
@@ -669,40 +514,239 @@
     <li><a href="#activites">Activités</a></li>
     <li><a href="methode.html">La Méthode</a></li>
     <li><a href="#fides" class="fides">Fides &amp; Co</a></li>
-    <li><a href="#publications">Chrysopeia</a></li>
+    <li><a href="#publications">Publications</a></li>
     <li><a href="fondateur.html">Fondateur</a></li>
   </ul>
   <a href="#contact" class="nav-contact">Entrer en contact</a>
 </nav>
 <div id="parcours-bandeau" class="parcours-bandeau" style="display:none;"></div>
 
-<!-- SEUIL / HERO -->
-<section id="seuil">
-  <div class="seuil-gauche">
-    <div class="seuil-sigil">☉</div>
-    <div>
-      <h1 class="seuil-titre entree">Il n'existe pas de marché<br>sans l'homme<br>qui le traverse.</h1>
-      <p class="seuil-sous entree d1">Finance quantitative et psychologie des profondeurs.<br>Deux disciplines. Une seule exigence.</p>
+<!-- BIENVENUE -->
+<style>
+/* BIENVENUE */
+#bienvenue { padding: 7rem 4rem 0; max-width: 1200px; margin: 0 auto; }
+.bienv-inner {
+  display: grid; grid-template-columns: 280px 1fr; gap: 7rem;
+  padding-bottom: 6rem; border-bottom: 0.5px solid var(--bord);
+  align-items: start;
+}
+.bienv-portrait-zone { position: relative; }
+.bienv-portrait {
+  width: 100%; aspect-ratio: 3/4; object-fit: cover;
+  filter: grayscale(15%) brightness(0.92);
+  display: block;
+}
+.bienv-portrait-devise {
+  font-family: 'Poppins', sans-serif; font-weight: 300;
+  font-size: 0.42rem; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--or); opacity: 0.5; margin-top: 1.2rem; display: block;
+  text-align: center;
+}
+.bienv-lettre { display: flex; flex-direction: column; gap: 0; padding-top: 0.5rem; }
+.bienv-ouverture {
+  font-family: 'Crimson Pro', serif; font-size: 1.25rem; font-weight: 300;
+  font-style: italic; color: var(--encre); line-height: 1.6;
+  margin-bottom: 2rem; padding-bottom: 2rem;
+  border-bottom: 0.5px solid var(--bord-fin);
+}
+.bienv-corps {
+  font-size: 1rem; font-weight: 300; line-height: 1.9;
+  color: var(--gris-chaud); margin-bottom: 1.5rem;
+}
+.bienv-oeuvre {
+  margin: 1.8rem 0; padding: 1.5rem 2rem;
+  border-left: 1px solid rgba(196,168,79,0.2);
+  display: flex; flex-direction: column; gap: 1.2rem;
+}
+.bienv-oeuvre-ligne { display: flex; flex-direction: column; gap: 0.3rem; }
+.bienv-oeuvre-titre {
+  font-family: 'Poppins', sans-serif; font-weight: 300;
+  font-size: 0.52rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--or); opacity: 0.85;
+}
+.bienv-oeuvre-desc {
+  font-size: 0.95rem; font-weight: 300; font-style: italic;
+  color: var(--gris-chaud); line-height: 1.7;
+}
+.bienv-charniere {
+  font-family: 'Crimson Pro', serif; font-size: 1.15rem; font-weight: 300;
+  font-style: italic; color: var(--encre); line-height: 1.5;
+  margin: 1.5rem 0 2rem; padding-top: 1.5rem;
+  border-top: 0.5px solid var(--bord-fin);
+}
+.bienv-signature { display: flex; flex-direction: column; gap: 0.2rem; margin-top: 0.5rem; }
+.bienv-signature-nom {
+  font-family: 'Crimson Pro', serif; font-size: 1.05rem;
+  font-weight: 400; font-style: italic; color: var(--encre);
+}
+.bienv-signature-role {
+  font-family: 'Poppins', sans-serif; font-weight: 300;
+  font-size: 0.44rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--or); opacity: 0.6;
+}
+/* PORTES BIENVENUE */
+.bienv-portes-zone {
+  padding: 6rem 0 3rem;
+}
+.bienv-portes-label {
+  font-family: 'Poppins', sans-serif; font-weight: 300;
+  font-size: 0.5rem; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--or); opacity: 0.5; text-align: center; margin-bottom: 3rem;
+  display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+}
+.bienv-portes-label::before,
+.bienv-portes-label::after {
+  content: ''; display: inline-block; width: 60px; height: 0.5px;
+  background: var(--or); opacity: 0.3;
+}
+.bienv-portes {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 860px; margin: 0 auto;
+}
+.bienv-porte {
+  position: relative; cursor: pointer;
+  border: 0.5px solid rgba(184,150,46,0.2); overflow: hidden;
+  transition: border-color 0.3s ease; background: #0d0d0d;
+}
+.bienv-porte:hover { border-color: rgba(184,150,46,0.55); }
+.bienv-porte picture img {
+  width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block;
+  filter: brightness(0.72); transition: filter 0.4s ease, transform 0.5s ease;
+}
+.bienv-porte:hover picture img { filter: brightness(0.9); transform: scale(1.02); }
+.bienv-porte-legende {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 1.5rem 1.25rem 1.25rem;
+  background: linear-gradient(to top, rgba(8,8,8,0.95) 60%, transparent);
+  text-align: center;
+}
+.bienv-porte-titre {
+  font-family: 'Lora', Georgia, serif; font-weight: 400;
+  font-size: 1.15rem; color: #f0ead8; margin-bottom: 0.3rem;
+}
+.bienv-porte-sous {
+  font-family: 'Poppins', sans-serif; font-weight: 300;
+  font-size: 0.52rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(184,150,46,0.65); margin-bottom: 1rem; line-height: 1.6;
+}
+.bienv-porte-btn {
+  display: inline-block; font-family: 'Poppins', sans-serif; font-weight: 300;
+  font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: rgba(184,150,46,0.85); border: 0.5px solid rgba(184,150,46,0.35);
+  padding: 6px 18px; background: transparent; cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s; text-decoration: none;
+}
+.bienv-porte:hover .bienv-porte-btn {
+  background: rgba(184,150,46,0.08); border-color: rgba(184,150,46,0.65); color: #b8962e;
+}
+/* AVERTISSEMENT */
+.bienv-avertissement {
+  max-width: 680px; margin: 3rem auto 0; padding-bottom: 6rem; text-align: center;
+}
+.bienv-avert-texte {
+  font-family: 'Poppins', sans-serif; font-weight: 300;
+  font-size: 0.7rem; line-height: 1.9; letter-spacing: 0.01em;
+  color: rgba(138,128,112,0.5);
+}
+.bienv-avert-texte em { font-style: italic; color: rgba(196,168,79,0.45); }
+
+/* Responsive bienvenue */
+@media (max-width: 900px) {
+  #bienvenue { padding: 4rem 1.5rem 0; }
+  .bienv-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .bienv-portrait { max-width: 220px; aspect-ratio: 1/1; }
+  .bienv-portes { grid-template-columns: 1fr; max-width: 340px; }
+  .bienv-porte picture img { aspect-ratio: 4/3; }
+}
+</style>
+
+<section id="bienvenue">
+  <div class="bienv-inner entree">
+
+    <div class="bienv-portrait-zone">
+      <picture>
+        <source srcset="portrait-jlm.webp" type="image/webp">
+        <img src="portrait-jlm.webp" onerror="this.src='portrait-jlm.png'" alt="Jean-Luc Manzaroli — Fondateur Krysopée" class="bienv-portrait">
+      </picture>
+      <span class="bienv-portrait-devise">☉ · Nemini Teneri · ☿</span>
     </div>
-    <span class="seuil-devise entree d2">Nemini Teneri &nbsp;·&nbsp; ☉ &nbsp;·&nbsp; ☿</span>
+
+    <div class="bienv-lettre">
+      <p class="bienv-ouverture">Il n'existe pas d'entrée neutre dans une maison comme celle-ci.</p>
+
+      <p class="bienv-corps">Vous arrivez avec votre histoire — quelques années de marché ou quelques décennies, une curiosité naissante ou une pratique déjà éprouvée. Peu importe. Ce qui compte, c'est ce qui vous a conduit jusqu'ici.</p>
+
+      <p class="bienv-corps">Krysopée est un atelier. Pas une école, pas une promesse de rendements. Un espace de travail fondé sur une conviction simple : que la performance durable ne naît jamais des seuls chiffres, mais de la cohérence entre la méthode et l'homme qui l'exerce.</p>
+
+      <p class="bienv-corps">Vous trouverez ici deux territoires qui coexistent et se nourrissent l'un de l'autre.</p>
+
+      <div class="bienv-oeuvre">
+        <div class="bienv-oeuvre-ligne">
+          <span class="bienv-oeuvre-titre">☉ &nbsp;L'Œuvre Visible</span>
+          <p class="bienv-oeuvre-desc">Le trading compte propre sur les grands indices et l'or, la recherche quantitative, les indicateurs propriétaires de la suite K-Équinoxe, le compte de référence Fides &amp; Co rendu public par conviction.</p>
+        </div>
+        <div class="bienv-oeuvre-ligne">
+          <span class="bienv-oeuvre-titre">☿ &nbsp;L'Œuvre Intérieure</span>
+          <p class="bienv-oeuvre-desc">Une lecture des marchés ancrée dans l'hermétisme et la philosophie des quatre phases alchimiques, une pratique de transmission à travers deux publications : <em>K I Arcana</em> sur Substack, pour ce qui se travaille en profondeur — et <em>K I Praxis</em> sur LinkedIn, pour ce qui s'applique en conditions réelles.</p>
+        </div>
+      </div>
+
+      <p class="bienv-charniere">Deux chemins. Une seule maison.<br>Entrez selon ce qui vous appelle.</p>
+
+      <div class="bienv-signature">
+        <span class="bienv-signature-nom">Jean-Luc Manzaroli</span>
+        <span class="bienv-signature-role">Fondateur · Krysopée</span>
+      </div>
+    </div>
+
   </div>
-  <div class="seuil-droite">
-    <div class="visuel-principal entree">
-      <img src="logo-bandeau.png" alt="Krysopée — Finance quantitative et psychologie du trading" style="width:75%;height:auto;opacity:0.92;">
+
+  <!-- LES DEUX PORTES -->
+  <div class="bienv-portes-zone entree">
+    <p class="bienv-portes-label">Choisissez votre chemin</p>
+    <div class="bienv-portes">
+
+      <div class="bienv-porte" onclick="entrerBienv('compte-propre.html','visible')">
+        <picture>
+          <source srcset="porte-visible.webp" type="image/webp">
+          <img src="porte-visible.jpg" alt="L'Œuvre Visible — méthode et marchés" loading="lazy">
+        </picture>
+        <div class="bienv-porte-legende">
+          <p class="bienv-porte-titre">L'Œuvre Visible</p>
+          <p class="bienv-porte-sous">La méthode · Les marchés · La performance</p>
+          <span class="bienv-porte-btn">Entrer ☉</span>
+        </div>
+      </div>
+
+      <div class="bienv-porte" onclick="entrerBienv('fondateur.html','interieure')">
+        <picture>
+          <source srcset="porte-interieure.webp" type="image/webp">
+          <img src="porte-interieure.jpg" alt="L'Œuvre Intérieure — hermétisme et transmission" loading="lazy">
+        </picture>
+        <div class="bienv-porte-legende">
+          <p class="bienv-porte-titre">L'Œuvre Intérieure</p>
+          <p class="bienv-porte-sous">L'Hermétisme · La transmission · Le chemin</p>
+          <span class="bienv-porte-btn">Entrer ☿</span>
+        </div>
+      </div>
+
     </div>
-    <a href="methode.html" class="seuil-bas entree d1" style="text-decoration:none;display:flex;flex-direction:column;gap:0.6rem;transition:background 0.3s;" onmouseover="this.style.background='rgba(139,105,20,0.04)'" onmouseout="this.style.background='transparent'">
-      <span class="seuil-bas-label">L'approche Krysopée</span>
-      <p class="seuil-bas-texte">Alchimie des marchés — au sens propre. Soufre, Mercure, Sel, Or : quatre principes qui structurent la lecture du marché, la décision, et la transmission.</p>
-      <span style="font-family:'Space Mono',monospace;font-size:0.44rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--or);opacity:0.6;margin-top:0.4rem;">Les quatre phases →</span>
-    </a>
+
+    <!-- AVERTISSEMENT LÉGAL -->
+    <div class="bienv-avertissement">
+      <p class="bienv-avert-texte">
+        <em>Krysopée n'est pas un conseiller en investissement financier.</em> Les contenus publiés sont partagés à titre informatif et pédagogique uniquement — ils ne constituent en aucun cas un conseil ou une incitation à investir. <em>Le trading comporte un risque élevé de perte en capital.</em> En poursuivant votre navigation, vous confirmez agir sous votre seule et entière responsabilité. Ce site ne s'adresse pas aux ressortissants de juridictions où l'accès à de tels contenus serait restreint.
+      </p>
+    </div>
   </div>
 </section>
 
-<!-- AXIOME -->
-<section id="axiome">
-  <p class="axiome-texte entree">"De la rigueur naît la liberté.<br>De la conscience naît la maîtrise.<br>Et du marché — <em>le miroir de soi.</em>"</p>
-  <p class="axiome-sig">Krysopée &nbsp;·&nbsp; Nemini Teneri</p>
-</section>
+<script>
+function entrerBienv(dest, parcours) {
+  if (parcours) choisirParcours(parcours);
+  sessionStorage.setItem('seuil-franchi', '1');
+  window.location.href = dest;
+}
+</script>
 
 <!-- ACTIVITES -->
 <section id="activites">
@@ -758,16 +802,17 @@
     </div>
     <div class="pub-deux-blocs">
       <div class="pub-bloc-substack entree">
-        <p class="pub-bloc-label">Chrysopeia · Substack · Accès libre</p>
-        <p class="pub-bloc-titre">Essais sur l'alchimie<br>des marchés</p>
-        <p class="pub-bloc-corps">Des textes longs, publiés librement. Alchimie des marchés, psychologie comportementale, récits de traversée. Un espace de réflexion ouvert — pour ceux qui cherchent autre chose qu'un signal.</p>
+        <p class="pub-bloc-label">K I Arcana · Substack · Accès libre</p>
+        <p class="pub-bloc-titre">Arcana &amp; Praxis —<br><em>deux publications</em></p>
+        <p class="pub-bloc-corps">Deux publications distinctes, une même exigence. <em>K I Arcana</em> sur Substack — textes longs sur l'hermétisme des marchés, récits de traversée, cadre philosophique. <em>K I Praxis</em> sur LinkedIn — ce qui s'applique en conditions réelles, méthode et décision.</p>
         <div class="pub-themes">
           <div class="pub-theme"><span class="pub-theme-sym">🜍</span><span class="pub-theme-texte">Alchimie des marchés &amp; cadre philosophique</span></div>
           <div class="pub-theme"><span class="pub-theme-sym">☿</span><span class="pub-theme-texte">Psychologie comportementale &amp; décision</span></div>
           <div class="pub-theme"><span class="pub-theme-sym">🜔</span><span class="pub-theme-texte">Rigueur méthodologique &amp; gestion du risque</span></div>
           <div class="pub-theme"><span class="pub-theme-sym">☉</span><span class="pub-theme-texte">Transmutation — récits &amp; élévation</span></div>
         </div>
-        <a href="https://chrysopeia.substack.com" class="pub-cta-substack" target="_blank" rel="noopener">Lire les publications →</a>
+        <a href="https://krysopeearcana.substack.com/" class="pub-cta-substack" target="_blank" rel="noopener">K I Arcana sur Substack →</a>
+        <a href="https://www.linkedin.com/newsletters/krysop%C3%A9e-i-praxis-7473756532707397633" class="pub-cta-substack" target="_blank" rel="noopener" style="margin-top:0.8rem;">K I Praxis sur LinkedIn →</a>
       </div>
       <div class="pub-bloc-lettre entree d1">
         <p class="pub-bloc-label">Aurum Nostrum · Correspondance privée</p>
@@ -801,8 +846,11 @@
         <a href="https://www.linkedin.com/in/krysopee/" class="contact-social" target="_blank" rel="noopener">
           <span class="contact-social-nom">LinkedIn</span><span class="contact-social-fleche">→</span>
         </a>
-        <a href="https://chrysopeia.substack.com" class="contact-social" target="_blank" rel="noopener">
-          <span class="contact-social-nom">Substack · Chrysopeia</span><span class="contact-social-fleche">→</span>
+        <a href="https://krysopeearcana.substack.com/" class="contact-social" target="_blank" rel="noopener">
+          <span class="contact-social-nom">Substack · K I Arcana</span><span class="contact-social-fleche">→</span>
+        </a>
+        <a href="https://www.linkedin.com/newsletters/krysop%C3%A9e-i-praxis-7473756532707397633" class="contact-social" target="_blank" rel="noopener">
+          <span class="contact-social-nom">LinkedIn · K I Praxis</span><span class="contact-social-fleche">→</span>
         </a>
       </div>
     </div>
@@ -837,10 +885,10 @@
   <p class="passage-eyebrow">☿ · L'Œuvre est double</p>
   <p class="passage-texte">Vous avez exploré L'Œuvre Visible.<br>L'autre chemin vous attend.</p>
   <div class="passage-vignette" onclick="choisirParcours('interieure');window.location.href='fondateur.html'">
-    <picture><source srcset="porte-interieure.webp" type="image/webp"><img src="porte-interieure.jpg" alt="L'Œuvre Intérieure — psychologie et transmission" loading="lazy"></picture>
+    <picture><source srcset="porte-interieure.webp" type="image/webp"><img src="porte-interieure.jpg" alt="L'Œuvre Intérieure — hermétisme et transmission" loading="lazy"></picture>
     <div class="passage-legende">
       <p class="passage-titre">L'Œuvre Intérieure</p>
-      <p class="passage-sous">La psychologie · La transmission · Le chemin</p>
+      <p class="passage-sous">L'Hermétisme · La transmission · Le chemin</p>
       <span class="passage-btn">Entrer ☿</span>
     </div>
   </div>
@@ -872,10 +920,10 @@
       </div>
     </div>
     <div class="passage-vignette" onclick="choisirParcours('interieure');window.location.href='fondateur.html'">
-      <picture><source srcset="porte-interieure.webp" type="image/webp"><img src="porte-interieure.jpg" alt="L'Œuvre Intérieure — psychologie et transmission" loading="lazy"></picture>
+      <picture><source srcset="porte-interieure.webp" type="image/webp"><img src="porte-interieure.jpg" alt="L'Œuvre Intérieure — hermétisme et transmission" loading="lazy"></picture>
       <div class="passage-legende">
         <p class="passage-titre">L'Œuvre Intérieure</p>
-        <p class="passage-sous">La psychologie · Le chemin</p>
+        <p class="passage-sous">L'Hermétisme · Le chemin</p>
         <span class="passage-btn">Entrer ☿</span>
       </div>
     </div>
@@ -974,7 +1022,8 @@
   <a href="index.html" class="foot-nom">Krysopée</a>
   <span class="foot-devise">☉ · Nemini Teneri · ☿</span>
   <div class="foot-liens">
-    <a href="https://chrysopeia.substack.com" target="_blank" rel="noopener">Substack</a>
+    <a href="https://krysopeearcana.substack.com/" target="_blank" rel="noopener">K I Arcana</a>
+    <a href="https://www.linkedin.com/newsletters/krysop%C3%A9e-i-praxis-7473756532707397633" target="_blank" rel="noopener">K I Praxis</a>
     <a href="https://x.com/krysopee" target="_blank" rel="noopener">X</a>
     <a href="https://www.linkedin.com/in/krysopee/" target="_blank" rel="noopener">LinkedIn</a>
     <a href="confidentialite.html">Confidentialité</a>
@@ -984,14 +1033,6 @@
 </footer>
 
 <script>
-function fermerPopup() {
-  document.getElementById('overlay').classList.add('ferme');
-  sessionStorage.setItem('disclaimer_accepted', 'true');
-}
-
-// Si le visiteur a déjà accepté pendant cette session, masquer immédiatement
-if (sessionStorage.getItem('disclaimer_accepted') === 'true') {
-  document.getElementById('overlay').classList.add('ferme');
 }
 
 function preselectFides() {
