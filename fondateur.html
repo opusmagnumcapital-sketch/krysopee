@@ -20,16 +20,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Lora:ital,wght@0,400;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<script src="parcours.js"></script>
 <style>
 .fondateur-hero {
-  padding: 9rem 4rem 6rem;
-  max-width: 1200px;
+  padding: 9rem 4rem 5rem;
+  max-width: 780px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8rem;
-  align-items: start;
+  text-align: center;
 }
 .fondateur-titre {
   font-family: 'Crimson Pro', serif;
@@ -47,53 +43,7 @@
   font-style: italic;
   line-height: 1.85;
   color: var(--gris-chaud);
-  margin-bottom: 3rem;
-}
-.portrait-cadre {
-  width: 100%;
-  aspect-ratio: 3/4;
-  background: rgba(139,105,20,0.04);
-  border: 0.5px solid var(--bord);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 1.5rem;
-  /* Forme ovale */
-  border-radius: 50%;
-  overflow: hidden;
-}
-.portrait-mono {
-  font-family: 'Cinzel', serif;
-  font-size: 4rem;
-  color: var(--or);
-  opacity: 0.1;
-  letter-spacing: 0.1em;
-}
-.portrait-ph {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.44rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--gris-chaud);
-  opacity: 0.45;
-}
-.portrait-nom {
-  font-family: 'Crimson Pro', serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--encre);
-  margin-bottom: 0.2rem;
-}
-.portrait-role {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.48rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--or);
-  opacity: 0.7;
+  margin-bottom: 2.5rem;
 }
 .fondateur-blocs { max-width: 1200px; margin: 0 auto; padding: 0 4rem 8rem; }
 .bloc {
@@ -165,7 +115,7 @@
   opacity: 0.45;
 }
 @media (max-width: 900px) {
-  .fondateur-hero { grid-template-columns: 1fr; gap: 3rem; padding: 6rem 1.5rem 3rem; }
+  .fondateur-hero { padding: 6rem 1.5rem 3rem; }
   .fondateur-blocs { padding: 0 1.5rem 5rem; }
   .bloc { grid-template-columns: 1fr; gap: 1rem; }
   .resonance { padding: 4rem 1.5rem; }
@@ -176,35 +126,22 @@
 <body>
 
 <nav id="nav">
-  <a href="index.html" class="nav-marque"><img src="logo-k.webp" onerror="this.src='logo-k.png'" alt="Krysopée" style="height:36px;width:auto;vertical-align:middle;opacity:0.92;" /></a>
+  <a href="index.html" class="nav-marque">Krysopée</a>
   <ul class="nav-links">
-    <li><a href="methode.html">La Méthode</a></li>
-    <li><a href="index.html#fides" class="fides">Fides &amp; Co</a></li>
-    <li><a href="index.html#publications">Publications</a></li>
-    <li><a href="fondateur.html" class="active">Le Fondateur</a></li>
+    <li><a href="manifeste.html">Le Manifeste</a></li>
+    <li><a href="ecosysteme.html">Écosystème</a></li>
+    <li><a href="parcours-opus-magnum.html">Parcours Opus Magnum</a></li>
+    <li><a href="praxis.html">Praxis</a></li>
+    <li><a href="fondateur.html" class="active">Fondateur</a></li>
   </ul>
-  <a href="index.html#contact" class="nav-contact">Entrer en contact</a>
+  <a href="contact.html" class="nav-contact">Entrer en contact</a>
 </nav>
-<div id="parcours-bandeau" class="parcours-bandeau" style="display:none;"></div>
 
 <div class="fondateur-hero">
-  <div class="entree">
-    <p class="act-label">Fondateur · Krysopée</p>
-    <h1 class="fondateur-titre">L'homme<br><em>avant la méthode.</em></h1>
-    <p class="fondateur-accroche" data-ton="defaut">Il n'existe pas de trajectoire droite entre un atelier de cuisine classique et les marchés financiers mondiaux. Sauf quand l'homme qui la trace n'a jamais attendu la permission de passer à l'étape suivante.</p>
-    <p class="fondateur-accroche" data-ton="visible" style="display:none;">Certification AMF, CGPC, Master en Trading, fondateur d'un cabinet certifié ISO 22222. Avant la méthode Krysopée, des décennies de terrain en finance et en gestion de patrimoine.</p>
-    <p class="fondateur-accroche" data-ton="interieure" style="display:none;">Il n'existe pas de trajectoire droite entre un atelier de cuisine classique et les marchés financiers mondiaux. Sauf quand l'homme qui la trace n'a jamais attendu la permission de passer à l'étape suivante.</p>
-    <a href="index.html#contact" class="btn-lien">Entrer en contact →</a>
-  </div>
-  <div class="entree d1">
-    <div class="portrait-cadre">
-      <div class="coin tl"></div><div class="coin tr"></div>
-      <div class="coin bl"></div><div class="coin br"></div>
-      <img src="portrait-jlm.webp" onerror="this.src='portrait-jlm.png'" alt="Jean-Luc Manzaroli — Fondateur de Krysopée" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
-    </div>
-    <p class="portrait-nom">Jean-Luc Manzaroli</p>
-    <p class="portrait-role">Fondateur · Trader · Architecte de systèmes</p>
-  </div>
+  <p class="act-label">Fondateur · Krysopée</p>
+  <h1 class="fondateur-titre">L'homme<br><em>avant la méthode.</em></h1>
+  <p class="fondateur-accroche">Il n'existe pas de trajectoire droite entre un atelier de cuisine classique et les marchés financiers mondiaux. Sauf quand l'homme qui la trace n'a jamais attendu la permission de passer à l'étape suivante.</p>
+  <a href="contact.html" class="btn-lien">Entrer en contact →</a>
 </div>
 
 <div class="fondateur-blocs">
@@ -239,7 +176,7 @@
       </div>
       <div class="bloc-corps">
         <p>Une nuit noire. Celle que peu traversent et que moins encore assument publiquement.</p>
-        <p>Jean-Luc Manzaroli n'efface pas cette période. Il la porte comme matière première — parce qu'un homme qui n'a pas traversé ne peut pas transmettre. Parce que la crédibilité la plus rare n'est pas celle des titres, mais celle de celui qui a tout perdu et qui revient — avec la Foi comme boussole, pas la peur comme moteur.</p>
+        <p>Jean-Luc Manzaroli n'efface pas cette période. Il la porte comme matière première — parce qu'un homme qui n'a pas traversé ne peut pas transmettre. Parce que la crédibilité la plus rare n'est pas celle des titres, mais celle de celui qui a tout perdu et qui revient — avec la conviction comme boussole, pas la peur comme moteur.</p>
         <p><strong>De cette traversée naît Krysopée. Non pas malgré elle — à cause d'elle.</strong></p>
       </div>
     </div>
@@ -251,7 +188,7 @@
       <span class="bloc-titre">L'Homme</span>
     </div>
     <div class="bloc-corps">
-      <p>Au-delà des marchés, Jean-Luc Manzaroli est un lecteur, un écrivain, un homme de Foi. Tout au long de son cheminement initiatique, au sein de plusieurs Traditions, il a reçu la reconnaissance de ses pairs.</p>
+      <p>Au-delà des marchés, Jean-Luc Manzaroli est un lecteur, un écrivain, un homme de conviction. Tout au long de son cheminement initiatique, au sein de plusieurs Traditions, il a reçu la reconnaissance de ses pairs.</p>
       <p>La création de chants sacrés — à l'intersection de la tradition hermétique et des outils contemporains — est l'une de ses expressions les plus personnelles. Le Verbe comme vibration. La beauté comme voie.</p>
       <p>Ce que Jean-Luc transmet à sa lignée n'est pas une fortune. C'est la qualité de l'homme qu'il devient.</p>
     </div>
@@ -266,7 +203,7 @@
   <div class="cta-section entree" style="margin-top:2rem;">
     <div class="cta-inner">
       <p class="cta-texte">"L'homme avant la méthode —<br>la méthode comme <em>prolongement de l'homme.</em>"</p>
-      <a href="methode.html" class="btn-or-inv" onclick="choisirParcours('interieure')">Découvrir la Méthode Krysopée →</a>
+      <a href="manifeste.html" class="btn-or-inv">Lire le Manifeste Krysopée →</a>
     </div>
   </div>
 </div>
@@ -275,10 +212,9 @@
   <a href="index.html" class="foot-nom">Krysopée</a>
   <span class="foot-devise">☉ · Nemini Teneri · ☿</span>
   <div class="foot-liens">
-    <a href="https://krysopeearcana.substack.com/" target="_blank" rel="noopener">K I Arcana</a>
-    <a href="https://www.linkedin.com/newsletters/krysop%C3%A9e-i-praxis-7473756532707397633" target="_blank" rel="noopener">K I Praxis</a>
-    <a href="https://x.com/krysopee" target="_blank" rel="noopener">X</a>
     <a href="https://www.linkedin.com/in/krysopee/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://x.com/krysopee" target="_blank" rel="noopener">X</a>
+    <a href="contact.html">Contact</a>
     <a href="confidentialite.html">Confidentialité</a>
     <a href="mentions-legales.html">Mentions légales</a>
     <span class="foot-copy">© 2026 Krysopée — Jean-Luc Manzaroli</span>

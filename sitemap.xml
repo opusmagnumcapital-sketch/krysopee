@@ -2,43 +2,55 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://krysopee.capital/</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://krysopee.capital/methode.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <loc>https://krysopee.capital/manifeste.html</loc>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://krysopee.capital/compte-propre.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <loc>https://krysopee.capital/ecosysteme.html</loc>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://krysopee.capital/recherche.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <loc>https://krysopee.capital/parcours-opus-magnum.html</loc>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://krysopee.capital/praxis.html</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://krysopee.capital/fondateur.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://krysopee.capital/contact.html</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://krysopee.capital/confidentialite.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://krysopee.capital/mentions-legales.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
