@@ -58,6 +58,33 @@
 }
 .glossaire-def { font-family: 'Poppins', sans-serif; font-weight: 300; font-size: 0.82rem; line-height: 1.75; color: var(--text-sec); }
 
+/* Frise des quatre phases */
+.cycle-section { padding: 1rem 0 3rem; border-bottom: 0.5px solid var(--bord-fin); margin-bottom: 1rem; }
+.cycle-eyebrow {
+  font-family: 'Poppins', sans-serif; font-weight: 400; font-size: 0.6rem;
+  letter-spacing: 0.3em; text-transform: uppercase; color: var(--or); opacity: 0.55;
+  text-align: center; display: block; margin-bottom: 2.5rem;
+}
+.cycle-grille { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; align-items: start; padding: 0 2rem; }
+.cycle-item { text-align: center; position: relative; padding: 0 1rem; }
+.cycle-item::after {
+  content: '→'; position: absolute; top: 45px; right: -0.6rem;
+  color: var(--or); opacity: 0.35; font-size: 1rem;
+}
+.cycle-item:last-child::after { content: '↻'; right: -1rem; }
+.cycle-img {
+  width: 90px; height: 90px; border-radius: 50%; overflow: hidden;
+  border: 0.5px solid var(--bord-pale); margin: 0 auto 1.2rem;
+}
+.cycle-img img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.88) saturate(0.9); }
+.cycle-nom { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 1rem; color: var(--or); margin-bottom: 0.5rem; }
+.cycle-phrase { font-family: 'Poppins', sans-serif; font-weight: 300; font-size: 0.75rem; line-height: 1.6; color: var(--text-sec); max-width: 160px; margin: 0 auto; }
+
+@media (max-width: 900px) {
+  .cycle-grille { grid-template-columns: 1fr 1fr; gap: 2.5rem 1rem; padding: 0 1.5rem; }
+  .cycle-item::after { display: none; }
+}
+
 @media (max-width: 900px) {
   .manifeste-hero { padding: 5rem 1.5rem 2.5rem; }
   .manifeste-corps { padding: 1rem 1.5rem 3rem; }
@@ -69,7 +96,7 @@
 <body>
 
 <nav id="nav">
-  <a href="index.html" class="nav-marque">Krysopée</a>
+  <a href="index.html" class="nav-marque"><img src="logo-k.webp" onerror="this.src='logo-k.png'" alt="Krysopée" style="height:36px;width:auto;vertical-align:middle;"></a>
   <ul class="nav-links">
     <li><a href="manifeste.html" class="active">Le Manifeste</a></li>
     <li><a href="ecosysteme.html">Écosystème</a></li>
@@ -104,7 +131,37 @@
     <p>Sur le marché, une impulsion qui dépasse durablement son équilibre crée une dette de retour qui se règle tôt ou tard. Sur l'individu, la maîtrise n'est pas l'absence de doute, mais la discipline qui le contient sans le laisser gouverner la décision. Sur le système, chaque degré de liberté gagné se paie d'un degré de protection accepté.</p>
   </div>
 
-  <div class="chapitre">
+</section>
+
+<section class="cycle-section">
+  <span class="cycle-eyebrow">Le cycle, en quatre phases</span>
+  <div class="cycle-grille">
+    <div class="cycle-item">
+      <div class="cycle-img"><img src="nigredo-corbeau.webp" alt="Nigredo"></div>
+      <p class="cycle-nom">Nigredo</p>
+      <p class="cycle-phrase">La compression maximale, avant toute résolution.</p>
+    </div>
+    <div class="cycle-item">
+      <div class="cycle-img"><img src="albedo-cygne.webp" alt="Albedo"></div>
+      <p class="cycle-nom">Albedo</p>
+      <p class="cycle-phrase">La clarté qui suit, sans supprimer le doute.</p>
+    </div>
+    <div class="cycle-item">
+      <div class="cycle-img"><img src="citrinitas-aigle.webp" alt="Citrinitas"></div>
+      <p class="cycle-nom">Citrinitas</p>
+      <p class="cycle-phrase">Le discernement devenu stable, plus occasionnel.</p>
+    </div>
+    <div class="cycle-item">
+      <div class="cycle-img"><img src="rubedo-pelican.webp" alt="Rubedo"></div>
+      <p class="cycle-nom">Rubedo</p>
+      <p class="cycle-phrase">La libération — qui redevient un point de départ.</p>
+    </div>
+  </div>
+</section>
+
+<section class="manifeste-corps" style="padding-top:2rem;">
+
+  <div class="chapitre" style="padding-top:0;">
     <span class="chapitre-num">III</span>
     <h2 class="chapitre-titre t-h2">Le Nom : Équinoxe</h2>
     <p>Un équinoxe n'est pas un moment d'équilibre. C'est le point où aucune force ne domine durablement l'autre — l'instant de plus grande sensibilité au changement, jamais un état de repos.</p>
