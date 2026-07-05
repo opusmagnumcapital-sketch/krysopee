@@ -203,6 +203,10 @@
   }
   .piste-text{ font-size:16px; line-height:1.55; font-style:italic; color:var(--parchment-dim); }
 
+  .outro{ margin-top:14px; padding:0 4px; }
+  .outro-text{ font-size:13px; line-height:1.5; color:var(--parchment-dim); opacity:0.75; }
+  .outro-text a{ color:var(--brass-bright); text-decoration:none; border-bottom:1px solid currentColor; }
+
   .resources{ margin-top:26px; padding-top:22px; border-top:1px solid var(--hairline); }
   .resources-label{
     font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.18em;
@@ -260,6 +264,7 @@
         Répondez avec honnêteté plutôt qu'avec l'image que vous voudriez donner.
       </p>
       <p class="intro-text">Comptez douze à quinze minutes. Le résultat vous appartient dans l'instant.</p>
+      <p class="intro-text intro-caveat">Ce miroir n'établit aucun verdict. C'est une photographie de vos réponses à un instant donné — pas un diagnostic, pas une prédiction sur ce que vous êtes ou deviendrez. Elle vaut ce que vaut votre honnêteté du moment, ni plus, ni moins.</p>
       <div class="btn-row" style="justify-content:flex-end;">
         <button class="btn" onclick="startQuiz()">Entrer dans le miroir</button>
       </div>
@@ -321,6 +326,10 @@
       <div class="piste">
         <div class="piste-label">Piste suggérée</div>
         <div class="piste-text" id="pisteText">—</div>
+      </div>
+
+      <div class="outro" id="outroBlock" style="display:none;">
+        <div class="outro-text" id="outroText"></div>
       </div>
 
       <div class="resources">
@@ -754,7 +763,7 @@ function reading(scores){
   [phaseOf(solar), phaseOf(merc), phaseOf(herm)].forEach(p => counts[p] = (counts[p]||0)+1);
   const dominant = Object.keys(counts).sort((a,b)=>counts[b]-counts[a])[0];
 
-  let text, piste;
+  let text, piste, outro = null;
 
   if(high(solar) && high(merc) && high(herm) && Math.min(solar,merc,herm) >= 27){
     text = "Un profil rare : les trois plans sont arrivés au même point d'incandescence. La méthode est éprouvée, la discipline tient sous une pression réelle, et le sens donné à la pratique dépasse largement la performance seule. Ce n'est plus un profil qui cherche à apprendre — c'est un profil qui pourrait déjà transmettre.";
@@ -780,11 +789,12 @@ function reading(scores){
   } else if(avg <= 15){
     text = "Un chemin qui commence — les trois axes sont encore en dissolution, chacun à sa manière. Ce n'est pas un manque : Nigredo n'a jamais été un échec dans le Grand Œuvre, c'est le point de départ obligé de toute transformation véritable.";
     piste = "Le moment est à l'exploration progressive plutôt qu'à la précipitation. Les trois ressources ci-dessous sont un bon point d'entrée, dans l'ordre qui vous parle le plus.";
+    outro = "Si ce résultat vous pèse plus qu'il ne vous éclaire, ou si une période récente a été difficile au-delà du seul trading, il est toujours possible d'en parler simplement — <a href=\"contact.html\">entrer en contact</a>, sans obligation ni jugement.";
   } else {
     text = "Un profil en construction, avec un déséquilibre notable entre les plans plutôt qu'un retard généralisé. C'est souvent le signe qu'un axe a été travaillé plus tôt ou plus intensément que les deux autres — ce qui n'a rien d'anormal, mais qui mérite d'être rééquilibré consciemment plutôt que laissé au hasard des priorités du moment.";
     piste = "Identifier l'axe le plus faible des trois et le traiter en priorité : la ressource correspondante, ci-dessous, propose un exercice concret pour commencer.";
   }
-  return { dominant, text, piste };
+  return { dominant, text, piste, outro };
 }
 
 /* ---------- SHOW RESULT ---------- */
@@ -812,6 +822,14 @@ function showResult(){
   document.getElementById('phaseWord').textContent = r.dominant;
   document.getElementById('readingText').textContent = r.text;
   document.getElementById('pisteText').textContent = r.piste;
+
+  const outroBlock = document.getElementById('outroBlock');
+  if(r.outro){
+    document.getElementById('outroText').innerHTML = r.outro;
+    outroBlock.style.display = '';
+  } else {
+    outroBlock.style.display = 'none';
+  }
 
   renderResources(scores);
 
