@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Miroir des Trois Voies · Krysopée</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="Un questionnaire en 24 questions pour situer où vous en êtes dans votre pratique du trading — méthode, discipline sous pression, et sens donné à la démarche. Gratuit.">
+<link rel="canonical" href="https://krysopee.capital/miroir.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://krysopee.capital/miroir.html">
+<meta property="og:title" content="Le Miroir des Trois Voies · Krysopée">
+<meta property="og:description" content="Vingt-quatre questions. Trois voies. Une cartographie honnête de votre pratique de trading.">
+<meta property="og:image" content="https://krysopee.capital/logo-bandeau.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Krysopée">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://krysopee.capital/logo-bandeau.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#131110;
+    --ink-2:#1c1917;
+    --ink-3:#242019;
+    --parchment:#e9e1cf;
+    --parchment-dim:#a89f8c;
+    --brass:#b08d4f;
+    --brass-bright:#d4af6a;
+    --oxide:#8a4a3a;
+    --verdigris:#4f7566;
+    --hairline:rgba(233,225,207,0.14);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 50% -10%, rgba(176,141,79,0.10), transparent 55%),
+      var(--ink);
+    color:var(--parchment);
+    font-family:'EB Garamond', serif;
+    padding:56px 20px 80px;
+    min-height:100vh;
+  }
+  .wrap{max-width:720px;margin:0 auto;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--brass);
+    text-align:center;
+    margin-bottom:14px;
+  }
+  h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:40px;
+    text-align:center;
+    margin:0 0 6px;
+  }
+  h1 em{font-style:italic;color:var(--brass-bright);}
+  .subtitle{
+    text-align:center;
+    color:var(--parchment-dim);
+    font-style:italic;
+    font-size:17px;
+    margin-bottom:44px;
+    line-height:1.5;
+  }
+  .card{
+    background:var(--ink-2);
+    border:1px solid var(--hairline);
+    border-radius:4px;
+    padding:36px 32px;
+  }
+  @media (max-width:600px){ .card{padding:28px 20px;} }
+
+  /* Intro */
+  .intro-text{ font-size:17px; line-height:1.7; margin-bottom:28px; }
+  .btn{
+    display:inline-block;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink);
+    background:var(--brass-bright);
+    border:none;
+    padding:14px 28px;
+    border-radius:2px;
+    cursor:pointer;
+    transition:background 0.2s ease, transform 0.1s ease;
+  }
+  .btn:hover{ background:#e6c383; }
+  .btn:active{ transform:translateY(1px); }
+  .btn-ghost{
+    background:transparent;
+    color:var(--parchment-dim);
+    border:1px solid var(--hairline);
+  }
+  .btn-ghost:hover{ background:var(--ink-3); color:var(--parchment); }
+  .btn-row{ display:flex; justify-content:space-between; align-items:center; margin-top:32px; }
+  .btn[disabled]{ opacity:0.35; cursor:not-allowed; }
+
+  /* Progress */
+  .progress-row{ display:flex; align-items:center; gap:14px; margin-bottom:30px; }
+  .progress-track{ flex:1; height:2px; background:var(--hairline); position:relative; }
+  .progress-fill{ position:absolute; left:0; top:0; height:100%; background:var(--brass-bright); transition:width 0.3s ease; }
+  .progress-label{ font-family:'JetBrains Mono', monospace; font-size:11px; color:var(--parchment-dim); white-space:nowrap; }
+  .axis-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin-bottom:14px;
+  }
+  .axis-tag .sym{ margin-right:6px; }
+
+  /* Question */
+  .q-text{
+    font-family:'Cormorant Garamond', serif;
+    font-size:25px;
+    line-height:1.4;
+    margin:0 0 24px;
+  }
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .option{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:14px 16px;
+    border:1px solid var(--hairline);
+    border-radius:3px;
+    cursor:pointer;
+    transition:border-color 0.15s ease, background 0.15s ease;
+  }
+  .option:hover{ border-color:var(--brass); background:var(--ink-3); }
+  .option.selected{ border-color:var(--brass-bright); background:rgba(212,175,106,0.08); }
+  .option-dot{
+    width:14px; height:14px;
+    border-radius:50%;
+    border:1.5px solid var(--parchment-dim);
+    flex:0 0 auto;
+    margin-top:3px;
+    position:relative;
+  }
+  .option.selected .option-dot{ border-color:var(--brass-bright); }
+  .option.selected .option-dot::after{
+    content:'';
+    position:absolute; inset:3px;
+    background:var(--brass-bright);
+    border-radius:50%;
+  }
+  .option-text{ font-size:16px; line-height:1.45; }
+
+  /* Radar (result) */
+  .chart-panel{ position:relative; margin-bottom:8px; }
+  .phase-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--parchment-dim);
+    text-align:center;
+    margin-bottom:6px;
+  }
+  #phaseWord{ color:var(--brass-bright); }
+  svg{ width:100%; height:auto; display:block; }
+  .ring{ fill:none; stroke:var(--hairline); stroke-width:1; }
+  .spoke{ stroke:var(--hairline); stroke-width:1; }
+  .ring-label{ font-family:'JetBrains Mono', monospace; font-size:9px; fill:var(--parchment-dim); }
+  .axis-label{ font-family:'Cormorant Garamond', serif; font-size:15px; fill:var(--parchment); }
+  .axis-symbol{ font-family:'EB Garamond', serif; font-size:21px; fill:var(--brass-bright); }
+  .profile-fill{ fill:url(#profileGrad); fill-opacity:0.55; stroke:var(--brass-bright); stroke-width:1.6; }
+  .vertex{ fill:var(--parchment); stroke:var(--brass-bright); stroke-width:1.5; }
+
+  .scorebar-row{ display:flex; justify-content:space-between; font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--parchment-dim); margin:0 0 8px; }
+  .scorebar-row b{ color:var(--brass-bright); font-weight:500; }
+  .axis-report{ margin-top:22px; padding-top:18px; border-top:1px solid var(--hairline); }
+  .axis-report:first-of-type{ margin-top:26px; }
+  .axis-text{ margin:0; font-size:16px; line-height:1.6; color:var(--parchment); }
+
+  .reading{ margin-top:26px; padding-top:22px; border-top:1px solid var(--hairline); }
+  .reading-label{
+    font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.18em;
+    text-transform:uppercase; color:var(--brass); margin-bottom:10px;
+  }
+  .reading-text{ font-size:17px; line-height:1.65; }
+
+  .piste{
+    margin-top:22px;
+    background:var(--ink-3);
+    border:1px solid var(--hairline);
+    border-left:3px solid var(--brass-bright);
+    border-radius:2px;
+    padding:18px 20px;
+  }
+  .piste-label{
+    font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.18em;
+    text-transform:uppercase; color:var(--brass); margin-bottom:8px;
+  }
+  .piste-text{ font-size:16px; line-height:1.55; font-style:italic; color:var(--parchment-dim); }
+
+  .restart{ text-align:center; margin-top:30px; padding-top:24px; border-top:1px solid var(--hairline); }
+  footer{
+    text-align:center; margin-top:44px;
+    font-family:'JetBrains Mono', monospace; font-size:10px;
+    letter-spacing:0.2em; text-transform:uppercase; color:var(--parchment-dim);
+  }
+  .hidden{ display:none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Krysopée · Le Miroir des Trois Voies</div>
+  <h1>Où en est votre <em>Grand Œuvre</em> ?</h1>
+  <div class="subtitle">Vingt-quatre questions. Trois voies. Une cartographie honnête de votre pratique.</div>
+
+  <div class="card">
+
+    <!-- INTRO -->
+    <div id="screen-intro">
+      <p class="intro-text">
+        Ce miroir ne teste pas vos connaissances. Il cherche à situer où vous en êtes — dans votre méthode,
+        dans votre rapport à vous-même sous pression, et dans le sens que vous donnez à cette pratique.
+        Répondez avec honnêteté plutôt qu'avec l'image que vous voudriez donner.
+      </p>
+      <p class="intro-text">Comptez douze à quinze minutes. Le résultat vous appartient dans l'instant.</p>
+      <div class="btn-row" style="justify-content:flex-end;">
+        <button class="btn" onclick="startQuiz()">Entrer dans le miroir</button>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div id="screen-quiz" class="hidden">
+      <div class="progress-row">
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="progress-label" id="progressLabel">1 / 24</div>
+      </div>
+      <div class="axis-tag" id="axisTag"></div>
+      <div class="q-text" id="qText"></div>
+      <div class="options" id="optionsList"></div>
+      <div class="btn-row">
+        <button class="btn btn-ghost" id="btnPrev" onclick="prevQuestion()">Précédent</button>
+        <button class="btn" id="btnNext" onclick="nextQuestion()" disabled>Suivant</button>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div id="screen-result" class="hidden">
+      <div class="chart-panel">
+        <div class="phase-tag">Phase dominante — <span id="phaseWord">—</span></div>
+        <svg viewBox="0 0 420 400" id="radarSvg">
+          <defs>
+            <radialGradient id="profileGrad" cx="50%" cy="50%" r="65%">
+              <stop offset="0%" stop-color="#d4af6a" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#8a4a3a" stop-opacity="0.25"/>
+            </radialGradient>
+          </defs>
+          <g id="rings"></g>
+          <g id="spokes"></g>
+          <g id="ringLabels"></g>
+          <polygon id="profilePoly" class="profile-fill" points=""></polygon>
+          <g id="vertices"></g>
+          <g id="axisLabels"></g>
+        </svg>
+      </div>
+
+      <div class="axis-report" id="axisReportSolar">
+        <div class="scorebar-row"><span>☉ Œuvre Visible</span><b id="scoreSolar">—</b></div>
+        <p class="axis-text" id="textSolar">—</p>
+      </div>
+      <div class="axis-report" id="axisReportMerc">
+        <div class="scorebar-row"><span>☿ Œuvre Comportementale</span><b id="scoreMerc">—</b></div>
+        <p class="axis-text" id="textMerc">—</p>
+      </div>
+      <div class="axis-report" id="axisReportHerm">
+        <div class="scorebar-row"><span>🜍 Œuvre Intérieure</span><b id="scoreHerm">—</b></div>
+        <p class="axis-text" id="textHerm">—</p>
+      </div>
+
+      <div class="reading">
+        <div class="reading-label">Lecture croisée</div>
+        <div class="reading-text" id="readingText">—</div>
+      </div>
+
+      <div class="piste">
+        <div class="piste-label">Piste suggérée</div>
+        <div class="piste-text" id="pisteText">—</div>
+      </div>
+
+      <div class="restart">
+        <button class="btn btn-ghost" onclick="restartQuiz()">Recommencer</button>
+      </div>
+    </div>
+
+  </div>
+  <footer>Krysopée · Nemini Teneri</footer>
+</div>
+
+<script>
+/* ---------- DATA ---------- */
+const QUESTIONS = [
+  // AXE SOLAR — Œuvre Visible (Méthode & Marché)
+  { axis:'solar', text:"Votre méthode de trading actuelle est :", opts:[
+    "Je n'ai pas encore de méthode formalisée, je réagis au marché",
+    "J'ai des règles mais je les adapte souvent \u00ab au feeling \u00bb",
+    "J'ai un système écrit que je suis dans la majorité des cas",
+    "J'ai un système écrit, testé, et je peux justifier chaque paramètre"
+  ]},
+  { axis:'solar', text:"Face à une perte qui dépasse ce que vous aviez prévu :", opts:[
+    "Je sors du marché ou je double la mise pour me refaire",
+    "Je respecte mon stop mais je remets en question toute ma méthode",
+    "Je respecte mon stop, je journalise, je continue",
+    "La perte était dans mes scénarios probabilistes ; elle ne change rien à mon exécution"
+  ]},
+  { axis:'solar', text:"Votre relation au backtesting / à la preuve statistique :", opts:[
+    "Je trade surtout sur intuition et expérience",
+    "Je backteste occasionnellement, sans rigueur systématique",
+    "Je backteste sérieusement avant de déployer une stratégie",
+    "Je backteste, je walk-forward teste, et je réévalue périodiquement"
+  ]},
+  { axis:'solar', text:"Quand le marché ne correspond à aucun de vos scénarios habituels :", opts:[
+    "Je force une lecture pour rester dans l'action",
+    "Je réduis la taille de position mais je reste engagé",
+    "Je me mets de côté et j'attends une structure lisible",
+    "L'absence de lisibilité est en soi une information que j'exploite"
+  ]},
+  { axis:'solar', text:"Votre gestion du risque par position :", opts:[
+    "Elle varie selon ma conviction du moment",
+    "J'ai une règle générale mais je l'ajuste souvent",
+    "Un pourcentage fixe du capital, respecté sauf exception rare",
+    "Un cadre de risque intégré à un money management global"
+  ]},
+  { axis:'solar', text:"Combien de temps tenez-vous une stratégie perdante avant de la revoir ?", opts:[
+    "Je l'abandonne dès les premières pertes",
+    "Je la garde par espoir qu'elle \u00ab revienne \u00bb",
+    "Je la garde le temps statistiquement nécessaire, puis je tranche",
+    "J'ai des critères objectifs de sortie définis à l'avance"
+  ]},
+  { axis:'solar', text:"Les indicateurs ou outils que vous utilisez, vous pouvez :", opts:[
+    "Les nommer mais pas vraiment expliquer leur logique",
+    "Expliquer leur logique générale",
+    "Expliquer leur logique et leurs limites précises",
+    "Les avoir testés, ajustés, ou construits vous-même"
+  ]},
+  { axis:'solar', text:"Votre courbe de capital sur les 12 derniers mois :", opts:[
+    "Je ne la suis pas précisément",
+    "Je la regarde mais sans analyse structurée",
+    "Je l'analyse régulièrement (drawdown, ratio informel...)",
+    "Je la pilote activement avec des métriques de risque formalisées"
+  ]},
+
+  // AXE MERC — Œuvre Comportementale
+  { axis:'merc', text:"Après trois pertes consécutives, votre premier réflexe :", opts:[
+    "Je cherche à me refaire rapidement",
+    "Je continue comme si de rien n'était, en forçant un peu",
+    "Je réduis ma taille de position et j'observe",
+    "Je m'arrête, j'analyse froidement, puis je décide"
+  ]},
+  { axis:'merc', text:"Le FOMO (peur de rater un mouvement) :", opts:[
+    "Me fait entrer en position sans plan clair, régulièrement",
+    "M'affecte encore mais je le reconnais après coup",
+    "Je le reconnais en temps réel et je peux le contenir",
+    "Il ne dicte plus mes décisions — j'ai un protocole qui l'absorbe"
+  ]},
+  { axis:'merc', text:"Quand un trade gagnant dépasse largement votre objectif initial :", opts:[
+    "Je laisse courir sans règle, par avidité",
+    "Je suis tenté de tout garder mais je finis par sortir, tard",
+    "Je suis une règle de sortie partielle / trailing stop prédéfinie",
+    "La sortie est aussi mécanique que l'entrée, sans charge émotionnelle"
+  ]},
+  { axis:'merc', text:"Votre journal de trading (s'il existe) contient :", opts:[
+    "Rien, ou presque rien",
+    "Les trades, sans notes sur l'état mental",
+    "Les trades et quelques observations sur mon état au moment de la décision",
+    "Une analyse systématique croisant décision, contexte et état intérieur"
+  ]},
+  { axis:'merc', text:"Quand vous avez raison sur un trade pour de mauvaises raisons (chance) :", opts:[
+    "Je le compte comme une victoire, sans distinction",
+    "Je le remarque vaguement mais ça ne change rien",
+    "Je le note et je m'en méfie pour la suite",
+    "Je le distingue clairement de mes gains \u00ab méthodiques \u00bb"
+  ]},
+  { axis:'merc', text:"Face à l'avis contraire d'un autre trader que vous respectez :", opts:[
+    "Je change souvent d'avis sous influence",
+    "Ça me déstabilise, même si je ne change pas de position",
+    "J'écoute, j'évalue, je garde ou j'ajuste selon mes propres critères",
+    "Je peux intégrer l'information sans que mon centre de décision ne vacille"
+  ]},
+  { axis:'merc', text:"Votre plus grande difficulté psychologique actuelle en trading est :", opts:[
+    "Je ne sais pas vraiment l'identifier",
+    "Je la connais vaguement mais je ne travaille pas dessus",
+    "Je la connais précisément et j'ai des stratégies pour la limiter",
+    "Je la connais, je la travaille, et je vois une évolution mesurable"
+  ]},
+  { axis:'merc', text:"Après une série de gains conséquents :", opts:[
+    "Je prends plus de risques, porté par la confiance",
+    "Je suis conscient du danger mais j'y cède parfois",
+    "Je maintiens rigoureusement mon cadre de risque habituel",
+    "Je resserre même parfois mon risque, sachant ce qui suit les séries gagnantes"
+  ]},
+
+  // AXE HERM — Œuvre Intérieure
+  { axis:'herm', text:"Le trading est pour vous avant tout :", opts:[
+    "Un moyen de gagner de l'argent rapidement",
+    "Une compétence technique à maîtriser",
+    "Une discipline qui m'apprend autant sur moi que sur les marchés",
+    "Un chemin de transformation personnelle dont l'argent n'est qu'une conséquence"
+  ]},
+  { axis:'herm', text:"Quand vous relisez vos erreurs passées :", opts:[
+    "Elles me pèsent encore, j'évite d'y penser",
+    "Je les analyse techniquement, sans plus",
+    "J'y vois une phase nécessaire de mon apprentissage",
+    "Je peux nommer ce qu'elles ont dissous en moi et ce qu'elles ont construit"
+  ]},
+  { axis:'herm', text:"Face à une période prolongée sans edge clair sur le marché :", opts:[
+    "Je vis ça comme une frustration stérile",
+    "Je patiente, un peu à contrecœur",
+    "Je reconnais cette phase comme une dissolution nécessaire avant clarté nouvelle",
+    "Ces phases sont devenues des moments d'observation, pas de vide"
+  ]},
+  { axis:'herm', text:"Votre rapport à une grille de lecture symbolique des marchés (hermétisme, cycles) :", opts:[
+    "Cela me semble éloigné de la réalité du trading",
+    "Curieux mais je n'ai jamais exploré sérieusement",
+    "Je l'utilise déjà, en complément de l'analyse technique",
+    "C'est devenu une part structurante de ma pratique"
+  ]},
+  { axis:'herm', text:"Ce que vous cherchez aujourd'hui, plus que la performance :", opts:[
+    "Rien de particulier, je cherche surtout des gains",
+    "Une méthode qui marche, point",
+    "Une cohérence entre qui je suis et comment je trade",
+    "Un chemin de transmutation — devenir quelqu'un qui pourrait un jour transmettre"
+  ]},
+  { axis:'herm', text:"Si l'on vous demandait de décrire votre trading actuel avec une image :", opts:[
+    "Chaos, tempête, sans direction",
+    "Brouillard, incertitude persistante",
+    "Éclaircie, alignement qui se construit",
+    "Pleine lumière, une clarté que je sais temporaire et cyclique"
+  ]},
+  { axis:'herm', text:"La solitude de la décision (personne ne peut trader à votre place) :", opts:[
+    "Me pèse et me pousse à chercher validation extérieure en permanence",
+    "Je la vis mais elle reste inconfortable",
+    "Je l'ai acceptée comme une condition du métier",
+    "J'y trouve une forme de liberté — Nemini Teneri n'est plus abstrait"
+  ]},
+  { axis:'herm', text:"Ce que vous chercheriez dans un accompagnement structuré (type Opus Magnum) :", opts:[
+    "Des signaux ou une méthode clé en main",
+    "Une formation technique sérieuse",
+    "Un cadre exigeant pour structurer ce que je pratique déjà",
+    "Un compagnonnage vers une transformation, pas seulement une compétence"
+  ]}
+];
+
+const AXIS_META = {
+  solar: { sym:'☉', label:'Œuvre Visible' },
+  merc:  { sym:'☿', label:'Œuvre Comportementale' },
+  herm:  { sym:'🜍', label:'Œuvre Intérieure' }
+};
+
+const AXIS_PHASE_TEXT = {
+  solar: {
+    Nigredo: "Votre méthode n'est pas encore née — vous réagissez au marché plus que vous ne le lisez à travers un cadre. Ce n'est pas une faiblesse de caractère, c'est un état : celui d'avant la forme, où tout reste à formaliser. La dissolution précède toujours la structure ; encore faut-il accepter de s'y arrêter assez longtemps pour construire quelque chose derrière.",
+    Albedo: "Des règles existent, mais elles plient encore sous la pression du moment — un signal, une conviction, et le cadre se déforme. C'est le stade de la purification : vous savez déjà ce qu'une bonne méthode devrait contenir, il reste à lui donner assez de rigidité pour qu'elle survive à vos propres doutes.",
+    Citrinitas: "Un système écrit, suivi dans la majorité des cas, testé plutôt que supposé : la lecture du marché s'est clarifiée. Ce qui reste à affiner n'est plus la structure elle-même mais sa tenue dans les situations limites — les marchés sans edge, les configurations inédites que votre backtest n'a pas encore rencontrées.",
+    Rubedo: "La méthode ne se discute plus, elle s'exécute — chaque paramètre est justifiable, le risque est intégré à une vision globale du capital plutôt qu'à chaque position isolément. Ce niveau n'élimine pas l'incertitude du marché, mais il élimine celle de votre propre rapport à la méthode : elle est devenue une extension de vous, pas un pense-bête que vous consultez sous stress."
+  },
+  merc: {
+    Nigredo: "La pression décide encore à votre place : une perte en entraîne une autre plus grande, une série gagnante appelle une prise de risque qu'aucune règle n'aurait validée. Ce n'est pas un défaut moral, c'est l'état brut de tout trader avant qu'il n'ait construit un rapport conscient à ses propres réactions.",
+    Albedo: "Vous reconnaissez vos biais — souvent après coup, parfois en train d'agir — mais le réflexe de contention reste partiel. Le FOMO, la vengeance sur le marché après une perte, l'euphorie après un gain : vous les nommez, ce qui est déjà la moitié du chemin. L'autre moitié consiste à les contenir avant qu'ils n'agissent à travers vous.",
+    Citrinitas: "La discipline tient dans la majorité des situations, y compris sous une pression réelle. Le journal existe, les biais sont identifiés et travaillés plutôt que simplement constatés. Ce qui reste fragile, ce sont probablement les situations rares — la série de pertes inhabituelle, le gain qui dépasse tout ce que vous aviez anticipé — où l'ancien réflexe peut encore resurgir.",
+    Rubedo: "La charge émotionnelle ne dicte plus la décision — elle est absorbée par un protocole si intégré qu'il ne demande plus d'effort conscient. Ce n'est pas l'absence d'émotion : c'est une discipline devenue seconde nature, au point de ne plus se distinguer de vous-même dans l'instant de la décision."
+  },
+  herm: {
+    Nigredo: "Le trading reste, pour l'instant, un moyen plutôt qu'un chemin — l'argent en est l'unique horizon, et les périodes sans edge clair sont vécues comme une frustration stérile plutôt que comme une phase du cycle. Rien d'anormal à cela : la dimension intérieure de la pratique se construit rarement en premier, elle vient souvent après que le reste ait déjà montré ses limites.",
+    Albedo: "Une conscience émerge : le trading commence à vous apprendre quelque chose sur vous-même, au-delà de la seule technique. Les erreurs passées sont analysées plutôt qu'évitées du regard. Ce qui manque encore, c'est la capacité à traverser les phases de doute sans les vivre comme un échec — à voir le brouillard comme un passage, pas comme une impasse.",
+    Citrinitas: "Une grille de lecture plus large — cyclique, symbolique, ou simplement philosophique — est devenue un outil actif de votre pratique, en complément de l'analyse technique plutôt qu'en remplacement. Les périodes sans direction claire sont reconnues comme nécessaires plutôt que subies. Ce qui se cherche encore, c'est la cohérence pleine entre cette lucidité et le reste de votre pratique.",
+    Rubedo: "La solitude de la décision n'est plus une charge mais une forme de liberté assumée. Le trading est devenu un chemin de transformation dont la performance n'est qu'une conséquence parmi d'autres, et l'idée de transmettre à votre tour — plutôt que de seulement recevoir — commence à avoir du sens."
+  }
+};
+
+/* ---------- STATE ---------- */
+let current = 0;
+const answers = new Array(QUESTIONS.length).fill(null);
+
+/* ---------- NAVIGATION ---------- */
+function startQuiz(){
+  document.getElementById('screen-intro').classList.add('hidden');
+  document.getElementById('screen-quiz').classList.remove('hidden');
+  current = 0;
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q = QUESTIONS[current];
+  const meta = AXIS_META[q.axis];
+  document.getElementById('axisTag').innerHTML = '<span class="sym">'+meta.sym+'</span>' + meta.label;
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('progressLabel').textContent = (current+1) + ' / ' + QUESTIONS.length;
+  document.getElementById('progressFill').style.width = ((current)/(QUESTIONS.length-1)*100) + '%';
+
+  const list = document.getElementById('optionsList');
+  list.innerHTML = '';
+  q.opts.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'option' + (answers[current] === i+1 ? ' selected' : '');
+    div.innerHTML = '<div class="option-dot"></div><div class="option-text">'+opt+'</div>';
+    div.onclick = () => {
+      answers[current] = i+1;
+      renderQuestion();
+    };
+    list.appendChild(div);
+  });
+
+  document.getElementById('btnPrev').disabled = current === 0;
+  document.getElementById('btnNext').disabled = answers[current] === null;
+  document.getElementById('btnNext').textContent = current === QUESTIONS.length-1 ? 'Voir mon résultat' : 'Suivant';
+}
+
+function nextQuestion(){
+  if(answers[current] === null) return;
+  if(current === QUESTIONS.length-1){
+    showResult();
+    return;
+  }
+  current++;
+  renderQuestion();
+}
+
+function prevQuestion(){
+  if(current === 0) return;
+  current--;
+  renderQuestion();
+}
+
+function restartQuiz(){
+  answers.fill(null);
+  current = 0;
+  document.getElementById('screen-result').classList.add('hidden');
+  document.getElementById('screen-intro').classList.remove('hidden');
+}
+
+/* ---------- SCORING ---------- */
+function computeScores(){
+  const sums = { solar:0, merc:0, herm:0 };
+  QUESTIONS.forEach((q, i) => { sums[q.axis] += answers[i]; });
+  return sums;
+}
+function phaseOf(score){
+  if(score <= 14) return 'Nigredo';
+  if(score <= 21) return 'Albedo';
+  if(score <= 27) return 'Citrinitas';
+  return 'Rubedo';
+}
+
+/* ---------- RADAR RENDER ---------- */
+const svgNS = "http://www.w3.org/2000/svg";
+const CX = 210, CY = 200, R = 140;
+const AXES = [
+  { key:'solar', label:'Visible', sym:'☉', angle:-90 },
+  { key:'merc',  label:'Comportementale', sym:'☿', angle:30 },
+  { key:'herm',  label:'Intérieure', sym:'🜍', angle:150 }
+];
+const RING_NAMES = ['Nigredo','Albedo','Citrinitas','Rubedo'];
+
+function scoreToRadius(score){ return ((score-8)/(32-8)) * R; }
+function polar(cx,cy,r,angleDeg){
+  const a = angleDeg*Math.PI/180;
+  return [cx+r*Math.cos(a), cy+r*Math.sin(a)];
+}
+
+function drawStaticRadar(){
+  const ringsG = document.getElementById('rings');
+  const spokesG = document.getElementById('spokes');
+  const labelsG = document.getElementById('ringLabels');
+  const axisG = document.getElementById('axisLabels');
+  ringsG.innerHTML = ''; spokesG.innerHTML = ''; labelsG.innerHTML = ''; axisG.innerHTML = '';
+
+  [14,21,27,32].forEach(bound => {
+    const r = scoreToRadius(bound);
+    const pts = AXES.map(ax => polar(CX,CY,r,ax.angle).join(',')).join(' ');
+    const poly = document.createElementNS(svgNS,'polygon');
+    poly.setAttribute('points', pts);
+    poly.setAttribute('class','ring');
+    ringsG.appendChild(poly);
+  });
+
+  AXES.forEach(ax => {
+    const [x,y] = polar(CX,CY,R,ax.angle);
+    const line = document.createElementNS(svgNS,'line');
+    line.setAttribute('x1',CX); line.setAttribute('y1',CY);
+    line.setAttribute('x2',x); line.setAttribute('y2',y);
+    line.setAttribute('class','spoke');
+    spokesG.appendChild(line);
+  });
+
+  [14,21,27,32].forEach((bound,i) => {
+    const r = scoreToRadius(bound);
+    const [x,y] = polar(CX,CY,r,-90);
+    const t = document.createElementNS(svgNS,'text');
+    t.setAttribute('x', x+6); t.setAttribute('y', y-4);
+    t.setAttribute('class','ring-label');
+    t.textContent = RING_NAMES[i];
+    labelsG.appendChild(t);
+  });
+
+  AXES.forEach(ax => {
+    const [sx,sy] = polar(CX,CY,R+30,ax.angle);
+    const sym = document.createElementNS(svgNS,'text');
+    sym.setAttribute('x', sx); sym.setAttribute('y', sy-4);
+    sym.setAttribute('text-anchor','middle');
+    sym.setAttribute('class','axis-symbol');
+    sym.textContent = ax.sym;
+    axisG.appendChild(sym);
+
+    const lab = document.createElementNS(svgNS,'text');
+    lab.setAttribute('x', sx); lab.setAttribute('y', sy+12);
+    lab.setAttribute('text-anchor','middle');
+    lab.setAttribute('class','axis-label');
+    lab.textContent = ax.label;
+    axisG.appendChild(lab);
+  });
+}
+
+function drawProfile(scores){
+  const pts = AXES.map(ax => polar(CX,CY, scoreToRadius(scores[ax.key]), ax.angle));
+  document.getElementById('profilePoly').setAttribute('points', pts.map(p=>p.join(',')).join(' '));
+  const vertG = document.getElementById('vertices');
+  vertG.innerHTML = '';
+  pts.forEach(([x,y]) => {
+    const c = document.createElementNS(svgNS,'circle');
+    c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r',4.5);
+    c.setAttribute('class','vertex');
+    vertG.appendChild(c);
+  });
+}
+
+/* ---------- READING LOGIC ---------- */
+function reading(scores){
+  const { solar, merc, herm } = scores;
+  const avg = (solar+merc+herm)/3;
+  const spread = Math.max(solar,merc,herm) - Math.min(solar,merc,herm);
+  const high = s => s >= 22, low = s => s <= 14, mid = s => s > 14 && s < 22;
+  const counts = {};
+  [phaseOf(solar), phaseOf(merc), phaseOf(herm)].forEach(p => counts[p] = (counts[p]||0)+1);
+  const dominant = Object.keys(counts).sort((a,b)=>counts[b]-counts[a])[0];
+
+  let text, piste;
+
+  if(high(solar) && high(merc) && high(herm) && Math.min(solar,merc,herm) >= 27){
+    text = "Un profil rare : les trois plans sont arrivés au même point d'incandescence. La méthode est éprouvée, la discipline tient sous une pression réelle, et le sens donné à la pratique dépasse largement la performance seule. Ce n'est plus un profil qui cherche à apprendre — c'est un profil qui pourrait déjà transmettre.";
+    piste = "Ce profil correspond directement à ce qu'Opus Magnum cherche à accompagner — la question n'est plus de se structurer, mais de savoir ce que vous voulez faire de cette maîtrise.";
+  } else if(high(solar) && low(merc)){
+    text = "Technicien compétent, fragile sous la pression. La méthode tient sur le papier — backtestée, écrite, défendable — mais l'exécution vacille dès que la charge émotionnelle monte : une série de pertes, un gain trop rapide, et le cadre se fissure. C'est un déséquilibre fréquent, et souvent le plus coûteux, car il donne l'illusion que le problème est technique alors qu'il ne l'est plus.";
+    piste = "Travailler la discipline comportementale avant tout perfectionnement technique supplémentaire — K I Praxis est pensé pour ce point précis.";
+  } else if(high(merc) && low(solar)){
+    text = "La discipline est là — vous tenez sous pression, vous respectez vos limites — mais elle s'exerce sur une méthode qui n'est pas encore assez structurée pour mériter une telle rigueur. C'est un peu comme une garde du corps sans personne à protéger : la qualité intérieure ne demande qu'un cadre à la hauteur.";
+    piste = "Formaliser la méthode en priorité — la discipline que vous avez déjà construite absorbera d'autant mieux une structure solide.";
+  } else if(high(herm) && low(solar) && low(merc)){
+    text = "Une quête de sens sincère, mais prématurée : le chemin intérieur ne peut pas encore compenser l'absence de fondations concrètes. Vous savez déjà pourquoi vous tradez ; reste à construire, avec la même exigence, comment vous tradez.";
+    piste = "Commencer par structurer la pratique (K I Arcana puis K I Praxis) avant tout accompagnement hermétique approfondi — la lucidité que vous avez déjà mérite un socle qui la porte.";
+  } else if(high(solar) && high(merc) && low(herm)){
+    text = "Une compétence solide des deux côtés visibles de la pratique — méthode tenue, discipline tenue — mais sans que le sens de tout cela n'ait encore été interrogé. Ce profil peut très bien fonctionner ainsi, durablement. Il se pourrait simplement que la question du pourquoi finisse, tôt ou tard, par se poser d'elle-même — souvent au moment où l'on s'y attend le moins.";
+    piste = "Aucune urgence ici : ce profil n'a pas besoin de Krysopée pour réussir. K I Arcana reste ouvert, sans pression, pour le jour où la question du sens se posera.";
+  } else if((high(solar) || high(herm)) && low(merc) && mid(herm)){
+    text = "La lucidité et la méthode avancent, mais c'est la tenue sous pression qui reste le maillon fragile — celui qui, dans les faits, décide de la réussite ou non de tout le reste. Une belle carte, mal exécutée quand la tension monte, ne vaut pas mieux qu'une carte incomplète.";
+    piste = "Prioriser le travail comportemental : c'est l'axe qui, une fois consolidé, fera le plus effet de levier sur les deux autres.";
+  } else if(avg >= 24 && spread <= 8){
+    text = "Un profil cohérent : les trois plans avancent ensemble, sans excès ni angle mort majeur. Ce n'est pas l'absence de difficultés — c'est le fait qu'aucun des trois axes ne soit resté significativement en retrait des deux autres, ce qui est en réalité le point le plus rare de toute cette cartographie.";
+    piste = "Un profil naturellement aligné avec un accompagnement de type Opus Magnum, ou avec une collaboration plus directe via Fides & Co.";
+  } else if(avg <= 15){
+    text = "Un chemin qui commence — les trois axes sont encore en dissolution, chacun à sa manière. Ce n'est pas un manque : Nigredo n'a jamais été un échec dans le Grand Œuvre, c'est le point de départ obligé de toute transformation véritable.";
+    piste = "Le moment est à l'exploration et à la structuration progressive plutôt qu'à un accompagnement avancé — K I Arcana est le point d'entrée le plus juste aujourd'hui.";
+  } else {
+    text = "Un profil en construction, avec un déséquilibre notable entre les plans plutôt qu'un retard généralisé. C'est souvent le signe qu'un axe a été travaillé plus tôt ou plus intensément que les deux autres — ce qui n'a rien d'anormal, mais qui mérite d'être rééquilibré consciemment plutôt que laissé au hasard des priorités du moment.";
+    piste = "Identifier l'axe le plus faible des trois et le traiter en priorité, plutôt que de continuer à renforcer celui qui est déjà le plus solide.";
+  }
+  return { dominant, text, piste };
+}
+
+/* ---------- SHOW RESULT ---------- */
+let lastScores = null, lastReading = null;
+
+function showResult(){
+  document.getElementById('screen-quiz').classList.add('hidden');
+  document.getElementById('screen-result').classList.remove('hidden');
+
+  const scores = computeScores();
+  lastScores = scores;
+  drawStaticRadar();
+  drawProfile(scores);
+
+  document.getElementById('scoreSolar').textContent = phaseOf(scores.solar) + ' · ' + scores.solar + '/32';
+  document.getElementById('scoreMerc').textContent  = phaseOf(scores.merc)  + ' · ' + scores.merc  + '/32';
+  document.getElementById('scoreHerm').textContent  = phaseOf(scores.herm)  + ' · ' + scores.herm  + '/32';
+
+  document.getElementById('textSolar').textContent = AXIS_PHASE_TEXT.solar[phaseOf(scores.solar)];
+  document.getElementById('textMerc').textContent  = AXIS_PHASE_TEXT.merc[phaseOf(scores.merc)];
+  document.getElementById('textHerm').textContent  = AXIS_PHASE_TEXT.herm[phaseOf(scores.herm)];
+
+  const r = reading(scores);
+  lastReading = r;
+  document.getElementById('phaseWord').textContent = r.dominant;
+  document.getElementById('readingText').textContent = r.text;
+  document.getElementById('pisteText').textContent = r.piste;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+
+</script>
+</body>
+</html>
