@@ -203,6 +203,38 @@
   }
   .piste-text{ font-size:16px; line-height:1.55; font-style:italic; color:var(--parchment-dim); }
 
+  .resources{ margin-top:26px; padding-top:22px; border-top:1px solid var(--hairline); }
+  .resources-label{
+    font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.18em;
+    text-transform:uppercase; color:var(--brass); margin-bottom:6px;
+  }
+  .resources-intro{ font-size:14px; color:var(--parchment-dim); line-height:1.5; margin-bottom:16px; }
+  .res-item{ border:1px solid var(--hairline); border-radius:3px; margin-bottom:10px; overflow:hidden; }
+  .res-head{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:14px 18px; cursor:pointer; background:var(--ink-2);
+    transition:background 0.15s ease;
+  }
+  .res-head:hover{ background:var(--ink-3); }
+  .res-head-title{ font-family:'Cormorant Garamond', serif; font-size:19px; }
+  .res-head-title .sym{ color:var(--brass-bright); margin-right:8px; }
+  .res-chevron{ font-family:'JetBrains Mono', monospace; color:var(--parchment-dim); font-size:13px; transition:transform 0.2s ease; }
+  .res-item.open .res-chevron{ transform:rotate(180deg); }
+  .res-body{ display:none; padding:4px 20px 22px; }
+  .res-item.open .res-body{ display:block; }
+  .res-tag-recommended{
+    font-family:'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--brass-bright); margin-left:8px;
+  }
+  .res-text{ font-size:15px; line-height:1.65; margin:0 0 16px; }
+  .res-sub{
+    font-family:'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--brass); margin:16px 0 6px;
+  }
+  .res-sub-text{ font-size:14px; line-height:1.55; color:var(--parchment); margin:0; }
+  .res-biblio{ margin:6px 0 0; padding-left:18px; font-size:13px; line-height:1.6; color:var(--parchment-dim); }
+  .res-biblio li{ margin-bottom:2px; }
+
   .restart{ text-align:center; margin-top:30px; padding-top:24px; border-top:1px solid var(--hairline); }
   footer{
     text-align:center; margin-top:44px;
@@ -289,6 +321,12 @@
       <div class="piste">
         <div class="piste-label">Piste suggérée</div>
         <div class="piste-text" id="pisteText">—</div>
+      </div>
+
+      <div class="resources">
+        <div class="resources-label">Ressources — les trois voies</div>
+        <p class="resources-intro">Un texte, un exercice concret, une piste de réflexion et quelques lectures pour chacune des trois voies. Aucune n'est fermée — celle qui correspond à votre axe le plus fragile aujourd'hui est ouverte par défaut.</p>
+        <div id="resourcesList"></div>
       </div>
 
       <div class="restart">
@@ -481,6 +519,75 @@ const AXIS_PHASE_TEXT = {
   }
 };
 
+const RESOURCES = {
+  solar: {
+    sym: '☉', label: 'Œuvre Visible', title: 'La méthode et la main',
+    text: "On peut posséder une méthode et ne pas l'exécuter. Ce n'est pas une contradiction rare — c'est la norme silencieuse de la plupart des praticiens des marchés. Le graphique est correct, le signal est identifié, la règle est écrite noir sur blanc quelque part — et pourtant la main hésite, anticipe, ou intervient une seconde trop tôt.<br><br>L'Œuvre Visible ne se mesure pas à la qualité du système qu'on a construit. Elle se mesure à l'écart entre ce système et ce qu'on en fait réellement, trade après trade. Un système parfait exécuté à 60 % vaut moins qu'un système moyen exécuté à 95 %.<br><br>La question n'est donc jamais seulement « ma méthode est-elle bonne ? » mais « suis-je celui qui l'exécute, ou celui qui la réinvente à chaque fois que ça devient inconfortable ? »",
+    exerciseLabel: 'Exercice concret — le relevé de fidélité',
+    exercise: "Sur les dix prochaines décisions de marché, noter uniquement deux choses : ce que la méthode prescrivait, et ce qui a été fait. Pas de commentaire, pas de justification — juste l'écart, ou son absence. Après dix décisions, relire sans corriger : le pattern apparaît de lui-même.",
+    reflectionLabel: 'Piste de réflexion',
+    reflection: "À quel moment précis, la dernière fois, ai-je dévié de ma méthode — et qu'est-ce qui, dans l'instant, m'a semblé plus urgent que la règle que je m'étais fixée ?",
+    biblio: ["Mark Douglas, <em>Trading in the Zone</em>", "Thami Kabbaj, <em>Psychologie des grands traders</em>", "Brett Steenbarger, <em>The Daily Trading Coach</em>"]
+  },
+  merc: {
+    sym: '☿', label: 'Œuvre Comportementale', title: 'Ce que le calme cache',
+    text: "Il existe un calme qui est de la maîtrise, et un calme qui est de l'évitement. Les deux se ressemblent de l'extérieur — respiration régulière, décision posée, absence apparente d'émotion. Seule la position suivante les distingue : celui qui maîtrise reste capable de prendre une perte au moment prévu ; celui qui évite recule ce moment, un peu, encore un peu, jusqu'à ce que la perte ait grossi assez pour justifier a posteriori l'attente.<br><br>L'Œuvre Comportementale ne se joue pas dans les moments où tout va bien — elle se joue dans les trois secondes qui suivent une décision qu'on ne voulait pas prendre.<br><br>Une question simple, à se poser après chaque session : dans quel moment précis ai-je senti l'écart entre ce que je faisais et ce que j'aurais dû faire — et qu'ai-je fait de cet écart ?",
+    exerciseLabel: 'Exercice concret — le protocole des trois secondes',
+    exercise: "Juste après une décision inconfortable (perte prise, perte évitée trop tard, entrée manquée par hésitation), s'arrêter et nommer par écrit, en une phrase, ce qui a été ressenti dans les trois secondes qui ont précédé l'action — sans juger, seulement décrire. Répété sur plusieurs semaines, ce relevé révèle les schémas mieux qu'un journal de trading classique centré sur les chiffres.",
+    reflectionLabel: 'Piste de réflexion',
+    reflection: "Est-ce que je reconnais, dans ma pratique récente, un cas de calme qui était en réalité de l'évitement — et qu'est-ce qui, rétrospectivement, aurait dû m'alerter ?",
+    biblio: ["Daniel Kahneman, <em>Système 1 / Système 2 : les deux vitesses de la pensée</em>", "Olivier Sibony, <em>Vous allez commettre une erreur fatale</em>", "Morgan Housel, <em>The Psychology of Money</em>"]
+  },
+  herm: {
+    sym: '🜍', label: 'Œuvre Intérieure', title: 'Ce que le gain ne répare pas',
+    text: "Il y a une croyance tenace selon laquelle un résultat suffisamment bon finit par répondre aux questions qu'on portait avant de commencer. Que la performance, à force de s'accumuler, referme d'elle-même ce qui était resté ouvert ailleurs. Ce n'est pas ainsi que cela se passe. Un bon résultat répond à une question de résultat. Il ne répond à aucune autre.<br><br>L'Œuvre Intérieure ne se nourrit pas de ce qu'on gagne, mais de ce qu'on continue à se demander en gagnant. Un praticien qui ne se pose plus de questions sur le sens de sa pratique n'a pas trouvé ce sens — il a cessé de le chercher, ce qui n'est pas la même chose.<br><br>La question ne se referme pas ici. Elle continue, ailleurs, dans le temps : qu'est-ce que je cherche, au juste, à travers cette pratique — et cette réponse a-t-elle changé depuis que j'ai commencé ?",
+    exerciseLabel: 'Pratique — non un exercice, une tenue de la question',
+    exercise: "Une fois par semaine, sans lien avec une performance particulière, écrire une seule réponse à la question : pourquoi est-ce que je fais cela ? Ne pas chercher à améliorer la réponse d'une semaine à l'autre. Le but n'est pas de converger vers une formule définitive, mais d'observer si la réponse se déplace, se répète, ou se dérobe.",
+    reflectionLabel: 'Piste de réflexion',
+    reflection: "Si le résultat de cette année avait été à l'identique, mais que personne d'autre que moi ne l'avait jamais su — est-ce que cette pratique aurait encore le même sens pour moi ?",
+    biblio: ["Marc Aurèle, <em>Pensées pour moi-même</em>", "Titus Burckhardt, <em>Alchimie : sa signification symbolique et psychologique</em>", "Frédéric Lenoir, <em>Du bonheur, un voyage philosophique</em>"]
+  }
+};
+
+function weakestAxis(scores){
+  return Object.keys(scores).sort((a,b) => scores[a]-scores[b])[0];
+}
+
+function renderResources(scores){
+  const weak = weakestAxis(scores);
+  const order = ['solar','merc','herm'];
+  const list = document.getElementById('resourcesList');
+  list.innerHTML = '';
+  order.forEach(key => {
+    const r = RESOURCES[key];
+    const item = document.createElement('div');
+    item.className = 'res-item' + (key === weak ? ' open' : '');
+    item.id = 'res-' + key;
+    const biblioItems = r.biblio.map(b => '<li>' + b + '</li>').join('');
+    item.innerHTML =
+      '<div class="res-head" onclick="toggleResource(\'' + key + '\')">' +
+        '<span class="res-head-title"><span class="sym">' + r.sym + '</span>' + r.title +
+          (key === weak ? '<span class="res-tag-recommended">axe le plus fragile</span>' : '') +
+        '</span>' +
+        '<span class="res-chevron">▾</span>' +
+      '</div>' +
+      '<div class="res-body">' +
+        '<p class="res-text">' + r.text + '</p>' +
+        '<div class="res-sub">' + r.exerciseLabel + '</div>' +
+        '<p class="res-sub-text">' + r.exercise + '</p>' +
+        '<div class="res-sub">' + r.reflectionLabel + '</div>' +
+        '<p class="res-sub-text">' + r.reflection + '</p>' +
+        '<div class="res-sub">Pour aller plus loin</div>' +
+        '<ul class="res-biblio">' + biblioItems + '</ul>' +
+      '</div>';
+    list.appendChild(item);
+  });
+}
+
+function toggleResource(key){
+  document.getElementById('res-' + key).classList.toggle('open');
+}
+
 /* ---------- STATE ---------- */
 let current = 0;
 const answers = new Array(QUESTIONS.length).fill(null);
@@ -651,31 +758,31 @@ function reading(scores){
 
   if(high(solar) && high(merc) && high(herm) && Math.min(solar,merc,herm) >= 27){
     text = "Un profil rare : les trois plans sont arrivés au même point d'incandescence. La méthode est éprouvée, la discipline tient sous une pression réelle, et le sens donné à la pratique dépasse largement la performance seule. Ce n'est plus un profil qui cherche à apprendre — c'est un profil qui pourrait déjà transmettre.";
-    piste = "Ce profil correspond directement à ce qu'Opus Magnum cherche à accompagner — la question n'est plus de se structurer, mais de savoir ce que vous voulez faire de cette maîtrise.";
+    piste = "Ce profil n'a plus besoin d'être structuré. La question qui se pose désormais est différente — celle de ce que vous voulez faire de cette maîtrise. La ressource sur l'Œuvre Intérieure, ci-dessous, peut nourrir cette réflexion.";
   } else if(high(solar) && low(merc)){
     text = "Technicien compétent, fragile sous la pression. La méthode tient sur le papier — backtestée, écrite, défendable — mais l'exécution vacille dès que la charge émotionnelle monte : une série de pertes, un gain trop rapide, et le cadre se fissure. C'est un déséquilibre fréquent, et souvent le plus coûteux, car il donne l'illusion que le problème est technique alors qu'il ne l'est plus.";
-    piste = "Travailler la discipline comportementale avant tout perfectionnement technique supplémentaire — K I Praxis est pensé pour ce point précis.";
+    piste = "Travailler la discipline comportementale avant tout perfectionnement technique supplémentaire : la ressource sur l'Œuvre Comportementale, ci-dessous, propose un point de départ concret.";
   } else if(high(merc) && low(solar)){
     text = "La discipline est là — vous tenez sous pression, vous respectez vos limites — mais elle s'exerce sur une méthode qui n'est pas encore assez structurée pour mériter une telle rigueur. C'est un peu comme une garde du corps sans personne à protéger : la qualité intérieure ne demande qu'un cadre à la hauteur.";
-    piste = "Formaliser la méthode en priorité — la discipline que vous avez déjà construite absorbera d'autant mieux une structure solide.";
+    piste = "Formaliser la méthode en priorité : la ressource sur l'Œuvre Visible, ci-dessous, propose un exercice simple pour commencer.";
   } else if(high(herm) && low(solar) && low(merc)){
     text = "Une quête de sens sincère, mais prématurée : le chemin intérieur ne peut pas encore compenser l'absence de fondations concrètes. Vous savez déjà pourquoi vous tradez ; reste à construire, avec la même exigence, comment vous tradez.";
-    piste = "Commencer par structurer la pratique (K I Arcana puis K I Praxis) avant tout accompagnement hermétique approfondi — la lucidité que vous avez déjà mérite un socle qui la porte.";
+    piste = "Commencer par structurer la pratique : les ressources sur l'Œuvre Visible et l'Œuvre Comportementale, ci-dessous, sont probablement les plus utiles aujourd'hui.";
   } else if(high(solar) && high(merc) && low(herm)){
     text = "Une compétence solide des deux côtés visibles de la pratique — méthode tenue, discipline tenue — mais sans que le sens de tout cela n'ait encore été interrogé. Ce profil peut très bien fonctionner ainsi, durablement. Il se pourrait simplement que la question du pourquoi finisse, tôt ou tard, par se poser d'elle-même — souvent au moment où l'on s'y attend le moins.";
-    piste = "Aucune urgence ici : ce profil n'a pas besoin de Krysopée pour réussir. K I Arcana reste ouvert, sans pression, pour le jour où la question du sens se posera.";
+    piste = "Aucune urgence ici. Si la question du sens venait à se poser, la ressource sur l'Œuvre Intérieure, ci-dessous, restera disponible, sans pression.";
   } else if((high(solar) || high(herm)) && low(merc) && mid(herm)){
     text = "La lucidité et la méthode avancent, mais c'est la tenue sous pression qui reste le maillon fragile — celui qui, dans les faits, décide de la réussite ou non de tout le reste. Une belle carte, mal exécutée quand la tension monte, ne vaut pas mieux qu'une carte incomplète.";
-    piste = "Prioriser le travail comportemental : c'est l'axe qui, une fois consolidé, fera le plus effet de levier sur les deux autres.";
+    piste = "Prioriser le travail comportemental : c'est l'axe qui, une fois consolidé, fera le plus effet de levier sur les deux autres. La ressource ci-dessous en est un premier pas.";
   } else if(avg >= 24 && spread <= 8){
     text = "Un profil cohérent : les trois plans avancent ensemble, sans excès ni angle mort majeur. Ce n'est pas l'absence de difficultés — c'est le fait qu'aucun des trois axes ne soit resté significativement en retrait des deux autres, ce qui est en réalité le point le plus rare de toute cette cartographie.";
-    piste = "Un profil naturellement aligné avec un accompagnement de type Opus Magnum, ou avec une collaboration plus directe via Fides & Co.";
+    piste = "Les ressources ci-dessous restent utiles non pour combler un manque, mais pour continuer d'affiner ce qui fonctionne déjà.";
   } else if(avg <= 15){
     text = "Un chemin qui commence — les trois axes sont encore en dissolution, chacun à sa manière. Ce n'est pas un manque : Nigredo n'a jamais été un échec dans le Grand Œuvre, c'est le point de départ obligé de toute transformation véritable.";
-    piste = "Le moment est à l'exploration et à la structuration progressive plutôt qu'à un accompagnement avancé — K I Arcana est le point d'entrée le plus juste aujourd'hui.";
+    piste = "Le moment est à l'exploration progressive plutôt qu'à la précipitation. Les trois ressources ci-dessous sont un bon point d'entrée, dans l'ordre qui vous parle le plus.";
   } else {
     text = "Un profil en construction, avec un déséquilibre notable entre les plans plutôt qu'un retard généralisé. C'est souvent le signe qu'un axe a été travaillé plus tôt ou plus intensément que les deux autres — ce qui n'a rien d'anormal, mais qui mérite d'être rééquilibré consciemment plutôt que laissé au hasard des priorités du moment.";
-    piste = "Identifier l'axe le plus faible des trois et le traiter en priorité, plutôt que de continuer à renforcer celui qui est déjà le plus solide.";
+    piste = "Identifier l'axe le plus faible des trois et le traiter en priorité : la ressource correspondante, ci-dessous, propose un exercice concret pour commencer.";
   }
   return { dominant, text, piste };
 }
@@ -705,6 +812,8 @@ function showResult(){
   document.getElementById('phaseWord').textContent = r.dominant;
   document.getElementById('readingText').textContent = r.text;
   document.getElementById('pisteText').textContent = r.piste;
+
+  renderResources(scores);
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
