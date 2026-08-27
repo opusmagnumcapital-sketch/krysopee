@@ -170,7 +170,6 @@ nav {
 }
 .nav-links a:hover,
 .nav-links a.active { color: var(--or); }
-.nav-links a.fides  { color: var(--or); }
 
 .nav-contact {
   font-family: 'Poppins', sans-serif;

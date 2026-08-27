@@ -8,8 +8,9 @@ Site statique HTML/CSS pour krysopee.capital
 |---|---|
 | `index.html` | Page d'accueil — neutre, 6 blocs |
 | `manifeste.html` | Le Manifeste — traduction descendante des 7 chapitres publics + glossaire |
-| `ecosysteme.html` | Écosystème — K-Équinoxe, Fides & Co, Fondation Amaltheia, teaser Praxis |
+| `ecosysteme.html` | Écosystème — K-Équinoxe, K-Solstice, teaser Praxis |
 | `parcours-opus-magnum.html` | Parcours Opus Magnum — transmission individuelle et sélective |
+| `miroir.html` | Le Miroir des Trois Voies — questionnaire d'auto-positionnement en 24 questions, intégré à la navigation depuis août 2026 |
 | `praxis.html` | Praxis — teaser et renvoi vers les publications LinkedIn |
 | `fondateur.html` | Page Jean-Luc Manzaroli — sans photo |
 | `contact.html` | Contact — formulaire épuré (nom / e-mail / message) |
@@ -17,6 +18,8 @@ Site statique HTML/CSS pour krysopee.capital
 | `mentions-legales.html` | Mentions légales |
 | `style.css` | Feuille de styles partagée |
 | `favicon.svg` | Icône du site |
+
+**Note (août 2026)** : Fides & Co et la Fondation Amaltheia ne figurent dans aucune page du site actuel — Fides & Co est en pause opérationnelle pour 2-3 ans minimum. Cette entrée README a été corrigée pour refléter le contenu réel des fichiers.
 
 ## Déploiement GitHub Pages
 
