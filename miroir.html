@@ -243,6 +243,71 @@
   .res-biblio li{ margin-bottom:2px; }
 
   .restart{ text-align:center; margin-top:30px; padding-top:24px; border-top:1px solid var(--hairline); }
+
+  /* ---------- IMPRESSION / EXPORT PDF ---------- */
+  .print-header{ display:none; }
+  .print-actions{ text-align:center; margin-top:28px; }
+  .print-actions .btn{ margin:0 6px; }
+
+  @media print{
+    @page{ margin:16mm 14mm; }
+    html, body{
+      background-image:none !important;
+      background-color:#fff !important;
+      color:#211a10 !important;
+      padding:0 !important;
+      margin:0 !important;
+      font-size:12.5px;
+    }
+    .wrap, #screen-result, .card{ background:none !important; border:none !important; padding:0 !important; }
+    .eyebrow, h1, .subtitle{ display:none !important; }
+    #nav, .btn-row, .restart, .print-actions, footer,
+    .phase-tag, .resources-intro, .res-chevron,
+    .res-tag-recommended{ display:none !important; }
+    .wrap{ max-width:100% !important; }
+    .print-header{
+      display:block !important;
+      text-align:center;
+      border-bottom:1px solid #c9a24b;
+      padding-bottom:14px;
+      margin-bottom:22px;
+    }
+    .print-header .ph-mark{
+      font-family:'Space Mono', monospace;
+      font-size:10px;
+      letter-spacing:0.28em;
+      text-transform:uppercase;
+      color:#8a6a2a;
+    }
+    .print-header h2{
+      font-family:'Lora', Georgia, serif;
+      font-weight:600;
+      font-size:22px;
+      color:#211a10;
+      margin:6px 0 4px;
+    }
+    .print-header .ph-date{
+      font-family:'Space Mono', monospace;
+      font-size:10px;
+      color:#6b5a3a;
+    }
+    .chart-panel{ background:#faf6ec !important; border:1px solid #d9cba3 !important; }
+    #rings polygon, #rings circle{ stroke:#c9a24b33 !important; }
+    #spokes line{ stroke:#c9a24b55 !important; }
+    .axis-label, .ring-label{ fill:#6b5a3a !important; }
+    .axis-report{ background:#faf6ec !important; border:1px solid #e3d6ae !important; break-inside:avoid; }
+    .axis-text, .res-text, .res-sub-text, .reading-text, .piste-text{ color:#2b2213 !important; }
+    .reading, .piste, .outro{ background:#faf6ec !important; border:1px solid #e3d6ae !important; break-inside:avoid; }
+    .res-item{ border:1px solid #e3d6ae !important; break-inside:avoid; margin-bottom:12px; }
+    .res-item .res-body{ display:block !important; padding:10px 16px 16px !important; }
+    .res-head{ background:transparent !important; cursor:default; }
+    .res-head-title{ color:#211a10 !important; }
+    .res-head-title .sym{ color:#8a6a2a !important; }
+    .resources-label, .reading-label, .piste-label{ color:#8a6a2a !important; }
+    .res-biblio, .res-sub{ color:#6b5a3a !important; }
+    .scorebar-row b{ color:#8a6a2a !important; }
+  }
+
   footer{
     text-align:center; margin-top:44px;
     font-family:'Space Mono', monospace; font-size:10px;
@@ -306,6 +371,11 @@
 
     <!-- RESULT -->
     <div id="screen-result" class="hidden">
+      <div class="print-header">
+        <div class="ph-mark">Krysopée · Nemini Teneri</div>
+        <h2>Le Miroir des Trois Voies — Synthèse</h2>
+        <div class="ph-date" id="printDate"></div>
+      </div>
       <div class="chart-panel">
         <div class="phase-tag">Phase dominante — <span id="phaseWord">—</span></div>
         <svg viewBox="0 0 420 400" id="radarSvg">
@@ -359,6 +429,7 @@
 
       <div class="restart">
         <button class="btn btn-ghost" onclick="restartQuiz()">Recommencer</button>
+        <button class="btn" onclick="exportPdf()">Télécharger en PDF</button>
       </div>
     </div>
 
@@ -677,6 +748,10 @@ function restartQuiz(){
   document.getElementById('screen-intro').classList.remove('hidden');
 }
 
+function exportPdf(){
+  window.print();
+}
+
 /* ---------- SCORING ---------- */
 function computeScores(){
   const sums = { solar:0, merc:0, herm:0 };
@@ -822,6 +897,9 @@ let lastScores = null, lastReading = null;
 function showResult(){
   document.getElementById('screen-quiz').classList.add('hidden');
   document.getElementById('screen-result').classList.remove('hidden');
+
+  const dEl = document.getElementById('printDate');
+  if (dEl) dEl.textContent = new Date().toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' });
 
   const scores = computeScores();
   lastScores = scores;
