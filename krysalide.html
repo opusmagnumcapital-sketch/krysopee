@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Écosystème · Krysopée</title>
+<title>Krysalide · Krysopée</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<meta name="description" content="L'écosystème Krysopée — suite propriétaire K-V2 PHIBO, compte de trading Krysalide, publications Praxis.">
-<link rel="canonical" href="https://krysopee.capital/ecosysteme.html">
+<meta name="description" content="Krysalide — le compte de trading de Krysopée, piloté par la suite K-V2 PHIBO. Marchés opérés, transparence du processus, statut.">
+<link rel="canonical" href="https://krysopee.capital/krysalide.html">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://krysopee.capital/ecosysteme.html">
-<meta property="og:title" content="Écosystème · Krysopée">
-<meta property="og:description" content="K-V2 PHIBO, Krysalide, Praxis — l'écosystème Krysopée.">
+<meta property="og:url" content="https://krysopee.capital/krysalide.html">
+<meta property="og:title" content="Krysalide · Krysopée">
+<meta property="og:description" content="Le compte de trading de Krysopée, piloté par K-V2 PHIBO — méthode et discipline exposées à la réalité du marché.">
 <meta property="og:image" content="https://krysopee.capital/logo-bandeau.png">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Krysopée">
@@ -21,28 +21,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Lora:ital,wght@0,400;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-.eco-hero { max-width: 720px; margin: 0 auto; text-align: center; padding: 8rem 2rem 5rem; }
-.eco-hero h1 { margin-bottom: 1.2rem; }
-.eco-hero p { max-width: 540px; margin: 0 auto; }
+.krysalide-hero { max-width: 720px; margin: 0 auto; text-align: center; padding: 8rem 2rem 3rem; }
+.krysalide-hero h1 { margin-bottom: 1.2rem; }
+.krysalide-hero p { max-width: 540px; margin: 0 auto; }
 
-.eco-bloc { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; }
-.eco-bloc-eyebrow {
-  font-family: 'Poppins', sans-serif; font-weight: 400; font-size: 0.62rem;
-  letter-spacing: 0.28em; text-transform: uppercase; color: var(--or); opacity: 0.7;
-  display: block; margin-bottom: 0.8rem;
-}
-.eco-bloc h2 { margin-bottom: 1.2rem; }
-.eco-bloc p { margin-bottom: 1rem; }
-.eco-bloc-sober {
-  background: var(--k-bg-2); border: 0.5px solid var(--bord-pale); padding: 2.5rem;
-}
-
-/* Stats */
-.stats-grille { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; }
-.stat-card { border: 0.5px solid var(--bord-pale); padding: 1.8rem 1.5rem; text-align: center; }
-.stat-nombre { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 2.1rem; color: var(--or); margin-bottom: 0.5rem; }
-.stat-label { font-family: 'Poppins', sans-serif; font-weight: 300; font-size: 0.78rem; line-height: 1.5; color: var(--text-sec); margin-bottom: 0.5rem; }
-.stat-source { font-family: 'Poppins', sans-serif; font-weight: 300; font-size: 0.6rem; letter-spacing: 0.08em; color: var(--text-sec); opacity: 0.5; }
+.krysalide-bloc { max-width: 1000px; margin: 0 auto; padding: 3rem 2rem; }
+.krysalide-bloc h2 { margin-bottom: 1.2rem; }
+.krysalide-bloc p { margin-bottom: 1rem; }
 
 /* Marchés */
 .marches-grille { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--bord-pale); margin: 1.5rem 0; }
@@ -61,19 +46,11 @@
 .transp-col.oui li::before { content: '→'; position: absolute; left: 0; color: var(--or); opacity: 0.6; }
 .transp-col.non li::before { content: '✕'; position: absolute; left: 0; opacity: 0.35; }
 
-/* Horizon */
-.horizon-ligne { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin: 2rem 0; }
-.horizon-etape { border-left: 1px solid rgba(200,180,122,0.25); padding-left: 1.2rem; }
-.horizon-annee { font-family: 'Lora', Georgia, serif; font-style: italic; color: var(--or); font-size: 1.1rem; margin-bottom: 0.5rem; }
-.horizon-etape p { font-size: 0.82rem; color: var(--text-sec); margin-bottom: 0.3rem; }
-
 @media (max-width: 900px) {
-  .eco-hero { padding: 5rem 1.5rem 3rem; }
-  .eco-bloc { padding: 3rem 1.5rem; }
-  .stats-grille { grid-template-columns: 1fr 1fr; }
+  .krysalide-hero { padding: 5rem 1.5rem 2.5rem; }
+  .krysalide-bloc { padding: 2rem 1.5rem; }
   .marches-grille { grid-template-columns: 1fr 1fr; }
   .transp-grille { grid-template-columns: 1fr; }
-  .horizon-ligne { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -83,8 +60,8 @@
   <a href="index.html" class="nav-marque"><img src="logo-k.webp" onerror="this.src='logo-k.png'" alt="Krysopée" style="height:36px;width:auto;vertical-align:middle;"></a>
   <ul class="nav-links">
     <li><a href="manifeste.html">Le Manifeste</a></li>
-    <li><a href="ecosysteme.html" class="active">Écosystème</a></li>
-    <li><a href="krysalide.html">Krysalide</a></li>
+    <li><a href="ecosysteme.html">Écosystème</a></li>
+    <li><a href="krysalide.html" class="active">Krysalide</a></li>
     <li><a href="parcours-opus-magnum.html">Parcours Opus Magnum</a></li>
     <li><a href="miroir.html">Le Miroir</a></li>
     <li><a href="praxis.html">Praxis</a></li>
@@ -93,31 +70,15 @@
   <a href="contact.html" class="nav-contact">Entrer en contact</a>
 </nav>
 
-<section class="eco-hero">
-  <p class="act-label" style="display:block;margin-bottom:1rem;">Écosystème</p>
-  <h1 class="t-h1">Ce que Krysopée construit</h1>
-  <p>Une suite d'outils propriétaires, un compte de trading rendu public par conviction, une voix qui publie. Trois pièces d'une même architecture.</p>
-</section>
-
-<!-- K-V2 PHIBO -->
-<section class="eco-bloc">
-  <span class="eco-bloc-eyebrow">01 · Outils</span>
-  <h2 class="t-h2">K-V2 PHIBO</h2>
-  <div class="eco-bloc-sober">
-    <p>K-V2 PHIBO est la suite d'indicateurs et d'outils de trading conçus et développés en interne par Krysopée. Elle sert exclusivement les opérations de Krysopée — elle n'est ni commercialisée, ni mise à disposition de tiers.</p>
-    <p style="margin-bottom:0;">C'est cette suite qui pilote Krysalide, le compte de trading présenté ci-dessous.</p>
-  </div>
-</section>
-
-<!-- KRYSALIDE -->
-<section class="eco-bloc">
-  <span class="eco-bloc-eyebrow">02 · Krysalide</span>
-  <h2 class="t-h2">Le compte, la méthode rendue publique</h2>
+<section class="krysalide-hero">
+  <p class="act-label" style="display:block;margin-bottom:1rem;">Écosystème · Compte de trading</p>
+  <h1 class="t-h1">Krysalide</h1>
   <p class="t-citation">"Une mue qu'on ne peut ni hâter, ni lire directement."</p>
+  <p>Krysalide est le compte de trading propriétaire de Krysopée, piloté par la suite d'outils interne K-V2 PHIBO. Il n'a rien d'un exercice de démonstration : c'est la méthode elle-même, exposée à la réalité du marché.</p>
+</section>
 
-  <h3 class="t-h3" style="margin-top:2.5rem;margin-bottom:1rem;">Le principe</h3>
-  <p>Krysalide est le compte de trading propriétaire de Krysopée, piloté par la suite d'outils internes K-V2 PHIBO. Il n'a rien d'un exercice de démonstration : c'est la méthode elle-même, exposée à la réalité du marché.</p>
-
+<section class="krysalide-bloc">
+  <h2 class="t-h2">Les marchés opérés</h2>
   <div class="marches-grille">
     <div class="marche-item"><p class="marche-nom">Indices</p><p class="marche-type">Discrétionnaire intraday</p></div>
     <div class="marche-item"><p class="marche-nom">Devises</p><p class="marche-type">Discrétionnaire intraday</p></div>
@@ -126,8 +87,10 @@
   </div>
   <p style="font-size:0.8rem;opacity:0.7;">Sont exclus : matières premières agricoles et énergétiques, marchés de taux, et tout sous-jacent à dimension spéculative sur les ressources fondamentales.</p>
   <p><em>Krysalide n'est ni un produit financier, ni une offre d'investissement, ni une invitation à participer. Il ne collecte aucun capital extérieur.</em></p>
+</section>
 
-  <h3 class="t-h3" style="margin-top:2.5rem;margin-bottom:1rem;">La transparence</h3>
+<section class="krysalide-bloc">
+  <h2 class="t-h2">La transparence</h2>
   <p>L'engagement est total sur le processus — et délibérément limité sur les montants absolus.</p>
   <div class="transp-grille">
     <div class="transp-col oui">
@@ -149,18 +112,11 @@
       </ul>
     </div>
   </div>
-
-  <h3 class="t-h3" style="margin-top:2.5rem;margin-bottom:1rem;">L'engagement</h3>
-  <p>Communiquer régulièrement sur l'avancement du compte — résultats statistiques, frictions, ajustements — sans fard et sans délai.</p>
-  <a href="krysalide.html" class="btn-lien">En savoir plus sur Krysalide →</a>
 </section>
 
-<!-- PRAXIS TEASER -->
-<section class="eco-bloc">
-  <span class="eco-bloc-eyebrow">03 · Publications</span>
-  <h2 class="t-h2">Praxis</h2>
-  <p>La voix publique récurrente de Krysopée. Un registre resserré, démonstratif, sans ésotérisme non traduit — ce qui s'applique en conditions réelles, méthode et décision.</p>
-  <a href="praxis.html" class="btn-lien">Découvrir Praxis →</a>
+<section class="krysalide-bloc">
+  <h2 class="t-h2">L'engagement</h2>
+  <p>Communiquer régulièrement sur l'avancement du compte — résultats statistiques, frictions, ajustements — sans fard et sans délai.</p>
 </section>
 
 <section class="cta-section">

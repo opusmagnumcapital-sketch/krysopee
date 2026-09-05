@@ -8,7 +8,8 @@ Site statique HTML/CSS pour krysopee.capital
 |---|---|
 | `index.html` | Page d'accueil — neutre, 6 blocs |
 | `manifeste.html` | Le Manifeste — traduction descendante des 7 chapitres publics + glossaire |
-| `ecosysteme.html` | Écosystème — K-Équinoxe, K-Solstice, teaser Praxis |
+| `ecosysteme.html` | Écosystème — K-V2 PHIBO, Krysalide, teaser Praxis |
+| `krysalide.html` | Krysalide — le compte de trading de Krysopée (anciennement `k-solstice.html`, renommé août 2026 ; ancienne URL conservée comme redirection statique) |
 | `parcours-opus-magnum.html` | Parcours Opus Magnum — transmission individuelle et sélective |
 | `miroir.html` | Le Miroir des Trois Voies — questionnaire d'auto-positionnement en 24 questions, intégré à la navigation depuis août 2026 |
 | `praxis.html` | Praxis — teaser et renvoi vers les publications LinkedIn |
