@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ce que révèlent vraiment les chiffres d'un compte · Krysopée</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="Pourquoi un compte de trading suivi en direct et un fonds encadré par le règlement PRIIPs ne peuvent, par construction, offrir la même lecture du risque et de la performance.">
+<link rel="canonical" href="https://krysopee.capital/publication-chiffres-dun-compte.html">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://krysopee.capital/publication-chiffres-dun-compte.html">
+<meta property="og:title" content="Ce que révèlent vraiment les chiffres d'un compte · Krysopée">
+<meta property="og:description" content="Pourquoi un compte de trading suivi en direct et un fonds encadré par le règlement PRIIPs ne peuvent, par construction, offrir la même lecture du risque et de la performance.">
+<meta property="og:image" content="https://krysopee.capital/logo-bandeau.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Krysopée">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://krysopee.capital/logo-bandeau.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Lora:ital,wght@0,400;1,400&family=Space+Mono:wght@400&family=Poppins:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.art-hero {
+  padding: 9rem 4rem 3rem;
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+.art-eyebrow {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--or-2);
+  margin-bottom: 1.25rem;
+}
+.art-titre {
+  font-family: 'Crimson Pro', serif;
+  font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.18;
+  color: var(--encre);
+  margin-bottom: 1.25rem;
+}
+.art-meta {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-sec);
+}
+
+.art-corps {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem 4rem 6rem;
+}
+.art-corps p {
+  font-family: 'Lora', serif;
+  font-size: 1.02rem;
+  font-weight: 400;
+  line-height: 1.85;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+.art-corps h2 {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--or);
+  margin: 3rem 0 1.25rem;
+  line-height: 1.35;
+}
+.art-exergue {
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--or-2);
+  text-align: center;
+  border-top: 1px solid var(--bord-fin);
+  border-bottom: 1px solid var(--bord-fin);
+  padding: 1.75rem 1rem;
+  margin: 2.5rem 0;
+}
+.art-table-wrap {
+  margin: 2rem 0 2.5rem;
+  overflow-x: auto;
+  border: 1px solid var(--bord-pale);
+}
+.art-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+}
+.art-table th, .art-table td {
+  padding: 0.9rem 1.1rem;
+  text-align: left;
+  font-family: 'Lora', serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--bord-fin);
+  color: var(--text);
+}
+.art-table th {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--or-2);
+  background: rgba(200,180,122,0.04);
+}
+.art-table tr:last-child td { border-bottom: none; }
+
+.art-signature {
+  text-align: center;
+  margin-top: 3.5rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--or);
+}
+.art-retour {
+  display: block;
+  text-align: center;
+  margin-top: 2.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-sec);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+.art-retour:hover { color: var(--or); }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-marque"><img src="logo-k.webp" onerror="this.src='logo-k.png'" alt="Krysopée" style="height:36px;width:auto;vertical-align:middle;"></a>
+  <ul class="nav-links">
+    <li><a href="manifeste.html">Le Manifeste</a></li>
+    <li><a href="ecosysteme.html">Écosystème</a></li>
+    <li><a href="krysalide.html">Krysalide</a></li>
+    <li><a href="parcours-opus-magnum.html">Parcours Opus Magnum</a></li>
+    <li><a href="miroir.html">Le Miroir</a></li>
+    <li><a href="praxis.html">Praxis</a></li>
+    <li class="nav-item-dropdown">
+      <a href="publications.html">Publications</a>
+      <ul class="nav-dropdown-panel">
+        <li><a href="publication-chiffres-dun-compte.html" class="active">Ce que révèlent vraiment les chiffres d'un compte</a></li>
+      </ul>
+    </li>
+    <li><a href="fondateur.html">Fondateur</a></li>
+  </ul>
+  <a href="contact.html" class="nav-contact">Entrer en contact</a>
+</nav>
+
+<section class="art-hero">
+  <p class="art-eyebrow">Publications</p>
+  <h1 class="art-titre">Ce que révèlent vraiment les chiffres d'un compte</h1>
+  <p class="art-meta">Krysopée · Septembre 2026</p>
+</section>
+
+<article class="art-corps">
+
+<p>Un investisseur qui place son épargne dans un fonds sait rarement ce qu'il a réellement acheté. Non par négligence de sa part, ni par dissimulation de la société de gestion — mais parce que ce qu'on lui remet a été pensé pour être comparable, pas pour être compris en profondeur. Un chiffre entre 1 et 7, quelques scénarios de performance, une note de frais. Le reste — ce que le fonds a réellement enduré pour produire ce chiffre — reste dans l'ombre, non par choix de qui gère, mais par nature du format qui encadre cette relation.</p>
+
+<p>Un compte de trading suivi en direct offre une matière différente. Non pas meilleure par nature, mais d'une autre espèce : granulaire, datée, vérifiable trade après trade. Ce texte ne cherche pas à opposer les deux mondes en faveur de l'un contre l'autre — il cherche à montrer pourquoi ils ne peuvent, par construction, offrir la même chose.</p>
+
+<h2>Ce qu'un compte a enduré, pas seulement gagné</h2>
+
+<p>Le premier réflexe, face à une performance, est de demander : combien a-t-elle gagné ? La question plus exigeante est différente : combien a-t-elle dû perdre, temporairement, pour y arriver ?</p>
+
+<p>Le drawdown maximal répond à cette question. Il mesure la baisse la plus sévère entre un sommet de capital et le creux qui l'a suivi, avant tout retour au-dessus de ce sommet. Un système qui affiche 20 % de rendement annuel avec un drawdown maximal de 8 % ne raconte pas la même histoire qu'un système au même rendement, mais avec un drawdown de 35 %. Le second a peut-être fini au même endroit — mais quiconque l'a traversé en direct sait qu'il n'a pas vécu la même épreuve.</p>
+
+<p class="art-exergue">Une impulsion qui dépasse durablement son équilibre finit toujours par la régler, et le drawdown en est la trace mesurable.</p>
+
+<p>Le drawdown moyen complète cette lecture : il ne s'agit plus du pire moment traversé, mais du régime normal de la tension — ce qu'un compte encaisse, en moyenne, entre deux sommets. Un système au drawdown maximal modéré mais au drawdown moyen élevé impose une tension permanente, pas seulement un accident ponctuel.</p>
+
+<p>Deux mesures affinent encore ce tableau. L'Ulcer Index ne retient pas seulement la profondeur d'un creux, mais sa durée : un système qui reste longtemps sous son précédent sommet, même modérément, y est pénalisé. Et la plus longue série de pertes consécutives teste une autre dimension, moins statistique que psychologique : sur un historique de 500 trades, un système à 60 % de réussite — un profil qui paraît confortable — a environ 7 % de probabilité de traverser au moins une fois une série de neuf pertes d'affilée, par le seul jeu du hasard.</p>
+
+<h2>Ce qui distingue un avantage réel d'une série de coups heureux</h2>
+
+<p>Le taux de réussite — la proportion de trades gagnants — est le chiffre le plus intuitif et le plus trompeur pris seul. Un système qui gagne 80 % de ses trades peut être structurellement perdant si ses 20 % de pertes sont, chacune, bien plus lourdes que ses gains. C'est ici qu'intervient le payoff ratio : le rapport entre le gain moyen d'un trade gagnant et la perte moyenne d'un trade perdant.</p>
+
+<p>Le R multiple affine encore cette lecture. Il exprime chaque trade non pas en points ou en euros, mais en multiple du risque initialement accepté : un trade clos à +2R a rapporté deux fois ce que son stop initial mettait en jeu. Cette unité a un mérite rare — elle rend comparables des trades pris sur des marchés différents, parce qu'elle ramène tout à la seule chose qui reste constante : le risque assumé au départ.</p>
+
+<p>Taux de réussite et payoff ratio se combinent en un seul chiffre, l'espérance mathématique : le gain moyen que l'on peut raisonnablement attendre à chaque nouvelle position. Une espérance positive ne garantit rien trade par trade — c'est une moyenne, pas une promesse — mais elle distingue un avantage réel d'une impression de compétence forgée par une série favorable récente.</p>
+
+<h2>Ce que chaque famille d'indicateurs révèle</h2>
+
+<div class="art-table-wrap">
+<table class="art-table">
+<thead>
+<tr><th>Famille</th><th>Indicateurs</th><th>Ce qu'elle révèle</th></tr>
+</thead>
+<tbody>
+<tr><td>Risque de ruine</td><td>Drawdown max &amp; moyen, Ulcer Index</td><td>Ce qu'un compte a réellement enduré, pas seulement gagné</td></tr>
+<tr><td>Qualité de l'avantage</td><td>Win rate, payoff ratio, R multiple, espérance</td><td>Distinguer un avantage réel d'une série de coups heureux</td></tr>
+<tr><td>Rendement ajusté au risque</td><td>Sharpe, Sortino, Calmar</td><td>Ce qu'un rendement a coûté en volatilité ou en pire épreuve</td></tr>
+<tr><td>Anatomie du trade</td><td>MAE, MFE</td><td>Ce qu'un trade a traversé avant d'arriver à son résultat</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Le rendement rapporté au risque, et son angle mort corrigé</h2>
+
+<p>Le ratio de Sharpe rapporte un rendement à la volatilité qui l'a produit. Mais le Sharpe a une faiblesse connue : il pénalise indifféremment la volatilité favorable et la volatilité défavorable. Un système qui progresse par bonds soudains et rares est puni par ce ratio exactement comme s'il subissait des pertes soudaines et rares.</p>
+
+<p>Le ratio de Sortino corrige cet angle mort : il ne mesure que la volatilité défavorable, celle qui descend sous un seuil de rendement minimal acceptable. Il n'est pas pour autant un ratio neutre — le choix de ce seuil reste une décision qui pèse sur le résultat.</p>
+
+<p>Le ratio de Calmar déplace encore la question : il ne rapporte plus le rendement à une volatilité statistique, mais directement au drawdown maximal traversé — combien ce système rapporte-t-il pour chaque point de pire souffrance réellement subie.</p>
+
+<h2>Ce qu'un trade a traversé avant d'arriver à son résultat</h2>
+
+<p>Un dernier couple d'indicateurs échappe presque entièrement à la lecture habituelle, parce qu'il ne concerne ni le résultat final ni la moyenne d'une série, mais l'intérieur même de chaque trade. Le MAE (maximum adverse excursion) mesure de combien un trade s'est enfoncé dans la perte, à son pire moment, avant son issue finale. Le MFE (maximum favorable excursion) mesure, symétriquement, jusqu'où un trade a été en gain avant que ce gain ne soit rendu.</p>
+
+<p>Un trade clos gagnant peut avoir traversé, sans que rien n'y paraisse dans le résultat final, une excursion défavorable qui aurait déclenché n'importe quel stop mal calibré. Ce que le résultat final tait, MAE et MFE le montrent : la marge réelle qui séparait ce trade d'un résultat très différent.</p>
+
+<h2>Deux formats, deux objets</h2>
+
+<p>Rien de tout cela ne relève d'un manque de sérieux du côté des fonds classiques. La réglementation européenne qui encadre l'information remise à un investisseur non professionnel — le règlement PRIIPs, généralisé à l'ensemble des fonds depuis le 1er janvier 2023 — impose un format volontairement contraint : trois pages, huit rubriques normées. L'indicateur synthétique de risque qui y figure, noté de 1 à 7, combine le risque de marché et le risque de crédit à partir d'un calcul de volatilité équivalente à une Value at Risk à 97,5 % sur la période de détention recommandée.</p>
+
+<p>Autrement dit : les gestionnaires de fonds manipulent, en coulisse, des outils de mesure du risque extrême proches de ceux évoqués plus haut — mais le format réglementaire ne prévoit pas de restituer ce niveau de détail à l'investisseur final. Ce n'est pas que l'information n'existe pas ; c'est qu'elle n'est pas conçue pour sortir sous cette forme.</p>
+
+<p>Ces deux formats répondent à deux besoins différents. L'un cherche la comparabilité à grande échelle, pour un public qui doit pouvoir évaluer des milliers de produits selon une grille commune. L'autre cherche la lecture fine d'une mécanique unique, pour qui accepte de suivre, trade après trade, ce qu'un système traverse réellement.</p>
+
+<h2>Ce que cela déplace</h2>
+
+<p>Publier ce niveau de détail sur un compte propre n'est pas une obligation — rien, dans aucune réglementation, ne l'impose ni ne l'interdit. C'est un choix : celui de rendre visible une mécanique que l'on maîtrise entièrement, plutôt que de s'en remettre à un format qui la résumerait pour vous.</p>
+
+<p>C'est, très concrètement, ce que Krysopée désigne comme la Prime de Souveraineté — un avantage qui ne se décrète pas depuis l'extérieur, et qui ne dépend d'aucune autorité susceptible de le retirer.</p>
+
+<p class="art-signature">Krysopée — Nemini Teneri</p>
+
+<a href="publications.html" class="art-retour">← Retour aux publications</a>
+
+</article>
+
+<footer>
+  <a href="index.html" class="foot-nom">Krysopée</a>
+  <span class="foot-devise">☉ · Nemini Teneri · ☿</span>
+  <div class="foot-liens">
+    <a href="https://www.linkedin.com/in/krysop%C3%A9e/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://x.com/krysopee" target="_blank" rel="noopener">X</a>
+    <a href="contact.html">Contact</a>
+    <a href="confidentialite.html">Confidentialité</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <span class="foot-copy">© 2026 Krysopée — Jean-Luc Manzaroli</span>
+  </div>
+</footer>
+
+</body>
+</html>
