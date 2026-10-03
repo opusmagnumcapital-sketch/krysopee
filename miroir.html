@@ -825,6 +825,12 @@ function loadHtml2Pdf(){
   return _html2pdfLoading;
 }
 
+function waitTwoFrames(){
+  return new Promise(resolve => {
+    requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(resolve, 60)));
+  });
+}
+
 function exportPdf(){
   const btn = document.getElementById('btnExportPdf');
   const original = btn ? btn.textContent : null;
@@ -834,25 +840,45 @@ function exportPdf(){
     const el = document.getElementById('screen-result');
     el.classList.add('pdf-mode');
 
-    const phase = (lastReading && lastReading.dominant ? lastReading.dominant : 'resultat')
-      .toLowerCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    // Remonter en haut avant capture : un décalage de scroll au moment
+    // du clic est une cause fréquente de rendu vide sur mobile.
+    window.scrollTo(0, 0);
 
-    const opt = {
-      margin:       [10, 10, 10, 10],
-      filename:     `miroir-des-trois-voies-${phase}.pdf`,
-      image:        { type: 'jpeg', quality: 0.98 },
-      html2canvas:  { scale: 2, backgroundColor: '#ffffff', useCORS: true },
-      jsPDF:         { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak:    { mode: ['css', 'avoid-all'] }
-    };
+    return waitTwoFrames().then(() => {
+      const phase = (lastReading && lastReading.dominant ? lastReading.dominant : 'resultat')
+        .toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
-    return html2pdf().set(opt).from(el).save().finally(() => {
-      el.classList.remove('pdf-mode');
+      // Échelle plafonnée : un canevas trop grand (page longue x haute
+      // résolution) peut échouer silencieusement sur certains mobiles.
+      const scale = Math.min(window.devicePixelRatio || 1, 1.5);
+
+      const opt = {
+        margin:       [10, 10, 10, 10],
+        filename:     `miroir-des-trois-voies-${phase}.pdf`,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  {
+          scale,
+          backgroundColor: '#ffffff',
+          useCORS: false,
+          allowTaint: true,
+          scrollX: 0,
+          scrollY: 0,
+          windowWidth: document.documentElement.scrollWidth,
+          windowHeight: el.scrollHeight
+        },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['css', 'avoid-all'] }
+      };
+
+      return html2pdf().set(opt).from(el).save().finally(() => {
+        el.classList.remove('pdf-mode');
+      });
     });
   }).catch(err => {
     console.error('Export PDF impossible :', err);
-    alert("Le téléchargement du PDF a échoué. Vous pouvez réessayer, ou utiliser l'impression du navigateur (Ctrl/Cmd+P) en secours.");
+    const detail = (err && err.message) ? err.message : String(err);
+    alert("Le téléchargement du PDF a échoué (" + detail + "). Vous pouvez réessayer, ou utiliser l'impression du navigateur (Ctrl/Cmd+P) en secours.");
   }).finally(() => {
     if (btn){ btn.disabled = false; btn.textContent = original; }
   });
