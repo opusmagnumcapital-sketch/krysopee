@@ -308,6 +308,61 @@
     .scorebar-row b{ color:#8a6a2a !important; }
   }
 
+  /* ---------- EXPORT PDF (html2pdf) ----------
+     Rejoue le même habillage clair que @media print ci-dessus,
+     mais via une classe activée en JS au moment de l'export,
+     car html2canvas ne déclenche pas les règles @media print. */
+  .ph-logo{ display:none; height:46px; width:auto; margin:0 auto 10px; }
+  #screen-result.pdf-mode{
+    background:#fff !important;
+    color:#211a10 !important;
+    padding:24px !important;
+    font-size:12.5px;
+  }
+  #screen-result.pdf-mode .print-header{
+    display:block !important;
+    text-align:center;
+    border-bottom:1px solid #c9a24b;
+    padding-bottom:14px;
+    margin-bottom:22px;
+  }
+  #screen-result.pdf-mode .ph-logo{ display:block !important; }
+  #screen-result.pdf-mode .print-header .ph-mark{
+    font-family:'Space Mono', monospace; font-size:10px;
+    letter-spacing:0.28em; text-transform:uppercase; color:#8a6a2a;
+  }
+  #screen-result.pdf-mode .print-header h2{
+    font-family:'Lora', Georgia, serif; font-weight:600; font-size:22px;
+    color:#211a10; margin:6px 0 4px;
+  }
+  #screen-result.pdf-mode .print-header .ph-date{
+    font-family:'Space Mono', monospace; font-size:10px; color:#6b5a3a;
+  }
+  #screen-result.pdf-mode .restart,
+  #screen-result.pdf-mode .phase-tag,
+  #screen-result.pdf-mode .resources-intro,
+  #screen-result.pdf-mode .res-chevron,
+  #screen-result.pdf-mode .res-tag-recommended{ display:none !important; }
+  #screen-result.pdf-mode .chart-panel{ background:#faf6ec !important; border:1px solid #d9cba3 !important; }
+  #screen-result.pdf-mode #rings polygon, #screen-result.pdf-mode #rings circle{ stroke:#c9a24b33 !important; }
+  #screen-result.pdf-mode #spokes line{ stroke:#c9a24b55 !important; }
+  #screen-result.pdf-mode .axis-label, #screen-result.pdf-mode .ring-label{ fill:#6b5a3a !important; }
+  #screen-result.pdf-mode .axis-report{ background:#faf6ec !important; border:1px solid #e3d6ae !important; break-inside:avoid; }
+  #screen-result.pdf-mode .axis-text, #screen-result.pdf-mode .res-text,
+  #screen-result.pdf-mode .res-sub-text, #screen-result.pdf-mode .reading-text,
+  #screen-result.pdf-mode .piste-text{ color:#2b2213 !important; }
+  #screen-result.pdf-mode .reading, #screen-result.pdf-mode .piste,
+  #screen-result.pdf-mode .outro{ background:#faf6ec !important; border:1px solid #e3d6ae !important; break-inside:avoid; }
+  #screen-result.pdf-mode .res-item{ border:1px solid #e3d6ae !important; break-inside:avoid; margin-bottom:12px; }
+  #screen-result.pdf-mode .res-item .res-body{ display:block !important; padding:10px 16px 16px !important; }
+  #screen-result.pdf-mode .res-head{ background:transparent !important; cursor:default; }
+  #screen-result.pdf-mode .res-head-title{ color:#211a10 !important; }
+  #screen-result.pdf-mode .res-head-title .sym{ color:#8a6a2a !important; }
+  #screen-result.pdf-mode .resources-label, #screen-result.pdf-mode .reading-label,
+  #screen-result.pdf-mode .piste-label{ color:#8a6a2a !important; }
+  #screen-result.pdf-mode .res-biblio, #screen-result.pdf-mode .res-sub{ color:#6b5a3a !important; }
+  #screen-result.pdf-mode .scorebar-row b{ color:#8a6a2a !important; }
+
   footer{
     text-align:center; margin-top:44px;
     font-family:'Space Mono', monospace; font-size:10px;
@@ -378,7 +433,8 @@
     <!-- RESULT -->
     <div id="screen-result" class="hidden">
       <div class="print-header">
-        <div class="ph-mark">Krysopée · Nemini Teneri</div>
+        <img class="ph-logo" src="logo-k.webp" onerror="this.src='logo-k.png'" alt="Krysopée">
+        <div class="ph-mark">Nemini Teneri</div>
         <h2>Le Miroir des Trois Voies — Synthèse</h2>
         <div class="ph-date" id="printDate"></div>
       </div>
@@ -435,7 +491,7 @@
 
       <div class="restart">
         <button class="btn btn-ghost" onclick="restartQuiz()">Recommencer</button>
-        <button class="btn" onclick="exportPdf()">Télécharger en PDF</button>
+        <button class="btn" id="btnExportPdf" onclick="exportPdf()">Télécharger en PDF</button>
       </div>
     </div>
 
@@ -754,8 +810,52 @@ function restartQuiz(){
   document.getElementById('screen-intro').classList.remove('hidden');
 }
 
+/* ---------- EXPORT PDF (html2pdf.js, chargé à la demande) ---------- */
+let _html2pdfLoading = null;
+function loadHtml2Pdf(){
+  if (window.html2pdf) return Promise.resolve();
+  if (_html2pdfLoading) return _html2pdfLoading;
+  _html2pdfLoading = new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+    s.onload = () => resolve();
+    s.onerror = () => reject(new Error('html2pdf.js indisponible'));
+    document.head.appendChild(s);
+  });
+  return _html2pdfLoading;
+}
+
 function exportPdf(){
-  window.print();
+  const btn = document.getElementById('btnExportPdf');
+  const original = btn ? btn.textContent : null;
+  if (btn){ btn.disabled = true; btn.textContent = 'Préparation du PDF…'; }
+
+  loadHtml2Pdf().then(() => {
+    const el = document.getElementById('screen-result');
+    el.classList.add('pdf-mode');
+
+    const phase = (lastReading && lastReading.dominant ? lastReading.dominant : 'resultat')
+      .toLowerCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+    const opt = {
+      margin:       [10, 10, 10, 10],
+      filename:     `miroir-des-trois-voies-${phase}.pdf`,
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2, backgroundColor: '#ffffff', useCORS: true },
+      jsPDF:         { unit: 'mm', format: 'a4', orientation: 'portrait' },
+      pagebreak:    { mode: ['css', 'avoid-all'] }
+    };
+
+    return html2pdf().set(opt).from(el).save().finally(() => {
+      el.classList.remove('pdf-mode');
+    });
+  }).catch(err => {
+    console.error('Export PDF impossible :', err);
+    alert("Le téléchargement du PDF a échoué. Vous pouvez réessayer, ou utiliser l'impression du navigateur (Ctrl/Cmd+P) en secours.");
+  }).finally(() => {
+    if (btn){ btn.disabled = false; btn.textContent = original; }
+  });
 }
 
 /* ---------- SCORING ---------- */
