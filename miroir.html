@@ -357,6 +357,7 @@
         Répondez avec honnêteté plutôt qu'avec l'image que vous voudriez donner.
       </p>
       <p class="intro-text">Comptez douze à quinze minutes. Le résultat vous appartient dans l'instant.</p>
+      <p class="intro-text" style="font-size:14px;color:var(--parchment-dim);line-height:1.6;">Comment lire le résultat. Chaque réponse vaut de 1 à 4 points (l'ordre des réponses est mélangé) ; la somme des huit réponses de chaque voie donne un score de 8 à 32, lu selon quatre paliers : jusqu'à 14, de 15 à 21, de 22 à 27, de 28 à 32. Nigredo, Albedo, Citrinitas et Rubedo servent ici de repères de lecture ; ils ne désignent pas les étapes d'un accompagnement. Les questions sur la méthode valent pour un cadre écrit, systématique ou discrétionnaire ; si vous investissez à long terme, lisez-les avec vos propres règles. Vos réponses sont traitées dans votre navigateur et ne sont ni transmises ni conservées. Ce miroir est un outil de réflexion, non validé scientifiquement ; il ne constitue pas un conseil en investissement.</p>
       <p class="intro-text intro-caveat">Ce miroir n'établit aucun verdict. C'est une photographie de vos réponses à un instant donné — pas un diagnostic, pas une prédiction sur ce que vous êtes ou deviendrez. Elle vaut ce que vaut votre honnêteté du moment, ni plus, ni moins.</p>
       <div class="btn-row" style="justify-content:flex-end;">
         <button class="btn" onclick="startQuiz()">Entrer dans le miroir</button>
@@ -457,17 +458,17 @@ const QUESTIONS = [
     "J'ai un système écrit que je suis dans la majorité des cas",
     "J'ai un système écrit, testé, et je peux justifier chaque paramètre"
   ]},
-  { axis:'solar', text:"Face à une perte qui dépasse ce que vous aviez prévu :", opts:[
-    "Je sors du marché ou je double la mise pour me refaire",
-    "Je respecte mon stop mais je remets en question toute ma méthode",
-    "Je respecte mon stop, je journalise, je continue",
-    "La perte était dans mes scénarios probabilistes ; elle ne change rien à mon exécution"
+  { axis:'solar', text:"Face à une perte, même conforme à votre plan :", opts:[
+    "Je double la mise ou je prends un trade impulsif pour me refaire",
+    "Je sors précipitamment du marché, hors de mon plan",
+    "Je respecte mon stop, mais je remets en question toute ma méthode",
+    "Je respecte mon stop, je journalise, et je poursuis selon mon plan"
   ]},
-  { axis:'solar', text:"Votre relation au backtesting / à la preuve statistique :", opts:[
+  { axis:'solar', text:"Votre relation à la vérification de votre méthode (backtest, historique de résultats, revue de vos décisions) :", opts:[
     "Je trade surtout sur intuition et expérience",
-    "Je backteste occasionnellement, sans rigueur systématique",
-    "Je backteste sérieusement avant de déployer une stratégie",
-    "Je backteste, je walk-forward teste, et je réévalue périodiquement"
+    "Je vérifie occasionnellement, sans rigueur systématique",
+    "Je vérifie sérieusement avant de déployer ou de modifier une règle",
+    "Je vérifie aussi sur une période non utilisée pour construire la règle, et je réévalue périodiquement"
   ]},
   { axis:'solar', text:"Quand le marché ne correspond à aucun de vos scénarios habituels :", opts:[
     "Je force une lecture pour rester dans l'action",
@@ -493,7 +494,7 @@ const QUESTIONS = [
     "Expliquer leur logique et leurs limites précises",
     "Les avoir testés, ajustés, ou construits vous-même"
   ]},
-  { axis:'solar', text:"Votre courbe de capital sur les 12 derniers mois :", opts:[
+  { axis:'solar', text:"Votre courbe de capital depuis 12 mois (ou depuis vos débuts, si moins) :", opts:[
     "Je ne la suis pas précisément",
     "Je la regarde mais sans analyse structurée",
     "Je l'analyse régulièrement (drawdown, ratio informel...)",
@@ -511,13 +512,13 @@ const QUESTIONS = [
     "Me fait entrer en position sans plan clair, régulièrement",
     "M'affecte encore mais je le reconnais après coup",
     "Je le reconnais en temps réel et je peux le contenir",
-    "Il ne dicte plus mes décisions — j'ai un protocole qui l'absorbe"
+    "La dernière fois, je l'ai reconnu avant d'agir et j'ai appliqué un protocole prévu"
   ]},
   { axis:'merc', text:"Quand un trade gagnant dépasse largement votre objectif initial :", opts:[
     "Je laisse courir sans règle, par avidité",
     "Je suis tenté de tout garder mais je finis par sortir, tard",
     "Je suis une règle de sortie partielle / trailing stop prédéfinie",
-    "La sortie est aussi mécanique que l'entrée, sans charge émotionnelle"
+    "Mes dernières sorties ont suivi ma règle, y compris quand cela me coûtait"
   ]},
   { axis:'merc', text:"Votre journal de trading (s'il existe) contient :", opts:[
     "Rien, ou presque rien",
@@ -535,7 +536,7 @@ const QUESTIONS = [
     "Je change souvent d'avis sous influence",
     "Ça me déstabilise, même si je ne change pas de position",
     "J'écoute, j'évalue, je garde ou j'ajuste selon mes propres critères",
-    "Je peux intégrer l'information sans que mon centre de décision ne vacille"
+    "La dernière fois, j'ai pesé cet avis et ma décision est restée fondée sur mes propres critères"
   ]},
   { axis:'merc', text:"Votre plus grande difficulté psychologique actuelle en trading est :", opts:[
     "Je ne sais pas vraiment l'identifier",
@@ -547,7 +548,7 @@ const QUESTIONS = [
     "Je prends plus de risques, porté par la confiance",
     "Je suis conscient du danger mais j'y cède parfois",
     "Je maintiens rigoureusement mon cadre de risque habituel",
-    "Je resserre même parfois mon risque, sachant ce qui suit les séries gagnantes"
+    "Je maintiens mon cadre et je relis mes dernières décisions pour repérer une dérive"
   ]},
 
   // AXE HERM — Œuvre Intérieure
@@ -555,49 +556,49 @@ const QUESTIONS = [
     "Un moyen de gagner de l'argent rapidement",
     "Une compétence technique à maîtriser",
     "Une discipline qui m'apprend autant sur moi que sur les marchés",
-    "Un chemin de transformation personnelle dont l'argent n'est qu'une conséquence"
+    "Un chemin d'apprentissage personnel, bien au-delà de l'argent"
   ]},
   { axis:'herm', text:"Quand vous relisez vos erreurs passées :", opts:[
     "Elles me pèsent encore, j'évite d'y penser",
     "Je les analyse techniquement, sans plus",
     "J'y vois une phase nécessaire de mon apprentissage",
-    "Je peux nommer ce qu'elles ont dissous en moi et ce qu'elles ont construit"
+    "Je peux nommer précisément ce qu'elles m'ont appris et ce que j'ai changé depuis"
   ]},
   { axis:'herm', text:"Face à une période prolongée sans edge clair sur le marché :", opts:[
     "Je vis ça comme une frustration stérile",
     "Je patiente, un peu à contrecœur",
-    "Je reconnais cette phase comme une dissolution nécessaire avant clarté nouvelle",
-    "Ces phases sont devenues des moments d'observation, pas de vide"
+    "Je reconnais cette phase comme normale et je m'en sers pour revoir ma méthode",
+    "Je les utilise concrètement (revue, observation, repos) sans forcer d'entrée"
   ]},
-  { axis:'herm', text:"Votre rapport à une grille de lecture symbolique des marchés (hermétisme, cycles) :", opts:[
-    "Cela me semble éloigné de la réalité du trading",
-    "Curieux mais je n'ai jamais exploré sérieusement",
-    "Je l'utilise déjà, en complément de l'analyse technique",
-    "C'est devenu une part structurante de ma pratique"
+  { axis:'herm', text:"Quand vous vous interrogez sur le sens de votre pratique (pourquoi je trade, ce que j'y cherche) :", opts:[
+    "Je ne me pose pas vraiment cette question",
+    "Je me la pose surtout après une mauvaise passe",
+    "Je me la pose de temps en temps, indépendamment de mes résultats",
+    "Je me la pose régulièrement et j'ai noté comment ma réponse évolue"
   ]},
   { axis:'herm', text:"Ce que vous cherchez aujourd'hui, plus que la performance :", opts:[
     "Rien de particulier, je cherche surtout des gains",
     "Une méthode qui marche, point",
     "Une cohérence entre qui je suis et comment je trade",
-    "Un chemin de transmutation — devenir quelqu'un qui pourrait un jour transmettre"
+    "Un chemin d'évolution personnelle — devenir quelqu'un qui pourrait un jour transmettre"
   ]},
   { axis:'herm', text:"Si l'on vous demandait de décrire votre trading actuel avec une image :", opts:[
     "Chaos, tempête, sans direction",
     "Brouillard, incertitude persistante",
     "Éclaircie, alignement qui se construit",
-    "Pleine lumière, une clarté que je sais temporaire et cyclique"
+    "Une vision nette en ce moment, que je sais temporaire"
   ]},
   { axis:'herm', text:"La solitude de la décision (personne ne peut trader à votre place) :", opts:[
     "Me pèse et me pousse à chercher validation extérieure en permanence",
     "Je la vis mais elle reste inconfortable",
     "Je l'ai acceptée comme une condition du métier",
-    "J'y trouve une forme de liberté — Nemini Teneri n'est plus abstrait"
+    "J'y trouve une forme de liberté et je ne cherche plus de validation extérieure pour agir"
   ]},
-  { axis:'herm', text:"Ce que vous chercheriez dans un accompagnement structuré (type Opus Magnum) :", opts:[
-    "Des signaux ou une méthode clé en main",
-    "Une formation technique sérieuse",
-    "Un cadre exigeant pour structurer ce que je pratique déjà",
-    "Un compagnonnage vers une transformation, pas seulement une compétence"
+  { axis:'herm', text:"Au cours des trois derniers mois, à la suite d'une réflexion sur vous-même (et non d'un résultat) :", opts:[
+    "Je n'ai rien changé : je n'ajuste que quand les résultats m'y obligent",
+    "J'y ai pensé sans rien changer",
+    "J'ai ajusté un point précis de ma pratique",
+    "J'ai changé quelque chose et je peux dire pourquoi et ce qui a changé"
   ]}
 ];
 
@@ -654,7 +655,7 @@ const RESOURCES = {
     exercise: "Une fois par semaine, sans lien avec une performance particulière, écrire une seule réponse à la question : pourquoi est-ce que je fais cela ? Ne pas chercher à améliorer la réponse d'une semaine à l'autre. Le but n'est pas de converger vers une formule définitive, mais d'observer si la réponse se déplace, se répète, ou se dérobe.",
     reflectionLabel: 'Piste de réflexion',
     reflection: "Si le résultat de cette année avait été à l'identique, mais que personne d'autre que moi ne l'avait jamais su — est-ce que cette pratique aurait encore le même sens pour moi ?",
-    biblio: ["Marc Aurèle, <em>Pensées pour moi-même</em>", "Titus Burckhardt, <em>Alchimie : sa signification symbolique et psychologique</em>", "Frédéric Lenoir, <em>Du bonheur, un voyage philosophique</em>"]
+    biblio: ["Marc Aurèle, <em>Pensées pour moi-même</em>", "Titus Burckhardt, <em>Alchimie : sa signification et son image du monde</em>", "Frédéric Lenoir, <em>Du bonheur, un voyage philosophique</em>"]
   }
 };
 
@@ -700,11 +701,20 @@ function toggleResource(key){
 /* ---------- STATE ---------- */
 let current = 0;
 const answers = new Array(QUESTIONS.length).fill(null);
+let orders = [];
+function shuffleOrders(){
+  orders = QUESTIONS.map(() => {
+    const a = [0,1,2,3];
+    for(let i=3;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]] = [a[j],a[i]]; }
+    return a;
+  });
+}
 
 /* ---------- NAVIGATION ---------- */
 function startQuiz(){
   document.getElementById('screen-intro').classList.add('hidden');
   document.getElementById('screen-quiz').classList.remove('hidden');
+  shuffleOrders();
   current = 0;
   renderQuestion();
 }
@@ -719,7 +729,8 @@ function renderQuestion(){
 
   const list = document.getElementById('optionsList');
   list.innerHTML = '';
-  q.opts.forEach((opt, i) => {
+  orders[current].forEach((i) => {
+    const opt = q.opts[i];
     const div = document.createElement('div');
     div.className = 'option' + (answers[current] === i+1 ? ' selected' : '');
     div.innerHTML = '<div class="option-dot"></div><div class="option-text">'+opt+'</div>';
@@ -866,6 +877,7 @@ function drawProfile(scores){
 }
 
 /* ---------- READING LOGIC ---------- */
+const SOUTIEN = "Si ce résultat vous pèse plus qu'il ne vous éclaire, ou si une période récente a été difficile au-delà du seul trading, il est toujours possible d'en parler simplement — <a href=\"contact.html\">entrer en contact</a>, sans obligation ni jugement.";
 function reading(scores){
   const { solar, merc, herm } = scores;
   const avg = (solar+merc+herm)/3;
@@ -873,18 +885,18 @@ function reading(scores){
   const high = s => s >= 22, low = s => s <= 14, mid = s => s > 14 && s < 22;
   const counts = {};
   [phaseOf(solar), phaseOf(merc), phaseOf(herm)].forEach(p => counts[p] = (counts[p]||0)+1);
-  const dominant = Object.keys(counts).sort((a,b)=>counts[b]-counts[a])[0];
+  const dominant = Object.keys(counts).length === 3 ? phaseOf(Math.round(avg)) : Object.keys(counts).sort((a,b)=>counts[b]-counts[a])[0];
 
   let text, piste, outro = null;
 
   if(high(solar) && high(merc) && high(herm) && Math.min(solar,merc,herm) >= 27){
-    text = "Un profil rare : les trois plans sont arrivés au même point d'incandescence. La méthode est éprouvée, la discipline tient sous une pression réelle, et le sens donné à la pratique dépasse largement la performance seule. Ce n'est plus un profil qui cherche à apprendre — c'est un profil qui pourrait déjà transmettre.";
+    text = "Un profil où les trois plans sont arrivés à un niveau élevé. La méthode est éprouvée, la discipline tient sous une pression réelle, et le sens donné à la pratique dépasse largement la performance seule. Ce profil ressemble à celui d'un praticien déjà en mesure de transmettre.";
     piste = "Ce profil n'a plus besoin d'être structuré. La question qui se pose désormais est différente — celle de ce que vous voulez faire de cette maîtrise. La ressource sur l'Œuvre Intérieure, ci-dessous, peut nourrir cette réflexion.";
   } else if(high(solar) && low(merc)){
-    text = "Technicien compétent, fragile sous la pression. La méthode tient sur le papier — backtestée, écrite, défendable — mais l'exécution vacille dès que la charge émotionnelle monte : une série de pertes, un gain trop rapide, et le cadre se fissure. C'est un déséquilibre fréquent, et souvent le plus coûteux, car il donne l'illusion que le problème est technique alors qu'il ne l'est plus.";
+    text = "Technicien compétent, fragile sous la pression. La méthode tient sur le papier — backtestée, écrite, défendable — mais l'exécution vacille dès que la charge émotionnelle monte : une série de pertes, un gain trop rapide, et le cadre se fissure. C'est un déséquilibre qui peut coûter cher, car il donne l'illusion que le problème est technique alors qu'il ne l'est plus.";
     piste = "Travailler la discipline comportementale avant tout perfectionnement technique supplémentaire : la ressource sur l'Œuvre Comportementale, ci-dessous, propose un point de départ concret.";
   } else if(high(merc) && low(solar)){
-    text = "La discipline est là — vous tenez sous pression, vous respectez vos limites — mais elle s'exerce sur une méthode qui n'est pas encore assez structurée pour mériter une telle rigueur. C'est un peu comme une garde du corps sans personne à protéger : la qualité intérieure ne demande qu'un cadre à la hauteur.";
+    text = "La discipline est là — vous tenez sous pression, vous respectez vos limites — mais elle s'exerce sur une méthode qui n'est pas encore assez structurée pour mériter une telle rigueur. C'est un peu comme un garde du corps sans personne à protéger : la qualité intérieure ne demande qu'un cadre à la hauteur.";
     piste = "Formaliser la méthode en priorité : la ressource sur l'Œuvre Visible, ci-dessous, propose un exercice simple pour commencer.";
   } else if(high(herm) && low(solar) && low(merc)){
     text = "Une quête de sens sincère, mais prématurée : le chemin intérieur ne peut pas encore compenser l'absence de fondations concrètes. Vous savez déjà pourquoi vous tradez ; reste à construire, avec la même exigence, comment vous tradez.";
@@ -892,20 +904,21 @@ function reading(scores){
   } else if(high(solar) && high(merc) && low(herm)){
     text = "Une compétence solide des deux côtés visibles de la pratique — méthode tenue, discipline tenue — mais sans que le sens de tout cela n'ait encore été interrogé. Ce profil peut très bien fonctionner ainsi, durablement. Il se pourrait simplement que la question du pourquoi finisse, tôt ou tard, par se poser d'elle-même — souvent au moment où l'on s'y attend le moins.";
     piste = "Aucune urgence ici. Si la question du sens venait à se poser, la ressource sur l'Œuvre Intérieure, ci-dessous, restera disponible, sans pression.";
-  } else if((high(solar) || high(herm)) && low(merc) && mid(herm)){
-    text = "La lucidité et la méthode avancent, mais c'est la tenue sous pression qui reste le maillon fragile — celui qui, dans les faits, décide de la réussite ou non de tout le reste. Une belle carte, mal exécutée quand la tension monte, ne vaut pas mieux qu'une carte incomplète.";
+  } else if(high(herm) && low(merc) && mid(solar)){
+    text = "La lucidité avance et la méthode se construit, mais c'est la tenue sous pression qui reste le maillon fragile — celui qui, dans les faits, décide de la réussite ou non de tout le reste. Une belle carte, mal exécutée quand la tension monte, ne vaut pas mieux qu'une carte incomplète.";
     piste = "Prioriser le travail comportemental : c'est l'axe qui, une fois consolidé, fera le plus effet de levier sur les deux autres. La ressource ci-dessous en est un premier pas.";
   } else if(avg >= 24 && spread <= 8){
-    text = "Un profil cohérent : les trois plans avancent ensemble, sans excès ni angle mort majeur. Ce n'est pas l'absence de difficultés — c'est le fait qu'aucun des trois axes ne soit resté significativement en retrait des deux autres, ce qui est en réalité le point le plus rare de toute cette cartographie.";
+    text = "Un profil cohérent : les trois plans avancent ensemble, sans excès ni angle mort majeur. Ce n'est pas l'absence de difficultés — c'est le fait qu'aucun des trois axes ne soit resté significativement en retrait des deux autres, ce qui est un signe de cohérence d'ensemble.";
     piste = "Les ressources ci-dessous restent utiles non pour combler un manque, mais pour continuer d'affiner ce qui fonctionne déjà.";
   } else if(avg <= 15){
     text = "Un chemin qui commence — les trois axes sont encore en dissolution, chacun à sa manière. Ce n'est pas un manque : Nigredo n'a jamais été un échec dans le Grand Œuvre, c'est le point de départ obligé de toute transformation véritable.";
     piste = "Le moment est à l'exploration progressive plutôt qu'à la précipitation. Les trois ressources ci-dessous sont un bon point d'entrée, dans l'ordre qui vous parle le plus.";
     outro = "Si ce résultat vous pèse plus qu'il ne vous éclaire, ou si une période récente a été difficile au-delà du seul trading, il est toujours possible d'en parler simplement — <a href=\"contact.html\">entrer en contact</a>, sans obligation ni jugement.";
   } else {
-    text = "Un profil en construction, avec un déséquilibre notable entre les plans plutôt qu'un retard généralisé. C'est souvent le signe qu'un axe a été travaillé plus tôt ou plus intensément que les deux autres — ce qui n'a rien d'anormal, mais qui mérite d'être rééquilibré consciemment plutôt que laissé au hasard des priorités du moment.";
+    text = (spread >= 6 ? "Un profil en construction, avec un écart sensible entre les plans. Cela peut vouloir dire qu'un axe a été travaillé plus tôt ou plus intensément que les autres ; à relire avec votre propre connaissance de votre parcours." : "Un profil en construction, dont les trois plans avancent à un rythme assez proche. Aucun axe ne se détache nettement : le travail peut se faire de façon équilibrée, selon ce qui vous paraît le plus utile aujourd'hui.");
     piste = "Identifier l'axe le plus faible des trois et le traiter en priorité : la ressource correspondante, ci-dessous, propose un exercice concret pour commencer.";
   }
+  if(!outro && (Math.min(solar,merc,herm) <= 10 || answers[1]===1 || answers[8]===1 || answers[15]===1)){ outro = SOUTIEN; }
   return { dominant, text, piste, outro };
 }
 
