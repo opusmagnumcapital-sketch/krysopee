@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Un seul mot, des risques très différents · Questionnaire · Krysopée</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<meta name="description" content="Dix-sept questions pour faire le point sur ce que recouvre le mot ETF : exposition, perte, lecture du produit, règles. Gratuit, sans note ni classement.">
+<link rel="canonical" href="https://krysopee.capital/questionnaire-etf.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://krysopee.capital/questionnaire-etf.html">
+<meta property="og:title" content="Un seul mot, des risques très différents · Questionnaire · Krysopée">
+<meta property="og:description" content="Dix-sept questions pour faire le point sur les ETF. Ni note, ni classement.">
+<meta property="og:image" content="https://krysopee.capital/logo-bandeau.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Krysopée">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://krysopee.capital/logo-bandeau.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Lora:ital,wght@0,400;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20260918">
+<style>
+  :root{--ink:#0E0C08;--ink-2:#161209;--ink-3:#1E180E;--parchment:#F0E6C8;--parchment-dim:#8A7A5A;--brass:#A8945A;--brass-bright:#C8B47A;--oxide:#8a4a3a;--verdigris:#4f7566;--hairline:rgba(240,230,200,0.14);}
+  *{box-sizing:border-box;}
+  body{margin:0;background:radial-gradient(ellipse at 50% -10%, rgba(176,141,79,0.10), transparent 55%),var(--ink);color:var(--parchment);font-family:'Lora', Georgia, serif;padding:56px 20px 80px;min-height:100vh;}
+  .wrap{max-width:720px;margin:0 auto;}
+  .eyebrow{font-family:'Space Mono', monospace;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--brass);text-align:center;margin-bottom:14px;}
+  h1{font-family:'Lora', Georgia, serif;font-weight:600;font-size:38px;line-height:1.2;text-align:center;margin:0 0 6px;}
+  h1 em{font-style:italic;color:var(--brass-bright);}
+  .subtitle{text-align:center;color:var(--parchment-dim);font-style:italic;font-size:17px;margin-bottom:44px;line-height:1.5;}
+  .card{background:var(--ink-2);border:1px solid var(--hairline);border-radius:4px;padding:36px 32px;}
+  @media (max-width:600px){ .card{padding:28px 20px;} h1{font-size:30px;} }
+  .intro-text{font-size:17px;line-height:1.7;margin:0 0 22px;}
+  .caveat{font-size:14px;line-height:1.6;color:var(--parchment-dim);border-left:3px solid var(--brass-bright);background:var(--ink-3);padding:14px 18px;margin:0 0 28px;}
+  .btn{display:inline-block;font-family:'Space Mono', monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);background:var(--brass-bright);border:none;padding:14px 28px;border-radius:2px;cursor:pointer;transition:background .2s ease, transform .1s ease;}
+  .btn:hover{background:#e6c383;} .btn:active{transform:translateY(1px);}
+  .btn-ghost{background:transparent;color:var(--parchment-dim);border:1px solid var(--hairline);}
+  .btn-ghost:hover{background:var(--ink-3);color:var(--parchment);}
+  .btn[disabled]{opacity:.35;cursor:not-allowed;}
+  .btn-row{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-top:28px;}
+  .progress-row{display:flex;align-items:center;gap:14px;margin-bottom:30px;}
+  .progress-track{flex:1;height:2px;background:var(--hairline);position:relative;}
+  .progress-fill{position:absolute;left:0;top:0;height:100%;background:var(--brass-bright);transition:width .3s ease;}
+  .progress-label{font-family:'Space Mono', monospace;font-size:11px;color:var(--parchment-dim);white-space:nowrap;}
+  .axis-tag{font-family:'Space Mono', monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:10px;}
+  .q-kind{font-size:14px;color:var(--parchment-dim);font-style:italic;margin:0 0 14px;}
+  .q-text{font-size:24px;line-height:1.4;margin:0 0 24px;}
+  .options{display:flex;flex-direction:column;gap:10px;}
+  .option{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;border:1px solid var(--hairline);border-radius:3px;cursor:pointer;background:none;color:inherit;font:inherit;text-align:left;width:100%;transition:border-color .15s ease, background .15s ease;}
+  .option:hover:not(:disabled){border-color:var(--brass);background:var(--ink-3);}
+  .option.selected{border-color:var(--brass-bright);background:rgba(212,175,106,0.08);}
+  .option.ok{border-color:var(--verdigris);background:rgba(79,117,102,0.12);}
+  .option.ko{border-color:var(--oxide);background:rgba(138,74,58,0.12);}
+  .option:disabled{cursor:default;}
+  .option-dot{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--parchment-dim);flex:0 0 auto;margin-top:4px;position:relative;}
+  .multi .option-dot{border-radius:2px;}
+  .option.selected .option-dot{border-color:var(--brass-bright);}
+  .option.selected .option-dot::after{content:'';position:absolute;inset:3px;background:var(--brass-bright);border-radius:inherit;}
+  .option-text{font-size:16px;line-height:1.45;flex:1;}
+  .option-mark{font-family:'Space Mono', monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;align-self:center;white-space:nowrap;}
+  .ok .option-mark{color:#8fb7a5;} .ko .option-mark{color:#d08f7e;}
+  .verdict{font-family:'Space Mono', monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin:26px 0 10px;}
+  .debrief{border-top:1px solid var(--hairline);padding-top:18px;}
+  .debrief p{font-size:16px;line-height:1.65;margin:0 0 14px;}
+  .data-note{font-size:13px !important;color:var(--parchment-dim);}
+  .principe{font-style:italic;color:var(--brass-bright);font-size:18px !important;}
+  .reading-label{font-family:'Space Mono', monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:8px;}
+  .res{border-top:1px solid var(--hairline);padding:18px 0;}
+  .res h3{font-family:'Lora', Georgia, serif;font-weight:400;font-size:19px;margin:0 0 6px;}
+  .res-st{font-family:'Space Mono', monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;}
+  .res-st.a{color:#8fb7a5;} .res-st.e{color:var(--brass-bright);}
+  .res p{margin:0 0 8px;font-size:16px;line-height:1.6;}
+  .res .pl{font-size:14px;color:var(--parchment-dim);font-style:italic;}
+  .small{font-size:13px;line-height:1.6;color:var(--parchment-dim);}
+  .restart{text-align:center;margin-top:26px;padding-top:22px;border-top:1px solid var(--hairline);}
+  .legal{margin-top:20px;font-size:12px;line-height:1.6;color:var(--parchment-dim);opacity:.8;text-align:center;}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-marque"><img src="logo-k.webp" onerror="this.src='logo-k.png'" alt="Krysopée" style="height:36px;width:auto;vertical-align:middle;"></a>
+  <ul class="nav-links">
+    <li><a href="manifeste.html">Le Manifeste</a></li>
+    <li><a href="ecosysteme.html">Écosystème</a></li>
+    <li><a href="krysalide.html">Krysalide</a></li>
+    <li><a href="parcours-opus-magnum.html">Parcours Opus Magnum</a></li>
+    <li><a href="miroir.html">Le Miroir</a></li>
+    <li><a href="praxis.html">Praxis</a></li>
+    <li class="nav-item-dropdown">
+      <a href="publications.html">Publications</a>
+      <ul class="nav-dropdown-panel">
+        <li><a href="publication-chiffres-dun-compte.html">Ce que révèlent vraiment les chiffres d'un compte</a></li>
+      </ul>
+    </li>
+    <li><a href="fondateur.html">Fondateur</a></li>
+  </ul>
+  <a href="contact.html" class="nav-contact">Entrer en contact</a>
+</nav>
+
+<div class="wrap">
+  <div class="eyebrow">Krysopée · Questionnaire</div>
+  <h1>Un seul mot, <em>des risques très différents</em></h1>
+  <div class="subtitle">Un point de situation sur ce que vous savez des ETF. Ni note, ni classement.</div>
+
+  <div class="card">
+    <div id="app"></div>
+  </div>
+  <p class="legal" id="legal"></p>
+</div>
+
+<footer>
+  <a href="index.html" class="foot-nom">Krysopée</a>
+  <span class="foot-devise">☉ · Nemini Teneri · ☿</span>
+  <div class="foot-liens">
+    <a href="https://www.linkedin.com/in/krysop%C3%A9e/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://x.com/krysopee" target="_blank" rel="noopener">X</a>
+    <a href="contact.html">Contact</a>
+    <a href="confidentialite.html">Confidentialité</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <span class="foot-copy">© 2026 Krysopée — Jean-Luc Manzaroli</span>
+  </div>
+</footer>
+
+<script type="application/json" id="data">{"id": "etf-un-seul-mot", "version": "0.1", "titre": "Un seul mot, des risques très différents", "sous_titre": "Un point de situation sur vos connaissances des ETF", "site": "krysopee.capital", "donnees_arretees_au": "2026-10-27", "duree_indicative": "10 à 12 minutes", "introduction": "Dix-sept questions pour faire le point, au rythme que vous voulez. Il n’y a ni note, ni classement. Chaque réponse est suivie d’un court débriefing.", "avertissement": {"emplacement": ["avant_premiere_question", "pied_de_page"], "texte": "Outil pédagogique. Ce questionnaire ne constitue ni un conseil en investissement, ni une recommandation, ni une évaluation de votre profil d’investisseur. Il ne vous dit pas quoi acheter, vendre ou détenir. Il ne produit ni score ni classement, et vos réponses ne sont ni envoyées ni conservées : elles restent sur votre appareil. Krysopée mène son activité de marché pour son propre compte. Nemini Teneri.", "note_interne": "À remplacer mot pour mot par le texte d’avertissement du Laboratoire déjà validé, afin de garder un seul libellé sur le site."}, "regles": {"score_global": false, "classement": false, "stockage_serveur": false, "melanger_options": true, "types_de_question": {"connaissance": "Une réponse est juste. Le débriefing l’explique.", "reflexion": "Aucune bonne réponse. Aucun retour personnalisé ni jugement : le débriefing est le même quel que soit le choix."}}, "blocs": [{"id": "A", "titre": "Que recouvre le mot « ETF » ?", "questions": [{"id": "A1", "type": "connaissance", "selection": "multiple", "competence": "Distinguer l’enveloppe du risque", "enonce": "Parmi ces produits, lesquels peuvent porter l’étiquette « ETF » ?", "options": [{"id": "a", "texte": "Un indice actions mondial", "correcte": true}, {"id": "b", "texte": "Un panier d’obligations", "correcte": true}, {"id": "c", "texte": "Un fonds géré activement par un gérant (ETF actif)", "correcte": true}, {"id": "d", "texte": "Un produit à effet de levier", "correcte": true}], "debrief": "Tous. Le mot décrit une enveloppe cotée, pas un niveau de risque. L’AMF distingue des ETF sur indices de marché, sur indices de stratégie, à effet de levier et « actifs ». En 2026, 1 212 des 2 141 lancements mondiaux à fin juillet sont des ETF actifs, où un gérant décide et non plus un indice (ETFGI). Les ETF à effet de levier sont qualifiés par l’AMF de placements très spéculatifs : on peut les acheter pour un pari de quelques jours ou quelques semaines, pas pour investir à moyen ou long terme, et leur évolution peut même aller à l’inverse de celle que l’on attend.", "piege": "Croire qu’un même mot désigne un même risque.", "principe": "Le critère n’est pas « est-ce un ETF ? », mais « à quoi suis-je réellement exposé ? »."}, {"id": "A2", "type": "connaissance", "selection": "unique", "competence": "Comprendre un fonds obligataire coté", "enonce": "Un ETF obligataire coté se comporte comme une obligation conservée jusqu’à son échéance.", "options": [{"id": "a", "texte": "Vrai", "correcte": false}, {"id": "b", "texte": "Faux", "correcte": true}, {"id": "c", "texte": "Cela dépend uniquement de l’émetteur", "correcte": false}], "debrief": "Un fonds obligataire coté n’a en général pas d’échéance fixe : sa valeur varie avec les taux et le crédit, ce que ne fait pas une obligation conservée jusqu’au terme. Souverains, crédit de qualité, haut rendement : un même mot, des risques distincts.", "piege": "Transposer à un fonds les propriétés d’une obligation détenue en direct.", "principe": "Même mot, risques distincts : on lit la nature de ce qui est détenu."}]}, {"id": "B", "titre": "Quelle exposition ?", "questions": [{"id": "B1", "type": "connaissance", "selection": "unique", "competence": "Lire une règle de construction d’indice", "enonce": "Un ETF qui suit un indice de 500 titres répartit le risque en 500 parts égales.", "options": [{"id": "a", "texte": "Vrai", "correcte": false}, {"id": "b", "texte": "Faux", "correcte": true}], "debrief": "Acheter un indice, c’est acheter une règle de construction. Un indice pondéré par la capitalisation donne plus de poids à ce qui a déjà progressé : fin 2025, les dix premières valeurs pesaient 40,7 % du S&P 500 (VanEck). Posséder cinq cents titres n’est pas répartir le risque en cinq cents parts égales.", "piege": "Confondre nombre de lignes et répartition du risque.", "principe": "Un indice est une règle. On la lit avant d’acheter.", "donnee_datee": "Fin 2025 (VanEck)"}, {"id": "B2", "type": "connaissance", "selection": "unique", "competence": "Mesurer la concentration d’un indice mondial", "enonce": "Environ quel poids les dix premières valeurs représentent-elles dans le MSCI World ?", "options": [{"id": "a", "texte": "Environ 5 %", "correcte": false}, {"id": "b", "texte": "Environ 12 %", "correcte": false}, {"id": "c", "texte": "Environ 27 %", "correcte": true}, {"id": "d", "texte": "Environ 50 %", "correcte": false}], "debrief": "Environ 27 % (Lazard, mars 2026), et ces dix valeurs sont toutes américaines. Certains indices mondiaux sont donc très concentrés. L’AMF le relève aussi : ils peuvent être très investis dans les grandes actions américaines, souvent technologiques, au détriment des petites et moyennes capitalisations et parfois des pays émergents.", "piege": "Penser que « mondial » signifie réparti.", "principe": "Un indice « monde » peut être très concentré : on en lit la composition.", "donnee_datee": "Mars 2026 (Lazard)"}, {"id": "B3", "type": "connaissance", "selection": "unique", "competence": "Repérer les recoupements entre produits", "enonce": "Situation : un portefeuille contient un ETF monde et un ETF technologie. Que peut-on en dire ?", "options": [{"id": "a", "texte": "Il est bien réparti : deux produits, deux univers", "correcte": false}, {"id": "b", "texte": "Il peut être surexposé au même secteur ou à la même zone géographique, sans l’avoir voulu", "correcte": true}, {"id": "c", "texte": "Cela ne change rien, ce sont des ETF", "correcte": false}], "debrief": "L’AMF prend cet exact exemple : les indices monde sont souvent très investis dans les grandes actions américaines, qui sont aussi très souvent des sociétés technologiques. Détenir un ETF monde et un ETF technologie, c’est peut-être moins diversifié qu’on ne le croit. Les indices peuvent se recouper : on vérifie la composition de chacun, sur le site du fournisseur de l’indice.", "piege": "Juger la diversification au nombre de produits.", "principe": "On compare les contenus, pas les noms."}]}, {"id": "C", "titre": "Lire un ETF avant d’acheter", "questions": [{"id": "C1", "type": "connaissance", "selection": "unique", "competence": "Savoir où lire le niveau de risque d’un ETF", "enonce": "Le document d’informations clés (DIC) d’un ETF présente son niveau de risque sur une échelle allant de…", "options": [{"id": "a", "texte": "1 à 3", "correcte": false}, {"id": "b", "texte": "1 à 5", "correcte": false}, {"id": "c", "texte": "1 à 7", "correcte": true}, {"id": "d", "texte": "1 à 10", "correcte": false}], "debrief": "De 1 à 7, ce qui permet de le comparer à d’autres placements. Le DIC donne aussi les informations essentielles : objectifs, frais, indice de référence et nom de son producteur. L’AMF recommande de le lire attentivement, avec le prospectus, avant d’investir.", "piege": "Acheter sans avoir ouvert le DIC.", "principe": "Le DIC se lit avant l’achat, pas après."}, {"id": "C2", "type": "connaissance", "selection": "unique", "competence": "Ne pas se fier au seul nom d’un ETF", "enonce": "Le nom d’un ETF suffit à savoir ce qu’il contient.", "options": [{"id": "a", "texte": "Vrai", "correcte": false}, {"id": "b", "texte": "Faux", "correcte": true}], "debrief": "Le nom de l’indice suivi figure souvent dans le nom de l’ETF, mais l’AMF prévient que cela ne suffit pas à comprendre l’indice : une dénomination parfois peu claire peut conduire à de mauvais choix. Il faut regarder la composition de l’indice, directement sur le site de son producteur.", "piege": "Juger un produit à son intitulé.", "principe": "On lit la composition de l’indice, pas seulement le nom."}, {"id": "C3", "type": "connaissance", "selection": "unique", "competence": "Comprendre l’écart de suivi", "enonce": "Qu’appelle-t-on « tracking error » (écart de suivi) d’un ETF ?", "options": [{"id": "a", "texte": "Le fait que l’évolution de l’ETF s’écarte de celle de son indice", "correcte": true}, {"id": "b", "texte": "Une erreur de saisie lors de l’ordre de bourse", "correcte": false}, {"id": "c", "texte": "Les frais prélevés à chaque achat de parts", "correcte": false}], "debrief": "Répliquer un indice n’est pas toujours aisé, surtout lorsqu’il compte un grand nombre de valeurs : l’évolution de l’ETF peut donc s’écarter de celle de son indice (AMF).", "piege": "Croire qu’un ETF reproduit son indice à l’identique.", "principe": "Un ETF suit un indice ; il ne se confond pas avec lui."}, {"id": "C4", "type": "connaissance", "selection": "unique", "competence": "Intégrer le risque de change", "enonce": "Vous achetez un ETF coté en dollars. Que se passe-t-il pour votre investissement ?", "options": [{"id": "a", "texte": "Seule l’évolution de l’indice compte", "correcte": false}, {"id": "b", "texte": "La variation du dollar s’ajoute à celle de l’indice", "correcte": true}, {"id": "c", "texte": "Le risque de change n’existe que pour les actions détenues en direct", "correcte": false}], "debrief": "Pour les ETF cotés en devise étrangère (dollar, livre sterling, etc.), la variation de la devise s’ajoute à celle de l’indice lui-même (AMF).", "piege": "Oublier la devise dans la lecture du risque.", "principe": "La devise fait partie de l’exposition."}, {"id": "C5", "type": "connaissance", "selection": "unique", "competence": "Anticiper les frais", "enonce": "Quels frais faut-il anticiper pour un ETF ?", "options": [{"id": "a", "texte": "Seulement les frais de gestion", "correcte": false}, {"id": "b", "texte": "Des frais de courtage, des droits de garde et des frais de gestion", "correcte": true}, {"id": "c", "texte": "Aucun : les ETF sont sans frais", "correcte": false}], "debrief": "Les frais des ETF sont généralement moins élevés que ceux des fonds traditionnels : souvent inférieurs à 0,5 % par an, contre plus de 1 % pour un fonds géré activement, voire 1,5 % pour certaines catégories. Mais plusieurs types de frais restent à anticiper : le courtage à l’achat et à la vente, les droits de garde, et les frais de gestion déduits de la performance (AMF).", "piege": "Réduire le coût d’un ETF à son seul pourcentage affiché.", "principe": "Les frais se lisent en plusieurs lignes, pas en une seule.", "donnee_datee": "Juin 2026 (AMF)"}, {"id": "C6", "type": "connaissance", "selection": "unique", "competence": "Distinguer capitalisation et distribution", "enonce": "Un ETF « de capitalisation »…", "options": [{"id": "a", "texte": "Verse aux investisseurs les dividendes des entreprises de l’indice", "correcte": false}, {"id": "b", "texte": "Réinvestit automatiquement ces dividendes", "correcte": true}, {"id": "c", "texte": "Ne profite pas des dividendes des entreprises", "correcte": false}], "debrief": "Un ETF de distribution verse les dividendes aux investisseurs. Un ETF de capitalisation les réinvestit automatiquement, ce qui permet de profiter de la croissance des bénéfices et de l’effet « boule de neige » des intérêts composés. Le choix dépend de l’objectif : revenus complémentaires ou fructification du capital à plus long terme (AMF).", "piege": "Confondre deux politiques de traitement des revenus.", "principe": "Capitalisation ou distribution : une question d’objectif, pas de qualité."}, {"id": "C7", "type": "connaissance", "selection": "unique", "competence": "Comprendre la réplication", "enonce": "Un ETF à réplication synthétique…", "options": [{"id": "a", "texte": "Détient directement les titres qui composent son indice", "correcte": false}, {"id": "b", "texte": "Passe un contrat d’échange de performance (swap) avec un établissement financier, généralement une banque", "correcte": true}, {"id": "c", "texte": "Ne suit aucun indice", "correcte": false}], "debrief": "Un ETF à réplication physique investit directement dans les actions ou obligations de son indice, et c’est le cas le plus répandu. Un ETF à réplication synthétique ne détient pas ces titres : il conclut un swap avec un autre établissement, généralement une banque, qui, lui, les détient (AMF).", "piege": "Supposer que tout ETF détient ce que son indice contient.", "principe": "Le mode de réplication fait partie de ce que l’on lit dans le DIC et le prospectus."}]}, {"id": "D", "titre": "Quelle perte ?", "questions": [{"id": "D1", "type": "connaissance", "selection": "unique", "competence": "Maîtriser l’asymétrie baisse / remontée", "enonce": "Une position perd 50 %. Quelle hausse faut-il pour revenir au point de départ ?", "options": [{"id": "a", "texte": "50 %", "correcte": false}, {"id": "b", "texte": "75 %", "correcte": false}, {"id": "c", "texte": "100 %", "correcte": true}, {"id": "d", "texte": "150 %", "correcte": false}], "debrief": "100 %. L’arithmétique est asymétrique : une baisse de 50 % exige une hausse de 100 % pour revenir au point de départ. Plus la baisse est forte, plus la remontée requise est disproportionnée.", "piege": "Additionner les pourcentages comme s’ils étaient symétriques.", "principe": "Une perte ne se compense pas à pourcentage égal."}, {"id": "D2", "type": "connaissance", "selection": "unique", "competence": "Distinguer les risques que la diversification réduit", "enonce": "La diversification réduit…", "options": [{"id": "a", "texte": "Le risque propre à une entreprise", "correcte": true}, {"id": "b", "texte": "Le risque commun à tous les actifs détenus", "correcte": false}, {"id": "c", "texte": "Les deux", "correcte": false}], "debrief": "Elle réduit le risque propre à une entreprise. Elle ne supprime pas le risque commun aux actifs détenus : en période de stress, les baisses peuvent être simultanées. Pour un ETF, l’AMF rappelle que le principal risque est la variation de l’indice suivi : si l’indice baisse, la valeur baisse dans les mêmes proportions. Un drawdown passé décrit une expérience, il ne borne pas l’avenir.", "piege": "Croire que diversifier protège de toute baisse.", "principe": "La diversification réduit un risque, pas tous."}, {"id": "D3", "type": "reflexion", "selection": "unique", "competence": "Se poser la question de la perte supportable", "enonce": "Pour réfléchir : avant un achat, quelle place a eu, pour vous, la question « quelle perte puis-je absorber sans être contraint de vendre ? »", "options": [{"id": "a", "texte": "Je me la suis posée et j’ai mis un chiffre dessus"}, {"id": "b", "texte": "Je me la suis posée, sans chiffre précis"}, {"id": "c", "texte": "Je ne me la suis pas vraiment posée"}, {"id": "d", "texte": "Je ne sais pas comment la poser"}], "debrief_unique": "Aucune réponse n’est attendue ici, et rien n’est enregistré. La question précède l’achat : quelle perte puis-je absorber sans être contraint de vendre, et sans compromettre mes projets ? Un chiffre posé à froid mérite d’être relu face à une baisse réelle, car ce que l’on dit supporter n’est pas ce que l’on supporte quand cela arrive.", "principe": "Poser la question avant l’achat, pas pendant la baisse."}]}, {"id": "E", "titre": "Quelle règle quand cela devient inconfortable ?", "questions": [{"id": "E1", "type": "connaissance", "selection": "unique", "competence": "Voir les deux faces de la liquidité", "enonce": "Un ETF se cote en continu et se vend en quelques secondes. Cette liquidité est…", "options": [{"id": "a", "texte": "Uniquement un avantage", "correcte": false}, {"id": "b", "texte": "Un avantage réel, mais aussi ce qui rend l’abandon d’un plan instantané", "correcte": true}, {"id": "c", "texte": "Un risque à éviter", "correcte": false}], "debrief": "La liquidité est un avantage réel. C’est aussi ce qui rend l’abandon d’un plan instantané. Le coût d’un ETF se lit dans ses frais ; le coût d’une sortie impulsive se lit dans le calendrier : vendre le jour du décrochage, racheter après la hausse. Attention aussi : certains ETF dits exotiques (petites capitalisations, marchés émergents peu développés, obligations peu échangées, secteurs très spécialisés) paraissent très liquides parce qu’ils cotent en continu, alors que les titres de leur indice le sont peu. Ils peuvent alors subir des coûts de transaction importants et s’écarter de la valeur théorique de leur indice (AMF).", "piege": "Confondre facilité de sortie et bonne décision de sortie.", "principe": "Ce qui se vend en une seconde se regrette aussi en une seconde."}, {"id": "E2", "type": "reflexion", "selection": "multiple", "competence": "Écrire une règle avant d’agir", "enonce": "Pour réfléchir : parmi ces règles, lesquelles avez-vous déjà écrites pour vous-même ?", "options": [{"id": "a", "texte": "Des versements programmés"}, {"id": "b", "texte": "Un rééquilibrage défini à l’avance"}, {"id": "c", "texte": "Un plafond de concentration"}, {"id": "d", "texte": "Une condition d’invalidation d’une ligne"}, {"id": "e", "texte": "Aucune pour l’instant", "exclusive": true}], "debrief_unique": "Aucune réponse n’est attendue ici, et rien n’est enregistré. Une règle écrite avant l’achat tient là où l’intention cède. La condition d’invalidation est la plus exigeante : elle demande ce qui démontrerait que cette ligne n’a plus sa place, et la règle que l’on appliquera ce jour-là.", "principe": "Une règle écrite à froid vaut mieux qu’une décision prise sous pression."}]}], "restitution": {"score": false, "principe": "Pour chaque bloc, un message qualitatif selon le nombre de questions de connaissance réussies. Les questions de réflexion n’entrent dans aucun calcul.", "seuils": {"acquis": "toutes les questions de connaissance du bloc sont justes", "a_explorer": "au moins une est fausse", "par_bloc": {"C": "acquis si au plus une question de connaissance est fausse"}}, "messages": {"A": {"acquis": "Vous distinguez bien l’enveloppe du risque.", "a_explorer": "À explorer : les types de produits derrière le mot « ETF ».", "renvoi": "À quoi suis-je réellement exposé : composition, pays, secteurs, devise, levier ?"}, "B": {"acquis": "Vous lisez bien la composition réelle d’un indice.", "a_explorer": "À explorer : la concentration des indices et le recoupement entre produits.", "renvoi": "Si je détiens plusieurs ETF, portent-ils les mêmes entreprises sous des noms différents ?"}, "C": {"acquis": "Vous savez où et comment lire un ETF : DIC, composition, devise, frais, réplication.", "a_explorer": "À explorer : le DIC, l’écart de suivi, le change, les frais, la capitalisation et le mode de réplication.", "renvoi": "À quoi suis-je réellement exposé : composition, pays, secteurs, devise, levier ? Le DIC et le site du fournisseur de l’indice sont les premiers endroits où regarder."}, "D": {"acquis": "Vous maîtrisez l’arithmétique de la perte et les limites de la diversification.", "a_explorer": "À explorer : l’asymétrie des pertes et ce que la diversification ne couvre pas.", "renvoi": "Quelle perte puis-je supporter sans être contraint de vendre ?"}, "E": {"acquis": "Vous voyez les deux faces de la liquidité.", "a_explorer": "À explorer : le rôle d’une règle écrite quand cela devient inconfortable.", "renvoi": "Quelle condition démontrerait que cette ligne n’a plus sa place, et quelle règle appliquerai-je ce jour-là ?"}}, "pied": "Ces résultats ne sont comparés à ceux d’aucun autre lecteur. Ils ne disent rien de votre qualité d’investisseur."}, "sources": ["AMF, « Ce qu’il faut savoir sur les ETF avant d’investir », 11 juin 2026 — https://www.amf-france.org/fr/espace-epargnants/comprendre-les-produits-financiers/placements-collectifs/trackers-etf", "ETFGI (août et septembre 2026)", "OCDE pour l’AMF (2023)", "VanEck", "Lazard (mars 2026)"], "maintenance": {"questions_a_reverifier": ["A1", "B1", "B2", "C5"], "raison": "Chiffres arrêtés au 27 octobre 2026 (A1, B1, B2) et fourchettes de frais AMF de juin 2026 (C5). À mettre à jour ou à dater visiblement si le questionnaire reste en ligne.", "validation_humaine": "avant publication", "a_verifier": ["A2 : affirmation sur les ETF obligataires non couverte par la page AMF consultée, à sourcer"], "verifie_contre_amf": "2026-10-27 : A1, B3, D2, E1 confirmés ou précisés ; B2 nuancé ; bloc C construit sur la page AMF (DIC, nom de l’ETF, écart de suivi, change, frais, capitalisation/distribution, réplication)"}}</script>
+<script>
+(function(){
+const D=JSON.parse(document.getElementById('data').textContent);
+const flat=[];D.blocs.forEach(b=>b.questions.forEach(q=>flat.push(Object.assign({},q,{bloc:b}))));
+const app=document.getElementById('app');
+let i=-1,sel=new Set(),done=false,res={};
+const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+document.getElementById('legal').textContent=D.avertissement.texte;
+
+function shuffle(o){
+  if(!D.regles.melanger_options||!o.some(x=>x.texte.length>40))return o;
+  const a=o.filter(x=>!x.exclusive),e=o.filter(x=>x.exclusive);
+  for(let k=a.length-1;k>0;k--){const j=Math.floor(Math.random()*(k+1));[a[k],a[j]]=[a[j],a[k]]}
+  return a.concat(e);
+}
+function intro(){
+  i=-1;res={};
+  app.innerHTML=`<p class="intro-text">${esc(D.introduction)}</p>
+  <p class="intro-text">Comptez ${esc(D.duree_indicative)}. Vos réponses restent dans cette page : elles ne sont ni envoyées, ni conservées.</p>
+  <p class="caveat">${esc(D.avertissement.texte)}</p>
+  <div class="btn-row"><button class="btn" id="go">Commencer</button></div>`;
+  document.getElementById('go').onclick=next;
+  window.scrollTo(0,0);
+}
+function next(){i++;if(i>=flat.length)return end();sel=new Set();done=false;const q=flat[i];q._o=shuffle(q.options);show(q);}
+function show(q){
+  const multi=q.selection==='multiple',ref=q.type==='reflexion';
+  app.innerHTML=`<div class="progress-row"><div class="progress-track"><div class="progress-fill" style="width:${i/flat.length*100}%"></div></div><div class="progress-label">${i+1} / ${flat.length}</div></div>
+  <div class="axis-tag">${q.bloc.id} · ${esc(q.bloc.titre)}</div>
+  <p class="q-kind">${ref?'Pour réfléchir : aucune bonne réponse, rien n’est enregistré.':'Question de connaissance'}${multi?' · plusieurs réponses possibles':''}</p>
+  <div class="q-text">${esc(q.enonce)}</div>
+  <div class="options ${multi?'multi':''}" id="opts"></div>
+  <div id="out"></div>
+  <div class="btn-row" id="act"><button class="btn" id="ok" disabled>Valider</button></div>`;
+  const box=document.getElementById('opts');
+  q._o.forEach(o=>{
+    const b=document.createElement('button');b.type='button';b.className='option';b.dataset.id=o.id;b.setAttribute('aria-pressed','false');
+    b.innerHTML=`<span class="option-dot"></span><span class="option-text">${esc(o.texte)}</span><span class="option-mark"></span>`;
+    b.onclick=()=>{
+      if(done)return;
+      if(!multi||o.exclusive){sel=new Set([o.id]);}
+      else{const ex=q._o.find(x=>x.exclusive);if(ex)sel.delete(ex.id);sel.has(o.id)?sel.delete(o.id):sel.add(o.id);}
+      box.querySelectorAll('.option').forEach(x=>{const on=sel.has(x.dataset.id);x.classList.toggle('selected',on);x.setAttribute('aria-pressed',on);});
+      document.getElementById('ok').disabled=!sel.size;
+    };
+    box.appendChild(b);
+  });
+  document.getElementById('ok').onclick=()=>validate(q);
+}
+function validate(q){
+  done=true;const ref=q.type==='reflexion';let good=null;
+  document.querySelectorAll('.option').forEach(x=>x.disabled=true);
+  if(!ref){
+    const c=new Set(q.options.filter(o=>o.correcte).map(o=>o.id));
+    good=c.size===sel.size&&[...c].every(x=>sel.has(x));
+    document.querySelectorAll('.option').forEach(x=>{
+      const id=x.dataset.id,m=x.querySelector('.option-mark');
+      x.classList.remove('selected');
+      if(c.has(id)){x.classList.add('ok');m.textContent=sel.has(id)?'✓ juste':'✓ attendue';}
+      else if(sel.has(id)){x.classList.add('ko');m.textContent='✗';}
+    });
+  }
+  res[q.id]=good;
+  const verdict=ref?'Aucune bonne réponse ici.':(good?'Juste.':'À revoir.');
+  document.getElementById('out').innerHTML=`<div class="verdict">${verdict}</div><div class="debrief"><p>${esc(q.debrief||q.debrief_unique)}</p>${q.donnee_datee?`<p class="data-note">Donnée : ${esc(q.donnee_datee)}</p>`:''}<p class="principe">${esc(q.principe)}</p></div>`;
+  document.getElementById('act').innerHTML=`<button class="btn" id="nx">${i===flat.length-1?'Voir la synthèse':'Question suivante'}</button>`;
+  document.getElementById('nx').onclick=()=>{next();window.scrollTo(0,0);};
+}
+function end(){
+  let h=`<div class="progress-row"><div class="progress-track"><div class="progress-fill" style="width:100%"></div></div><div class="progress-label">${flat.length} / ${flat.length}</div></div>
+  <div class="reading-label">Synthèse</div><p class="intro-text">Pas de note, pas de classement : pour chaque bloc, ce qui est acquis et ce qui reste à explorer.</p>`;
+  D.blocs.forEach(b=>{
+    const ks=b.questions.filter(q=>q.type==='connaissance');
+    const wrong=ks.filter(q=>res[q.id]===false).length;
+    const m=D.restitution.messages[b.id];
+    const lim=(D.restitution.seuils.par_bloc||{})[b.id]?1:0;
+    const ok=wrong<=lim;
+    h+=`<div class="res"><h3>${b.id} · ${esc(b.titre)}</h3><div class="res-st ${ok?'a':'e'}">${ok?'Acquis':'À explorer'}</div><p>${esc(ok?m.acquis:m.a_explorer)}</p><p class="pl">Pour aller plus loin : ${esc(m.renvoi)}</p></div>`;
+  });
+  h+=`<p class="small">${esc(D.restitution.pied)}</p><p class="small">Sources : ${D.sources.map(esc).join(' · ')}. Données arrêtées au ${esc(D.donnees_arretees_au)}.</p>
+  <div class="restart"><button class="btn btn-ghost" id="rs">Recommencer</button></div>`;
+  app.innerHTML=h;document.getElementById('rs').onclick=intro;window.scrollTo(0,0);
+}
+intro();
+})();
+</script>
+</body>
+</html>
