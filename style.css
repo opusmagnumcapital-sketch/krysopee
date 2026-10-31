@@ -750,3 +750,28 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .entree { opacity: 1; transform: none; transition: none; }
 }
+
+/* ── Avertissement de pied de page ───────────────────────── */
+.foot-avert {
+  flex: 1 1 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-size: 0.58rem;
+  line-height: 1.7;
+  letter-spacing: 0.04em;
+  color: var(--text-sec);
+  opacity: 0.5;
+  text-align: center;
+}
+
+/* ── Krysalide : emblème et journal de bord ──────────────── */
+.krysalide-embleme { display: block; width: min(300px, 62vw); height: auto; margin: 0 auto 1.25rem; }
+.krysalide-embleme-petit { width: min(150px, 40vw); margin-bottom: 1rem; }
+.journal-mois h2 { margin-bottom: 1.5rem; }
+.journal-vide { font-style: italic; color: var(--text-sec); opacity: 0.8; }
+.journal-entree { border-top: 0.5px solid var(--bord-pale); padding: 2rem 0; }
+.journal-entree:first-of-type { border-top: 0; padding-top: 0; }
+.journal-date { font-family: 'Poppins', sans-serif; font-weight: 400; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--or); margin: 0 0 0.4rem; }
+.journal-titre { font-family: 'Lora', Georgia, serif; font-size: 1.25rem; color: var(--text); margin: 0 0 0.8rem; }
+.journal-meta { font-family: 'Poppins', sans-serif; font-weight: 300; font-size: 0.7rem; letter-spacing: 0.06em; color: var(--text-sec); opacity: 0.8; margin: 0 0 1rem; }
