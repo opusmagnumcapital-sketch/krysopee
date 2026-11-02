@@ -16,10 +16,9 @@
 <meta property="og:site_name" content="Krysopée">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krysopee.capital/logo-bandeau.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Lora:ital,wght@0,400;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261031">
+<link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=20261102">
 <style>
 .contact-hero { max-width: 620px; margin: 0 auto; text-align: center; padding: 8rem 2rem 3rem; }
 .contact-hero h1 { margin-bottom: 1rem; }
@@ -30,31 +29,31 @@
 .contact-form-simple textarea {
   background: transparent; border: none; border-bottom: 0.5px solid var(--bord-fin);
   color: var(--text); padding: 1rem 0.2rem;
-  font-family: 'Lora', Georgia, serif; font-size: 1rem; font-style: italic;
+  font-family: var(--font-titre); font-size: 1rem; font-style: italic;
   outline: none; width: 100%; resize: none; transition: border-color 0.3s;
 }
 .contact-form-simple input::placeholder,
-.contact-form-simple textarea::placeholder { color: var(--text-sec); opacity: 0.5; font-style: italic; }
+.contact-form-simple textarea::placeholder { color: var(--text-sec); opacity: 0.8; font-style: italic; }
 .contact-form-simple input:focus,
-.contact-form-simple textarea:focus { border-color: rgba(200,180,122,0.5); }
+.contact-form-simple textarea:focus { border-color: rgba(var(--or-rgb), 0.5); }
 .contact-form-simple textarea { height: 130px; }
 .contact-envoyer-simple {
   background: transparent; border: none; border-top: 0.5px solid var(--bord-fin);
   color: var(--or); padding: 1.1rem;
-  font-family: 'Poppins', sans-serif; font-weight: 400;
-  font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+  font-family: var(--font-corps); font-weight: 400;
+  font-size: 0.74rem; letter-spacing: 0.28em; text-transform: uppercase;
   cursor: pointer; width: 100%; text-align: center; transition: all 0.3s; margin-top: 0.5rem;
 }
-.contact-envoyer-simple:hover { background: rgba(200,180,122,0.06); }
+.contact-envoyer-simple:hover { background: rgba(var(--or-rgb), 0.06); }
 .contact-rgpd-simple {
-  font-family: 'Poppins', sans-serif; font-weight: 300; font-size: 0.68rem;
-  color: var(--text-sec); opacity: 0.5; line-height: 1.7; margin-top: 1.5rem; text-align: center;
+  font-family: var(--font-corps); font-weight: 400; font-size: 0.74rem;
+  color: var(--text-sec); opacity: 0.85; line-height: 1.7; margin-top: 1.5rem; text-align: center;
 }
 .contact-confirm {
   display: none; padding: 1.5rem; border: 0.5px solid var(--bord-pale); margin-bottom: 1.5rem; text-align: center;
 }
 .contact-confirm p {
-  font-family: 'Lora', Georgia, serif; font-style: italic; color: var(--or); font-size: 0.95rem;
+  font-family: var(--font-titre); font-style: italic; color: var(--or); font-size: 0.95rem;
 }
 
 @media (max-width: 900px) {
@@ -67,7 +66,8 @@
 
 <nav id="nav">
   <a href="index.html" class="nav-marque"><img src="logo-k.webp" onerror="this.src='logo-k.png'" alt="Krysopée" style="height:36px;width:auto;vertical-align:middle;"></a>
-  <ul class="nav-links">
+  <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
+  <ul class="nav-links" id="nav-menu">
     <li><a href="manifeste.html">Le Manifeste</a></li>
     <li class="nav-item-dropdown">
       <a href="krysalide.html">Krysalide</a>
@@ -75,7 +75,6 @@
         <li><a href="journal.html">Journal de bord</a></li>
       </ul>
     </li>
-    <li><a href="parcours-opus-magnum.html">Parcours Opus Magnum</a></li>
     <li><a href="publications.html">Publications</a></li>
     <li><a href="fondateur.html">Fondateur</a></li>
   </ul>
@@ -85,6 +84,7 @@
 <section class="contact-hero">
   <p class="act-label" style="display:block;margin-bottom:1rem;">Contact</p>
   <h1 class="t-h1">"La rencontre précède <em>la proposition.</em>"</h1>
+  <p class="contact-objet">Pour une question sur la méthode, le compte Krysalide ou les publications.</p>
 </section>
 
 <div class="contact-zone">
@@ -145,5 +145,6 @@ if (form) {
   });
 }
 </script>
+<script src="nav.js" defer></script>
 </body>
 </html>

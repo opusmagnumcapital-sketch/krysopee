@@ -11,7 +11,7 @@ Site statique HTML/CSS pour krysopee.capital (GitHub Pages).
 | `ecosysteme.html` | Redirection vers `krysalide.html` |
 | `krysalide.html` | Krysalide — le compte de trading : emblème, K-V2 PHIBO, marchés, transparence, journal (ancienne URL `k-solstice.html` : redirection) |
 | `journal.html` | Journal de bord de Krysalide : une entrée à la fin de chaque séance |
-| `parcours-opus-magnum.html` | Parcours Opus Magnum — transmission individuelle et sélective |
+| `parcours-opus-magnum.html` | Redirection vers `krysalide.html` (Parcours Opus Magnum en pause depuis le 2 novembre 2026 ; page conservée dans la branche `archive-opus-magnum`) |
 | `miroir.html` (+ `miroir-pdf.js`) | Le Miroir des Trois Voies — questionnaire en 24 questions |
 | `praxis.html` | Redirection vers `publications.html#praxis` |
 | `publications.html` | Publications, questionnaire (Miroir) et Praxis (section `#praxis`) |
@@ -21,7 +21,7 @@ Site statique HTML/CSS pour krysopee.capital (GitHub Pages).
 | `fondateur.html` | Page du fondateur |
 | `contact.html` | Contact |
 | `confidentialite.html`, `mentions-legales.html` | Pages légales |
-| `style.css`, `favicon.svg`, `fonts/` | Habillage |
+| `style.css`, `nav.js`, `favicon.svg`, `fonts/` | Habillage (v3 : fond clair « albedo », bandes sombres, polices Fraunces, Inter et IBM Plex Mono hébergées localement) ; `nav.js` ouvre le menu sur téléphone |
 
 ## Notes
 

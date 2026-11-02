@@ -16,10 +16,9 @@
 <meta property="og:site_name" content="Krysopée">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krysopee.capital/logo-bandeau.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Lora:ital,wght@0,400;1,400&family=Space+Mono:wght@400&family=Poppins:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261031">
+<link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=20261102">
 <style>
 .art-hero {
   padding: 9rem 4rem 3rem;
@@ -28,25 +27,25 @@
   text-align: center;
 }
 .art-eyebrow {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.62rem;
+  font-family: var(--font-corps);
+  font-size: 0.74rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--or-2);
   margin-bottom: 1.25rem;
 }
 .art-titre {
-  font-family: 'Crimson Pro', serif;
+  font-family: var(--font-titre);
   font-size: clamp(2.1rem, 4.5vw, 3.2rem);
-  font-weight: 300;
+  font-weight: 400;
   font-style: italic;
   line-height: 1.18;
   color: var(--encre);
   margin-bottom: 1.25rem;
 }
 .art-meta {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.62rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-sec);
@@ -58,7 +57,7 @@
   padding: 1rem 4rem 6rem;
 }
 .art-corps p {
-  font-family: 'Lora', serif;
+  font-family: var(--font-titre);
   font-size: 1.02rem;
   font-weight: 400;
   line-height: 1.85;
@@ -66,7 +65,7 @@
   margin-bottom: 1.5rem;
 }
 .art-corps h2 {
-  font-family: 'Crimson Pro', serif;
+  font-family: var(--font-titre);
   font-size: 1.5rem;
   font-weight: 400;
   font-style: italic;
@@ -75,7 +74,7 @@
   line-height: 1.35;
 }
 .art-exergue {
-  font-family: 'Crimson Pro', serif;
+  font-family: var(--font-titre);
   font-style: italic;
   font-size: 1.15rem;
   line-height: 1.6;
@@ -99,27 +98,27 @@
 .art-table th, .art-table td {
   padding: 0.9rem 1.1rem;
   text-align: left;
-  font-family: 'Lora', serif;
+  font-family: var(--font-titre);
   font-size: 0.9rem;
   line-height: 1.5;
   border-bottom: 1px solid var(--bord-fin);
   color: var(--text);
 }
 .art-table th {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.58rem;
+  font-family: var(--font-corps);
+  font-size: 0.74rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--or-2);
-  background: rgba(200,180,122,0.04);
+  background: rgba(var(--or-rgb), 0.04);
 }
 .art-table tr:last-child td { border-bottom: none; }
 
 .art-signature {
   text-align: center;
   margin-top: 3.5rem;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--or);
@@ -128,8 +127,8 @@
   display: block;
   text-align: center;
   margin-top: 2.5rem;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.62rem;
+  font-family: var(--font-corps);
+  font-size: 0.74rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-sec);
@@ -157,7 +156,8 @@
 
 <nav id="nav">
   <a href="index.html" class="nav-marque"><img src="logo-k.webp" onerror="this.src='logo-k.png'" alt="Krysopée" style="height:36px;width:auto;vertical-align:middle;"></a>
-  <ul class="nav-links">
+  <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
+  <ul class="nav-links" id="nav-menu">
     <li><a href="manifeste.html">Le Manifeste</a></li>
     <li class="nav-item-dropdown">
       <a href="krysalide.html">Krysalide</a>
@@ -165,7 +165,6 @@
         <li><a href="journal.html">Journal de bord</a></li>
       </ul>
     </li>
-    <li><a href="parcours-opus-magnum.html">Parcours Opus Magnum</a></li>
     <li><a href="publications.html" class="active">Publications</a></li>
     <li><a href="fondateur.html">Fondateur</a></li>
   </ul>
@@ -269,5 +268,6 @@
 <p class="foot-avert">Krysopée n'est pas un conseiller en investissement financier. Les contenus publiés sont informatifs et pédagogiques : ils ne constituent ni un conseil en investissement, ni une recommandation, ni une incitation à réaliser des opérations de marché.</p>
 </footer>
 
+<script src="nav.js" defer></script>
 </body>
 </html>

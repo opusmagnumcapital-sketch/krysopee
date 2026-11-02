@@ -16,10 +16,9 @@
 <meta property="og:site_name" content="Krysopée">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krysopee.capital/logo-bandeau.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Lora:ital,wght@0,400;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261031">
+<link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=20261102">
 <style>
   /* Palette locale alignée sur les tokens réels de style.css (--k-bg, --k-gold, --k-ivory...) */
   :root{
@@ -32,7 +31,7 @@
     --brass-bright:#C8B47A;
     --oxide:#8a4a3a;
     --verdigris:#4f7566;
-    --hairline:rgba(240,230,200,0.14);
+    --hairline:rgba(var(--text-rgb), 0.14);
   }
   *{box-sizing:border-box;}
   body{
@@ -41,13 +40,13 @@
       radial-gradient(ellipse at 50% -10%, rgba(176,141,79,0.10), transparent 55%),
       var(--ink);
     color:var(--parchment);
-    font-family:'Lora', Georgia, serif;
+    font-family:var(--font-titre);
     padding:56px 20px 80px;
     min-height:100vh;
   }
   .wrap{max-width:720px;margin:0 auto;}
   .eyebrow{
-    font-family:'Space Mono', monospace;
+    font-family:var(--font-mono);
     font-size:11px;
     letter-spacing:0.28em;
     text-transform:uppercase;
@@ -56,7 +55,7 @@
     margin-bottom:14px;
   }
   h1{
-    font-family:'Lora', Georgia, serif;
+    font-family:var(--font-titre);
     font-weight:600;
     font-size:40px;
     text-align:center;
@@ -83,7 +82,7 @@
   .intro-text{ font-size:17px; line-height:1.7; margin-bottom:28px; }
   .btn{
     display:inline-block;
-    font-family:'Space Mono', monospace;
+    font-family:var(--font-mono);
     font-size:12px;
     letter-spacing:0.12em;
     text-transform:uppercase;
@@ -110,9 +109,9 @@
   .progress-row{ display:flex; align-items:center; gap:14px; margin-bottom:30px; }
   .progress-track{ flex:1; height:2px; background:var(--hairline); position:relative; }
   .progress-fill{ position:absolute; left:0; top:0; height:100%; background:var(--brass-bright); transition:width 0.3s ease; }
-  .progress-label{ font-family:'Space Mono', monospace; font-size:11px; color:var(--parchment-dim); white-space:nowrap; }
+  .progress-label{ font-family:var(--font-mono); font-size:11px; color:var(--parchment-dim); white-space:nowrap; }
   .axis-tag{
-    font-family:'Space Mono', monospace;
+    font-family:var(--font-mono);
     font-size:10px;
     letter-spacing:0.18em;
     text-transform:uppercase;
@@ -123,7 +122,7 @@
 
   /* Question */
   .q-text{
-    font-family:'Lora', Georgia, serif;
+    font-family:var(--font-titre);
     font-size:25px;
     line-height:1.4;
     margin:0 0 24px;
@@ -161,7 +160,7 @@
   /* Radar (result) */
   .chart-panel{ position:relative; margin-bottom:8px; }
   .phase-tag{
-    font-family:'Space Mono', monospace;
+    font-family:var(--font-mono);
     font-size:10px;
     letter-spacing:0.14em;
     text-transform:uppercase;
@@ -173,13 +172,13 @@
   svg{ width:100%; height:auto; display:block; }
   .ring{ fill:none; stroke:var(--hairline); stroke-width:1; }
   .spoke{ stroke:var(--hairline); stroke-width:1; }
-  .ring-label{ font-family:'Space Mono', monospace; font-size:9px; fill:var(--parchment-dim); }
-  .axis-label{ font-family:'Lora', Georgia, serif; font-size:15px; fill:var(--parchment); }
-  .axis-symbol{ font-family:'Lora', Georgia, serif; font-size:21px; fill:var(--brass-bright); }
+  .ring-label{ font-family:var(--font-mono); font-size:9px; fill:var(--parchment-dim); }
+  .axis-label{ font-family:var(--font-titre); font-size:15px; fill:var(--parchment); }
+  .axis-symbol{ font-family:var(--font-titre); font-size:21px; fill:var(--brass-bright); }
   .profile-fill{ fill:url(#profileGrad); fill-opacity:0.55; stroke:var(--brass-bright); stroke-width:1.6; }
   .vertex{ fill:var(--parchment); stroke:var(--brass-bright); stroke-width:1.5; }
 
-  .scorebar-row{ display:flex; justify-content:space-between; font-family:'Space Mono', monospace; font-size:12px; color:var(--parchment-dim); margin:0 0 8px; }
+  .scorebar-row{ display:flex; justify-content:space-between; font-family:var(--font-mono); font-size:12px; color:var(--parchment-dim); margin:0 0 8px; }
   .scorebar-row b{ color:var(--brass-bright); font-weight:500; }
   .axis-report{ margin-top:22px; padding-top:18px; border-top:1px solid var(--hairline); }
   .axis-report:first-of-type{ margin-top:26px; }
@@ -187,7 +186,7 @@
 
   .reading{ margin-top:26px; padding-top:22px; border-top:1px solid var(--hairline); }
   .reading-label{
-    font-family:'Space Mono', monospace; font-size:10px; letter-spacing:0.18em;
+    font-family:var(--font-mono); font-size:10px; letter-spacing:0.18em;
     text-transform:uppercase; color:var(--brass); margin-bottom:10px;
   }
   .reading-text{ font-size:17px; line-height:1.65; }
@@ -201,7 +200,7 @@
     padding:18px 20px;
   }
   .piste-label{
-    font-family:'Space Mono', monospace; font-size:10px; letter-spacing:0.18em;
+    font-family:var(--font-mono); font-size:10px; letter-spacing:0.18em;
     text-transform:uppercase; color:var(--brass); margin-bottom:8px;
   }
   .piste-text{ font-size:16px; line-height:1.55; font-style:italic; color:var(--parchment-dim); }
@@ -212,7 +211,7 @@
 
   .resources{ margin-top:26px; padding-top:22px; border-top:1px solid var(--hairline); }
   .resources-label{
-    font-family:'Space Mono', monospace; font-size:10px; letter-spacing:0.18em;
+    font-family:var(--font-mono); font-size:10px; letter-spacing:0.18em;
     text-transform:uppercase; color:var(--brass); margin-bottom:6px;
   }
   .resources-intro{ font-size:14px; color:var(--parchment-dim); line-height:1.5; margin-bottom:16px; }
@@ -223,19 +222,19 @@
     transition:background 0.15s ease;
   }
   .res-head:hover{ background:var(--ink-3); }
-  .res-head-title{ font-family:'Lora', Georgia, serif; font-size:19px; }
+  .res-head-title{ font-family:var(--font-titre); font-size:19px; }
   .res-head-title .sym{ color:var(--brass-bright); margin-right:8px; }
-  .res-chevron{ font-family:'Space Mono', monospace; color:var(--parchment-dim); font-size:13px; transition:transform 0.2s ease; }
+  .res-chevron{ font-family:var(--font-mono); color:var(--parchment-dim); font-size:13px; transition:transform 0.2s ease; }
   .res-item.open .res-chevron{ transform:rotate(180deg); }
   .res-body{ display:none; padding:4px 20px 22px; }
   .res-item.open .res-body{ display:block; }
   .res-tag-recommended{
-    font-family:'Space Mono', monospace; font-size:9px; letter-spacing:0.14em;
+    font-family:var(--font-mono); font-size:9px; letter-spacing:0.14em;
     text-transform:uppercase; color:var(--brass-bright); margin-left:8px;
   }
   .res-text{ font-size:15px; line-height:1.65; margin:0 0 16px; }
   .res-sub{
-    font-family:'Space Mono', monospace; font-size:10px; letter-spacing:0.14em;
+    font-family:var(--font-mono); font-size:10px; letter-spacing:0.14em;
     text-transform:uppercase; color:var(--brass); margin:16px 0 6px;
   }
   .res-sub-text{ font-size:14px; line-height:1.55; color:var(--parchment); margin:0; }
@@ -273,21 +272,21 @@
       margin-bottom:22px;
     }
     .print-header .ph-mark{
-      font-family:'Space Mono', monospace;
+      font-family:var(--font-mono);
       font-size:10px;
       letter-spacing:0.28em;
       text-transform:uppercase;
       color:#8a6a2a;
     }
     .print-header h2{
-      font-family:'Lora', Georgia, serif;
+      font-family:var(--font-titre);
       font-weight:600;
       font-size:22px;
       color:#211a10;
       margin:6px 0 4px;
     }
     .print-header .ph-date{
-      font-family:'Space Mono', monospace;
+      font-family:var(--font-mono);
       font-size:10px;
       color:#6b5a3a;
     }
@@ -313,18 +312,19 @@
 
   footer{
     text-align:center; margin-top:44px;
-    font-family:'Space Mono', monospace; font-size:10px;
+    font-family:var(--font-mono); font-size:10px;
     letter-spacing:0.2em; text-transform:uppercase; color:var(--parchment-dim);
   }
   .hidden{ display:none !important; }
 </style>
 </head>
-<body>
+<body class="theme-sombre">
 
 <!-- NAVIGATION -->
 <nav id="nav">
   <a href="index.html" class="nav-marque"><img src="logo-k.webp" onerror="this.src='logo-k.png'" alt="Krysopée" style="height:36px;width:auto;vertical-align:middle;"></a>
-  <ul class="nav-links">
+  <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
+  <ul class="nav-links" id="nav-menu">
     <li><a href="manifeste.html">Le Manifeste</a></li>
     <li class="nav-item-dropdown">
       <a href="krysalide.html">Krysalide</a>
@@ -332,7 +332,6 @@
         <li><a href="journal.html">Journal de bord</a></li>
       </ul>
     </li>
-    <li><a href="parcours-opus-magnum.html">Parcours Opus Magnum</a></li>
     <li><a href="publications.html" class="active">Publications</a></li>
     <li><a href="fondateur.html">Fondateur</a></li>
   </ul>
@@ -964,5 +963,6 @@ function showResult(){
 
 </script>
 <script src="miroir-pdf.js"></script>
+<script src="nav.js" defer></script>
 </body>
 </html>

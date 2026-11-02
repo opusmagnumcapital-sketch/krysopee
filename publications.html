@@ -16,10 +16,9 @@
 <meta property="og:site_name" content="Krysopée">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krysopee.capital/logo-bandeau.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Lora:ital,wght@0,400;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261031">
+<link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=20261102">
 <style>
 .pub-hero {
   padding: 9rem 4rem 4rem;
@@ -28,17 +27,17 @@
   text-align: center;
 }
 .pub-eyebrow {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.62rem;
+  font-family: var(--font-corps);
+  font-size: 0.74rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--or);
   margin-bottom: 1.25rem;
 }
 .pub-titre {
-  font-family: 'Crimson Pro', serif;
+  font-family: var(--font-titre);
   font-size: clamp(2.2rem, 4.5vw, 3.4rem);
-  font-weight: 300;
+  font-weight: 400;
   font-style: italic;
   line-height: 1.15;
   color: var(--encre);
@@ -46,7 +45,7 @@
 }
 .pub-accroche {
   font-size: 1.02rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.85;
   color: var(--gris-chaud);
 }
@@ -63,8 +62,8 @@
 }
 .pub-item:last-child { border-bottom: 1px solid var(--bord-fin); }
 .pub-item-statut {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.58rem;
+  font-family: var(--font-corps);
+  font-size: 0.74rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--or-2);
@@ -72,7 +71,7 @@
   margin-bottom: 0.6rem;
 }
 .pub-item-titre {
-  font-family: 'Lora', serif;
+  font-family: var(--font-titre);
   font-size: 1.35rem;
   font-weight: 400;
   color: var(--text);
@@ -87,7 +86,7 @@
 .praxis-themes { max-width: 720px; margin: 2.5rem auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .praxis-theme {
   border: 0.5px solid var(--bord-pale); padding: 1.2rem 1.4rem;
-  font-family: 'Poppins', sans-serif; font-weight: 300; font-size: 0.82rem; color: var(--text-sec);
+  font-family: var(--font-corps); font-weight: 400; font-size: 0.82rem; color: var(--text-sec);
 }
 
 .praxis-canaux { max-width: 720px; margin: 4rem auto 0; padding: 0 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
@@ -106,7 +105,8 @@
 
 <nav id="nav">
   <a href="index.html" class="nav-marque"><img src="logo-k.webp" onerror="this.src='logo-k.png'" alt="Krysopée" style="height:36px;width:auto;vertical-align:middle;"></a>
-  <ul class="nav-links">
+  <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
+  <ul class="nav-links" id="nav-menu">
     <li><a href="manifeste.html">Le Manifeste</a></li>
     <li class="nav-item-dropdown">
       <a href="krysalide.html">Krysalide</a>
@@ -114,7 +114,6 @@
         <li><a href="journal.html">Journal de bord</a></li>
       </ul>
     </li>
-    <li><a href="parcours-opus-magnum.html">Parcours Opus Magnum</a></li>
     <li><a href="publications.html" class="active">Publications</a></li>
     <li><a href="fondateur.html">Fondateur</a></li>
   </ul>
@@ -195,5 +194,6 @@
 <p class="foot-avert">Krysopée n'est pas un conseiller en investissement financier. Les contenus publiés sont informatifs et pédagogiques : ils ne constituent ni un conseil en investissement, ni une recommandation, ni une incitation à réaliser des opérations de marché.</p>
 </footer>
 
+<script src="nav.js" defer></script>
 </body>
 </html>

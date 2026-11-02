@@ -16,24 +16,23 @@
 <meta property="og:site_name" content="Krysopée">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://krysopee.capital/logo-bandeau.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Lora:ital,wght@0,400;1,400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261031">
+<link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=20261102">
 <style>
-  :root{--ink:#0E0C08;--ink-2:#161209;--ink-3:#1E180E;--parchment:#F0E6C8;--parchment-dim:#8A7A5A;--brass:#A8945A;--brass-bright:#C8B47A;--oxide:#8a4a3a;--verdigris:#4f7566;--hairline:rgba(240,230,200,0.14);}
+  :root{--ink:#0E0C08;--ink-2:#161209;--ink-3:#1E180E;--parchment:#F0E6C8;--parchment-dim:#8A7A5A;--brass:#A8945A;--brass-bright:#C8B47A;--oxide:#8a4a3a;--verdigris:#4f7566;--hairline:rgba(var(--text-rgb), 0.14);}
   *{box-sizing:border-box;}
-  body{margin:0;background:radial-gradient(ellipse at 50% -10%, rgba(176,141,79,0.10), transparent 55%),var(--ink);color:var(--parchment);font-family:'Lora', Georgia, serif;padding:56px 20px 80px;min-height:100vh;}
+  body{margin:0;background:radial-gradient(ellipse at 50% -10%, rgba(176,141,79,0.10), transparent 55%),var(--ink);color:var(--parchment);font-family:var(--font-titre);padding:56px 20px 80px;min-height:100vh;}
   .wrap{max-width:720px;margin:0 auto;}
-  .eyebrow{font-family:'Space Mono', monospace;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--brass);text-align:center;margin-bottom:14px;}
-  h1{font-family:'Lora', Georgia, serif;font-weight:600;font-size:38px;line-height:1.2;text-align:center;margin:0 0 6px;}
+  .eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--brass);text-align:center;margin-bottom:14px;}
+  h1{font-family:var(--font-titre);font-weight:600;font-size:38px;line-height:1.2;text-align:center;margin:0 0 6px;}
   h1 em{font-style:italic;color:var(--brass-bright);}
   .subtitle{text-align:center;color:var(--parchment-dim);font-style:italic;font-size:17px;margin-bottom:44px;line-height:1.5;}
   .card{background:var(--ink-2);border:1px solid var(--hairline);border-radius:4px;padding:36px 32px;}
   @media (max-width:600px){ .card{padding:28px 20px;} h1{font-size:30px;} }
   .intro-text{font-size:17px;line-height:1.7;margin:0 0 22px;}
   .caveat{font-size:14px;line-height:1.6;color:var(--parchment-dim);border-left:3px solid var(--brass-bright);background:var(--ink-3);padding:14px 18px;margin:0 0 28px;}
-  .btn{display:inline-block;font-family:'Space Mono', monospace;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);background:var(--brass-bright);border:none;padding:14px 28px;border-radius:2px;cursor:pointer;transition:background .2s ease, transform .1s ease;}
+  .btn{display:inline-block;font-family:var(--font-mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);background:var(--brass-bright);border:none;padding:14px 28px;border-radius:2px;cursor:pointer;transition:background .2s ease, transform .1s ease;}
   .btn:hover{background:#e6c383;} .btn:active{transform:translateY(1px);}
   .btn-ghost{background:transparent;color:var(--parchment-dim);border:1px solid var(--hairline);}
   .btn-ghost:hover{background:var(--ink-3);color:var(--parchment);}
@@ -42,8 +41,8 @@
   .progress-row{display:flex;align-items:center;gap:14px;margin-bottom:30px;}
   .progress-track{flex:1;height:2px;background:var(--hairline);position:relative;}
   .progress-fill{position:absolute;left:0;top:0;height:100%;background:var(--brass-bright);transition:width .3s ease;}
-  .progress-label{font-family:'Space Mono', monospace;font-size:11px;color:var(--parchment-dim);white-space:nowrap;}
-  .axis-tag{font-family:'Space Mono', monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:10px;}
+  .progress-label{font-family:var(--font-mono);font-size:11px;color:var(--parchment-dim);white-space:nowrap;}
+  .axis-tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:10px;}
   .q-kind{font-size:14px;color:var(--parchment-dim);font-style:italic;margin:0 0 14px;}
   .q-text{font-size:24px;line-height:1.4;margin:0 0 24px;}
   .options{display:flex;flex-direction:column;gap:10px;}
@@ -58,17 +57,17 @@
   .option.selected .option-dot{border-color:var(--brass-bright);}
   .option.selected .option-dot::after{content:'';position:absolute;inset:3px;background:var(--brass-bright);border-radius:inherit;}
   .option-text{font-size:16px;line-height:1.45;flex:1;}
-  .option-mark{font-family:'Space Mono', monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;align-self:center;white-space:nowrap;}
+  .option-mark{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;align-self:center;white-space:nowrap;}
   .ok .option-mark{color:#8fb7a5;} .ko .option-mark{color:#d08f7e;}
-  .verdict{font-family:'Space Mono', monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin:26px 0 10px;}
+  .verdict{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin:26px 0 10px;}
   .debrief{border-top:1px solid var(--hairline);padding-top:18px;}
   .debrief p{font-size:16px;line-height:1.65;margin:0 0 14px;}
   .data-note{font-size:13px !important;color:var(--parchment-dim);}
   .principe{font-style:italic;color:var(--brass-bright);font-size:18px !important;}
-  .reading-label{font-family:'Space Mono', monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:8px;}
+  .reading-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:8px;}
   .res{border-top:1px solid var(--hairline);padding:18px 0;}
-  .res h3{font-family:'Lora', Georgia, serif;font-weight:400;font-size:19px;margin:0 0 6px;}
-  .res-st{font-family:'Space Mono', monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;}
+  .res h3{font-family:var(--font-titre);font-weight:400;font-size:19px;margin:0 0 6px;}
+  .res-st{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;}
   .res-st.a{color:#8fb7a5;} .res-st.e{color:var(--brass-bright);}
   .res p{margin:0 0 8px;font-size:16px;line-height:1.6;}
   .res .pl{font-size:14px;color:var(--parchment-dim);font-style:italic;}
@@ -78,11 +77,12 @@
   .hidden{display:none !important;}
 </style>
 </head>
-<body>
+<body class="theme-sombre">
 
 <nav id="nav">
   <a href="index.html" class="nav-marque"><img src="logo-k.webp" onerror="this.src='logo-k.png'" alt="Krysopée" style="height:36px;width:auto;vertical-align:middle;"></a>
-  <ul class="nav-links">
+  <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">☰</button>
+  <ul class="nav-links" id="nav-menu">
     <li><a href="manifeste.html">Le Manifeste</a></li>
     <li class="nav-item-dropdown">
       <a href="krysalide.html">Krysalide</a>
@@ -90,7 +90,6 @@
         <li><a href="journal.html">Journal de bord</a></li>
       </ul>
     </li>
-    <li><a href="parcours-opus-magnum.html">Parcours Opus Magnum</a></li>
     <li><a href="publications.html" class="active">Publications</a></li>
     <li><a href="fondateur.html">Fondateur</a></li>
   </ul>
@@ -210,5 +209,6 @@ function end(){
 intro();
 })();
 </script>
+<script src="nav.js" defer></script>
 </body>
 </html>
