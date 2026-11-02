@@ -16,7 +16,8 @@ Site statique HTML/CSS pour krysopee.capital (GitHub Pages).
 | `praxis.html` | Redirection vers `publications.html#praxis` |
 | `publications.html` | Publications, questionnaire (Miroir) et Praxis (section `#praxis`) |
 | `publication-chiffres-dun-compte.html` | Publication de septembre 2026 |
-| `questionnaire-etf.html` | Questionnaire sur les ETF (en préparation, non relié) |
+| `publication-etf-le-nom-et-la-matiere.html` | Article ETF de novembre 2026 (registre du Site) |
+| `questionnaire-etf.html` | Questionnaire sur les ETF (17 questions), prolongement de l'article ETF et entrée séparée de `publications.html` ; données arrêtées au 27 octobre 2026 |
 | `fondateur.html` | Page du fondateur |
 | `contact.html` | Contact |
 | `confidentialite.html`, `mentions-legales.html` | Pages légales |
