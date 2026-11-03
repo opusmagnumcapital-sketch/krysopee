@@ -21,7 +21,7 @@ Site statique HTML/CSS pour krysopee.capital (GitHub Pages).
 | `fondateur.html` | Page du fondateur |
 | `contact.html` | Contact |
 | `confidentialite.html`, `mentions-legales.html` | Pages légales |
-| `style.css`, `nav.js`, `favicon.svg`, `fonts/` | Habillage (v3 : fond clair « albedo », bandes sombres, polices Fraunces, Inter et IBM Plex Mono hébergées localement) ; `nav.js` ouvre le menu sur téléphone |
+| `style.css`, `nav.js`, `favicon.ico`, `favicon-32.png`, `favicon-192.png`, `apple-touch-icon.png`, `fonts/` | Habillage (v3 : fond clair « albedo », bandes sombres, polices Fraunces, Inter et IBM Plex Mono hébergées localement) ; `nav.js` ouvre le menu sur téléphone |
 
 ## Notes
 
