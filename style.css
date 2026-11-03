@@ -866,3 +866,16 @@ footer {
 
 /* ── Accueil : ligne de crédibilité et lignes de portes ───── */
 .contact-objet { max-width: 520px; margin: 0 auto; }
+
+/* ── Pied de page : bannière (monogramme + nom + devise) ── */
+.foot-banniere { display: block; line-height: 0; opacity: 0.95; transition: opacity 0.2s; }
+.foot-banniere:hover { opacity: 1; }
+.foot-banniere img { height: 70px; width: auto; display: block; }
+.foot-liens { justify-content: flex-end; }
+.foot-liens .foot-copy { flex-basis: 100%; text-align: right; }
+@media (max-width: 900px) {
+  .foot-banniere img { height: 60px; margin: 0 auto; }
+  .foot-liens { justify-content: center; }
+  .foot-liens .foot-copy { text-align: center; }
+}
+
